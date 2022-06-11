@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useCell, useBoard } from "Hooks";
-import { CgTrashEmpty } from "react-icons/cg";
+import { FiTrash } from "react-icons/fi";
 
 const Basic = ({ cellId }) => {
   const { cellData, updateFields, clearCell } = useCell({ id: cellId });
@@ -35,7 +35,7 @@ const Basic = ({ cellId }) => {
           className="group-hover:bg-blue-800 scrollbar text-gray-100 transition-all bg-blue-900 outline-none resize-none"
         />
         {isEditMode && showResetButton && (
-          <CgTrashEmpty
+          <FiTrash
             className="top-2 right-2 hover:text-red-300 absolute text-xl text-red-100 transition-all rounded-md"
             onClick={clearCell}
           />
