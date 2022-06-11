@@ -24,7 +24,7 @@ const Idle = ({ cellId }) => {
   return (
     <td key={cellId}>
       <div
-        className="bg-slate-200 hover:border-blue-300 hover:bg-slate-100 hover:border-2 flex flex-col items-center justify-center min-w-[14rem] min-h-[6rem] p-2 transition-all rounded-md cursor-pointer"
+        className="bg-slate-100 hover:border-blue-300 hover:bg-slate-50 hover:border-2 flex flex-col items-center justify-center min-w-[14rem] min-h-[6rem] p-2 transition-all rounded-md cursor-pointer shadow-sm border border-1 border-slate-200"
         onMouseEnter={showText}
         onMouseLeave={hideText}
         onClick={handleClick}
