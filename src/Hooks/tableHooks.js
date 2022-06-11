@@ -1,10 +1,16 @@
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { tableAtom } from "Atoms";
+import { tableAtom, cellsSelector } from "Atoms";
 import _ from "lodash";
 
 export const useTable = () => {
   const [allRows, setTableRows] = useRecoilState(tableAtom);
   const resetTableState = useResetRecoilState(tableAtom);
+  const [__, updateSelectedCells] = useRecoilState(cellsSelector);
+
+  const getCellIds = () => {
+    const allCellIds = _.flatten(allRows);
+    return allCellIds;
+  };
 
   // Add a new row to the table at the end of the table
   const addRow = () => {
@@ -28,25 +34,23 @@ export const useTable = () => {
     });
   };
 
+  // clear table data keeping the table layout intact
+  const clearTableData = () => {
+    const cellIds = getCellIds();
+    updateSelectedCells({ action: "reset", targetCells: cellIds });
+  };
+
   // reset table to initial state
   const resetTable = () => {
-    // TODO clear cellsFamily as well
-    const cellIds = getAllCellIds();
-    console.debug(cellIds);
+    clearTableData();
     resetTableState();
   };
-
-  const getAllCellIds = () => {
-    const allCellIds = _.flatten(allRows);
-    return allCellIds;
-  };
-
-  // TODO clear table data keeping the table layout intact
 
   return {
     allRows,
     addRow,
     addColumn,
     resetTable,
+    clearTableData,
   };
 };
