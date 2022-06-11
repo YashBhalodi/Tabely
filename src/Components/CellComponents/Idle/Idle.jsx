@@ -1,6 +1,6 @@
 import React from "react";
 
-const Idle = () => {
+const Idle = ({ cellId }) => {
   return (
     <td>
       <div>Idle</div>

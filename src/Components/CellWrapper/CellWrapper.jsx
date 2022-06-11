@@ -1,27 +1,28 @@
 import React from "react";
 
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
-import { cellDataSelector } from "@/Atoms";
+import { cellsFamily } from "@/Atoms";
 
 import { Idle } from "@/Components/CellComponents";
+import { CELL_TYPES } from "@/Utils/constants";
 
 const MAP_TYPE_COMPONENT = {
-  IDLE: Idle,
+  [CELL_TYPES.IDLE]: Idle,
 };
 
-const CellWrapper = (props) => {
-  const { cellId } = props;
-  const [cellData, setCellData] = useRecoilState(cellDataSelector(cellId));
+const CellWrapper = ({ cellId }) => {
+  const cellData = useRecoilValue(cellsFamily(cellId));
   const { type } = cellData || {};
 
   const CellComponent = MAP_TYPE_COMPONENT[type];
 
   if (!type || !CellComponent) {
+    console.warn("invalid cell type found:", { type, cellId });
     return null;
   }
 
-  return <CellComponent />;
+  return <CellComponent cellId={cellId} />;
 };
 
 export default CellWrapper;

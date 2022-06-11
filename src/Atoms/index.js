@@ -1,31 +1,12 @@
-import { atom, selectorFamily } from "recoil";
-import { setRecoil } from "recoil-nexus";
+import { atom, atomFamily } from "recoil";
+import { initialCellState, initialTableState } from "@/Utils/constants";
 
-export const tableData = atom({
+export const tableAtom = atom({
   key: "tableData",
-  default: [[]],
+  default: initialTableState,
 });
 
-export const cellData = atom({
-  key: "cellData",
-  default: {},
-});
-
-export const cellDataSelector = selectorFamily({
-  key: "cellDataSelector",
-  get:
-    (id) =>
-    ({ get }) => {
-      const allCellData = get(cellData);
-      if (allCellData[id] !== undefined) {
-        return allCellData[id];
-      }
-
-      setRecoil(cellData, (prevState) => ({
-        ...prevState,
-        [id]: { type: "IDLE" },
-      }));
-
-      return get(cellData)[id];
-    },
+export const cellsFamily = atomFamily({
+  key: "cells",
+  default: initialCellState,
 });
