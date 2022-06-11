@@ -10,8 +10,7 @@ const Idle = ({ cellId }) => {
 
   const handleClick = () => {
     updateFields({
-      type:
-        cellData.type === CELL_TYPES.IDLE ? CELL_TYPES.IDLE2 : CELL_TYPES.IDLE,
+      type: CELL_TYPES.BASIC,
     });
   };
 
@@ -25,7 +24,7 @@ const Idle = ({ cellId }) => {
   return (
     <td key={cellId}>
       <div
-        className="bg-slate-200 hover:border-blue-300 hover:bg-slate-100 hover:border-2 flex flex-col items-center justify-center w-32 h-24 p-2 transition-all rounded-md cursor-pointer"
+        className="bg-slate-200 hover:border-blue-300 hover:bg-slate-100 hover:border-2 flex flex-col items-center justify-center min-w-[14rem] min-h-[6rem] p-2 transition-all rounded-md cursor-pointer"
         onMouseEnter={showText}
         onMouseLeave={hideText}
         onClick={handleClick}
