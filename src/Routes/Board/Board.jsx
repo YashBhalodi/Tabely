@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 
 import { tableData as tableDataAtom } from "@/Atoms";
+import { CellWrapper } from "@/Components";
 
 import _ from "lodash";
 
@@ -34,7 +35,7 @@ const Board = () => {
           return (
             <tr>
               {_.map(row, (cellId) => {
-                return <td>{cellId}</td>;
+                return <CellWrapper cellId={cellId} />;
               })}
             </tr>
           );
