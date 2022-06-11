@@ -1,7 +1,7 @@
 import React from "react";
 
-function Updates() {
+const Updates = () => {
   return <div>Updates</div>;
-}
+};
 
 export default Updates;
