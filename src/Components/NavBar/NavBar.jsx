@@ -1,7 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const NavBar = () => {
+  const location = useLocation();
+  const { pathname } = location;
+
+  if (pathname === "/board") {
+    return null;
+  }
+
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
