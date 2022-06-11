@@ -6,7 +6,7 @@ import { NavBar } from "Components";
 
 const App = () => {
   return (
-    <>
+    <div className="flex h-screen w-screen flex-col">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -16,7 +16,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </>
+    </div>
   );
 };
 
