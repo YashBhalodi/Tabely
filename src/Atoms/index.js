@@ -1,5 +1,9 @@
 import { atom, atomFamily, selector } from "recoil";
-import { initialCellState, initialTableState } from "Utils/constants";
+import {
+  initialCellState,
+  initialTableState,
+  initialBoardState,
+} from "Utils/constants";
 
 export const tableAtom = atom({
   key: "tableData",
@@ -24,4 +28,9 @@ export const cellsSelector = selector({
       });
     }
   },
+});
+
+export const boardAtom = atom({
+  key: "board",
+  default: initialBoardState,
 });
