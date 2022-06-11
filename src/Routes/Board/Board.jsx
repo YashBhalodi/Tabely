@@ -1,37 +1,37 @@
 import { useRecoilState } from "recoil";
 
-import { tableData as tableDataAtom } from "@/Atoms";
+import { tableAtom } from "@/Atoms";
 import { CellWrapper } from "@/Components";
 
 import _ from "lodash";
 
 const Board = () => {
-  const [tableData, setTableData] = useRecoilState(tableDataAtom);
+  const [allRows, setTableData] = useRecoilState(tableAtom);
 
   const addColumn = () => {
-    setTableData((prevTableData) => {
-      const newTableData = _.cloneDeep(prevTableData);
-      newTableData.forEach((row) => row.push(_.uniqueId()));
-      return newTableData;
+    setTableData((prevAllRows) => {
+      const newAllRows = _.cloneDeep(prevAllRows);
+      newAllRows.forEach((row) => row.push(_.uniqueId()));
+      return newAllRows;
     });
   };
 
   const addRow = () => {
-    setTableData((prevTableData) => {
-      const newTableData = _.cloneDeep(prevTableData);
+    setTableData((prevAllRows) => {
+      const newAllRows = _.cloneDeep(prevAllRows);
       const newRow = [];
-      for (let i = 0; i < newTableData[0].length; i++) {
+      for (let i = 0; i < newAllRows[0].length; i++) {
         newRow.push(_.uniqueId());
       }
-      newTableData.push(newRow);
-      return newTableData;
+      newAllRows.push(newRow);
+      return newAllRows;
     });
   };
 
   return (
     <>
       <table className="border-separate border-spacing-2">
-        {_.map(tableData, (row) => {
+        {_.map(allRows, (row) => {
           return (
             <tr>
               {_.map(row, (cellId) => {
