@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export const CELL_TYPES = {
   IDLE: "IDLE",
 };
@@ -7,6 +9,6 @@ export const initialCellState = {
 };
 
 export const initialTableState = [
-  [1, 2],
-  [3, 4],
+  [_.uniqueId(), _.uniqueId()],
+  [_.uniqueId(), _.uniqueId()],
 ];

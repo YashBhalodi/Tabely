@@ -11,9 +11,11 @@ const Board = () => {
       <table className="border-separate border-spacing-2">
         <tbody>
           {_.map(allRows, (row, index) => {
+            // TODO better way to assign key to each row
+            const rowId = row.join("");
+
             return (
-              // TODO better way to assign key to each row
-              <tr key={index}>
+              <tr key={rowId}>
                 {_.map(row, (cellId) => {
                   return <CellWrapper cellId={cellId} key={cellId} />;
                 })}
