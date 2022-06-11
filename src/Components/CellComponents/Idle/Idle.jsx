@@ -2,7 +2,7 @@ import React from "react";
 
 const Idle = ({ cellId }) => {
   return (
-    <td>
+    <td key={cellId}>
       <div>Idle</div>
     </td>
   );
