@@ -1,5 +1,5 @@
 import { useTable } from "Hooks";
-import { CellWrapper } from "Components";
+import { CellWrapper, BoardTopHeader } from "Components";
 
 import _ from "lodash";
 
@@ -17,6 +17,7 @@ const Board = () => {
   return (
     <>
       <div className="flex flex-col items-start justify-center flex-1 overflow-hidden">
+        <BoardTopHeader />
         <div className="bg-slate-100 scrollbar flex w-full h-full overflow-auto">
           <table className="h-fit w-fit border-spacing-3 border-separate table-auto">
             <tbody>
@@ -35,7 +36,7 @@ const Board = () => {
             </tbody>
           </table>
         </div>
-        <div className="flex flex-row justify-center w-full p-2 space-x-2">
+        {/* <div className="flex flex-row justify-center w-full p-2 space-x-2">
           <div
             className="w-36 flex-1 p-4 m-0 bg-red-400 rounded-md"
             onClick={addColumn}
@@ -72,7 +73,7 @@ const Board = () => {
           >
             Clear Table
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
