@@ -19,10 +19,10 @@ const CellWrapper = ({ cellId }) => {
 
   if (!type || !CellComponent) {
     console.warn("invalid cell type found:", { type, cellId });
-    return null;
+    return <td></td>;
   }
 
-  return <CellComponent cellId={cellId} />;
+  return <Idle cellId={cellId} />;
 };
 
 export default CellWrapper;

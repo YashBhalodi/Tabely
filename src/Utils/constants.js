@@ -2,6 +2,7 @@ import _ from "lodash";
 
 export const CELL_TYPES = {
   IDLE: "IDLE",
+  IDLE2: "IDLE2",
 };
 
 export const initialCellState = {

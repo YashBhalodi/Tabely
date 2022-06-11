@@ -16,7 +16,7 @@ const Board = () => {
 
   return (
     <>
-      <div className="flex flex-1 flex-col space-y-2 justify-center items-start overflow-hidden">
+      <div className="flex flex-1 flex-col justify-center items-start overflow-hidden">
         <div className="flex h-full w-full overflow-auto bg-slate-100 scrollbar">
           <table className="table-auto h-fit w-fit border-separate border-spacing-3">
             <tbody>
