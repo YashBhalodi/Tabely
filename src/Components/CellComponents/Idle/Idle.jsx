@@ -25,12 +25,12 @@ const Idle = ({ cellId }) => {
   return (
     <td key={cellId}>
       <div
-        className="bg-slate-200 h-24 w-32 rounded-md p-2 flex flex-col justify-center items-center cursor-pointer transition-all hover:border-blue-300 hover:bg-slate-100 hover:border-2"
+        className="bg-slate-200 hover:border-blue-300 hover:bg-slate-100 hover:border-2 flex flex-col items-center justify-center w-32 h-24 p-2 transition-all rounded-md cursor-pointer"
         onMouseEnter={showText}
         onMouseLeave={hideText}
         onClick={handleClick}
       >
-        {shouldShowText && <CgAdd className="text-blue-300 text-xl" />}
+        {shouldShowText && <CgAdd className="text-xl text-blue-300" />}
       </div>
     </td>
   );

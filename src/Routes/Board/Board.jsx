@@ -16,9 +16,9 @@ const Board = () => {
 
   return (
     <>
-      <div className="flex flex-1 flex-col justify-center items-start overflow-hidden">
-        <div className="flex h-full w-full overflow-auto bg-slate-100 scrollbar">
-          <table className="table-auto h-fit w-fit border-separate border-spacing-3">
+      <div className="flex flex-col items-start justify-center flex-1 overflow-hidden">
+        <div className="bg-slate-100 scrollbar flex w-full h-full overflow-auto">
+          <table className="h-fit w-fit border-spacing-3 border-separate table-auto">
             <tbody>
               {_.map(allRows, (row, index) => {
                 // TODO better way to assign key to each row
@@ -35,39 +35,39 @@ const Board = () => {
             </tbody>
           </table>
         </div>
-        <div className="flex flex-row space-x-2 w-full justify-center p-2">
+        <div className="flex flex-row justify-center w-full p-2 space-x-2">
           <div
-            className="p-4 bg-red-400 w-36 m-0 rounded-md flex-1"
+            className="w-36 flex-1 p-4 m-0 bg-red-400 rounded-md"
             onClick={addColumn}
           >
             Add Column
           </div>
           <div
-            className="p-4 bg-blue-400 w-36 m-0 rounded-md flex-1"
+            className="w-36 flex-1 p-4 m-0 bg-blue-400 rounded-md"
             onClick={addRow}
           >
             Add Row
           </div>
           <div
-            className="p-4 bg-orange-400 w-36 rounded-md flex-1"
+            className="w-36 flex-1 p-4 bg-orange-400 rounded-md"
             onClick={resetTable}
           >
             Reset Table
           </div>
           <div
-            className="p-4 bg-red-400 w-36 rounded-md flex-1"
+            className="w-36 flex-1 p-4 bg-red-400 rounded-md"
             onClick={deleteColumn}
           >
             Delete Column
           </div>
           <div
-            className="p-4 bg-blue-400 w-36 rounded-md flex-1"
+            className="w-36 flex-1 p-4 bg-blue-400 rounded-md"
             onClick={deleteRow}
           >
             Delete Row
           </div>
           <div
-            className="p-4 bg-orange-400 w-36 rounded-md flex-1"
+            className="w-36 flex-1 p-4 bg-orange-400 rounded-md"
             onClick={clearTableData}
           >
             Clear Table
