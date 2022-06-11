@@ -3,7 +3,12 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "Components": ["./src/Components/*"],
+      "Routes": ["./src/Routes/*"],
+      "Utils": ["./src/Utils/*"],
+      "Atoms": ["./src/Atoms/*"],
+      "Hooks": ["./src/Hooks/*"]
     }
   }
 }

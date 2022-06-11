@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 
-import { tableAtom } from "@/Atoms";
-import { CellWrapper } from "@/Components";
+import { tableAtom } from "Atoms";
+import { CellWrapper } from "Components";
 
 import _ from "lodash";
 

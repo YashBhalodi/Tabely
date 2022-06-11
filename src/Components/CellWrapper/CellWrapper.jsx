@@ -2,10 +2,10 @@ import React from "react";
 
 import { useRecoilValue } from "recoil";
 
-import { cellsFamily } from "@/Atoms";
+import { cellsFamily } from "Atoms";
 
-import { Idle } from "@/Components/CellComponents";
-import { CELL_TYPES } from "@/Utils/constants";
+import { Idle } from "Components/CellComponents";
+import { CELL_TYPES } from "Utils/constants";
 
 const MAP_TYPE_COMPONENT = {
   [CELL_TYPES.IDLE]: Idle,

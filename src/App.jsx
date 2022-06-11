@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { Home, Board, Contact, RoadMap, Updates, NotFoundPage } from "./Routes";
 
-import { NavBar } from "@/Components";
+import { NavBar } from "Components";
 
 const App = () => {
   return (

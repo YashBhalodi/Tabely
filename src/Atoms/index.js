@@ -1,5 +1,5 @@
 import { atom, atomFamily } from "recoil";
-import { initialCellState, initialTableState } from "@/Utils/constants";
+import { initialCellState, initialTableState } from "Utils/constants";
 
 export const tableAtom = atom({
   key: "tableData",
