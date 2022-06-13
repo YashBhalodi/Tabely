@@ -33,8 +33,10 @@ const BoardTitleEditableField = () => {
           name={"title"}
           value={title}
           onChange={updateBoardTitle}
-          className="bg-blue-50 flex-1 text-xl font-medium text-blue-900 border-none outline-none"
+          className="bg-blue-50 flex-1 text-xl font-medium text-blue-900 placeholder-blue-400 border-none outline-none"
           onBlur={() => setIsEditingTitle(false)}
+          placeholder={"Board Title"}
+          autoFocus={_.isEmpty(title) || isEditingTitle}
         />
       ) : (
         <div
