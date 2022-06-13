@@ -3,11 +3,15 @@ import React, { useState } from "react";
 import { useCell, useBoard } from "Hooks";
 import { FiTrash } from "react-icons/fi";
 
+import { COLOR_THEME } from "Utils/colors";
+
 const Basic = ({ cellId }) => {
   const { cellData, updateFields, clearCell } = useCell({ id: cellId });
   const { isEditMode } = useBoard();
   const [showResetButton, setShowResetButton] = useState(false);
-  const { title = "" } = cellData;
+  const { title = "", colorTheme } = cellData;
+
+  const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
 
   const handleTextChange = (e) => {
     updateFields({
@@ -21,7 +25,7 @@ const Basic = ({ cellId }) => {
   return (
     <td>
       <div
-        className="group hover:bg-blue-800 hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 text-gray-100 transition-all bg-blue-900 rounded-md"
+        className={`group hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md ${themeItem.class}`}
         onMouseEnter={setMouseEnter}
         onMouseLeave={setMouseLeave}
       >
@@ -32,7 +36,7 @@ const Basic = ({ cellId }) => {
             value={title}
             onChange={handleTextChange}
             rows={3}
-            className="group-hover:bg-blue-800 scrollbar text-gray-100 transition-all bg-blue-900 outline-none resize-none"
+            className={`scrollbar outline-none resize-none ${themeItem.class}`}
           />
         ) : (
           <div className="scrollbar overflow-auto whitespace-pre-line select-all">
@@ -49,5 +53,4 @@ const Basic = ({ cellId }) => {
     </td>
   );
 };
-
 export default Basic;

@@ -13,6 +13,7 @@ export const BOARD_MODE = {
 export const initialCellState = {
   type: CELL_TYPES.IDLE,
   title: "",
+  colorTheme: "STONE",
 };
 
 export const initialTableState = [
