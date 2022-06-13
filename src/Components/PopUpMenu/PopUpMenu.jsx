@@ -5,7 +5,7 @@ import { FiMoreVertical } from "react-icons/fi";
 import _ from "lodash";
 
 const DropdownItem = (props) => {
-  const { onClick = () => {}, label, key } = props;
+  const { onClick = () => {}, label } = props;
 
   const handleClick = (e) => {
     onClick();
@@ -14,7 +14,6 @@ const DropdownItem = (props) => {
 
   return (
     <div
-      key={key}
       className="hover:bg-blue-100 bg-blue-50 hover:text-blue-700 px-6 py-2 font-medium text-blue-900 transition-all cursor-pointer"
       onClick={handleClick}
     >
@@ -105,6 +104,7 @@ const Dropdown = (props) => {
         <DropdownContainer style={styles.offset} visible={visible}>
           {_.map(menu, (menuItem) => (
             <DropdownItem
+              key={menuItem.key}
               label={menuItem.label}
               onClick={() => {
                 onItemClick(menuItem.key);
