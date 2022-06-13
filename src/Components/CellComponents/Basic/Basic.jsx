@@ -33,7 +33,7 @@ const Basic = ({ cellId }) => {
   return (
     <td>
       <div
-        className={`group hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md ${themeItem.class} font-medium`}
+        className={`hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md font-medium ${themeItem.class}`}
         onMouseEnter={setMouseEnter}
         onMouseLeave={setMouseLeave}
       >
@@ -44,7 +44,8 @@ const Basic = ({ cellId }) => {
             value={title}
             onChange={handleTextChange}
             rows={2}
-            className={`scrollbar outline-none resize-none ${themeItem.class}`}
+            className={`scrollbar outline-none resize-none bg-transparent hover:bg-transparent`}
+            autoFocus
           />
         ) : (
           <div className="scrollbar-hide w-full h-full overflow-auto whitespace-pre-line select-all">
