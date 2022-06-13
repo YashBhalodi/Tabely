@@ -10,6 +10,8 @@ const ThemePicker = (props) => {
   const { activeTheme = "STONE", onSelectTheme = () => {} } = props;
   const [visible, setVisibility] = useState(false);
 
+  const { class: className, bg_tw } = COLOR_THEME[activeTheme];
+
   const referenceRef = useRef(null);
   const popperRef = useRef(null);
 
@@ -64,21 +66,21 @@ const ThemePicker = (props) => {
       <div
         ref={referenceRef}
         onClick={handleDropdownClick}
-        className={
-          "p-1 rounded-md border border-gray-300 w-fit h-fit cursor-pointer flex flex-row justify-center items-center space-x-1"
-        }
+        className={`p-1 rounded-md border border-${bg_tw} w-fit h-fit cursor-pointer flex flex-row justify-center items-center space-x-1 bg-white`}
       >
-        <div
-          className={`h-4 w-4 rounded-full ${COLOR_THEME[activeTheme].class}`}
-        ></div>
-        <FiChevronDown />
+        <div className={`h-4 w-4 rounded-full ${className}`}></div>
+        <FiChevronDown className={`text-gray-900/20`} />
       </div>
-      <div ref={popperRef} style={styles.popper} {...attributes.popper}>
+      <div
+        ref={popperRef}
+        style={{ ...styles.popper, zIndex: 10 }}
+        {...attributes.popper}
+      >
         <div
           style={styles.offset}
           className={`${
             visible
-              ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-md shadow-gray-200"
+              ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-md shadow-gray-200 bg-white"
               : "hidden"
           }`}
         >

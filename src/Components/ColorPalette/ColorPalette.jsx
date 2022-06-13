@@ -32,7 +32,7 @@ const ColorPalette = (props) => {
   };
 
   return (
-    <div className="h-fit w-fit grid items-start justify-center max-w-xs grid-flow-col grid-rows-2 gap-3 p-2">
+    <div className="h-fit w-fit z-40 grid items-start justify-center max-w-xs grid-flow-col grid-rows-2 gap-3 p-2">
       {_.map(COLOR_THEME, (item, key) => (
         <ThemeItem
           key={key}

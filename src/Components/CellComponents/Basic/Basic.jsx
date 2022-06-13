@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { ThemePicker } from "Components";
+
 import { useCell, useBoard } from "Hooks";
 import { FiTrash } from "react-icons/fi";
 
@@ -8,7 +10,7 @@ import { COLOR_THEME } from "Utils/colors";
 const Basic = ({ cellId }) => {
   const { cellData, updateFields, clearCell } = useCell({ id: cellId });
   const { isEditMode } = useBoard();
-  const [showResetButton, setShowResetButton] = useState(false);
+  const [isHover, setIsHover] = useState(false);
   const { title = "", colorTheme } = cellData;
 
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
@@ -19,13 +21,19 @@ const Basic = ({ cellId }) => {
     });
   };
 
-  const setMouseEnter = () => setShowResetButton(true);
-  const setMouseLeave = () => setShowResetButton(false);
+  const setTheme = (theme) => {
+    updateFields({
+      colorTheme: theme,
+    });
+  };
+
+  const setMouseEnter = () => setIsHover(true);
+  const setMouseLeave = () => setIsHover(false);
 
   return (
     <td>
       <div
-        className={`group hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md ${themeItem.class}`}
+        className={`group hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md ${themeItem.class} font-medium`}
         onMouseEnter={setMouseEnter}
         onMouseLeave={setMouseLeave}
       >
@@ -35,19 +43,24 @@ const Basic = ({ cellId }) => {
             name="title"
             value={title}
             onChange={handleTextChange}
-            rows={3}
+            rows={2}
             className={`scrollbar outline-none resize-none ${themeItem.class}`}
           />
         ) : (
-          <div className="scrollbar overflow-auto whitespace-pre-line select-all">
+          <div className="scrollbar-hide w-full h-full overflow-auto whitespace-pre-line select-all">
             {title}
           </div>
         )}
-        {isEditMode && showResetButton && (
+        {isEditMode && isHover && (
           <FiTrash
-            className="top-2 right-2 hover:text-red-300 absolute text-xl text-red-100 transition-all rounded-md"
+            className="top-2 right-2 hover:text-red-300 absolute text-xl text-red-400 transition-all rounded-md"
             onClick={clearCell}
           />
+        )}
+        {isEditMode && isHover && (
+          <div className="bottom-1 right-1 absolute">
+            <ThemePicker onSelectTheme={setTheme} activeTheme={colorTheme} />
+          </div>
         )}
       </div>
     </td>
