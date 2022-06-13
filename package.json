@@ -16,7 +16,8 @@
     "react-popper": "^2.3.0",
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.3",
-    "recoil-nexus": "^0.3.15"
+    "recoil-nexus": "^0.3.15",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
