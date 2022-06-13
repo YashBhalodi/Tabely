@@ -16,7 +16,7 @@ const ThemeItem = (props) => {
 
   return (
     <div
-      className={`w-4 h-4 rounded-full ${className} ${
+      className={`w-4 h-4 rounded-full cursor-pointer ${className} ${
         isActive ? activeClass : ""
       } ${pickerHoverClass}`}
       onClick={() => onClick(id)}
@@ -30,8 +30,9 @@ const ColorPalette = (props) => {
   const handleClick = (id) => {
     onClickTheme(id);
   };
+
   return (
-    <div className="shadow-gray-100 h-fit w-fit grid items-start justify-center max-w-xs grid-flow-col grid-rows-2 gap-3 p-2 rounded-md shadow-lg">
+    <div className="h-fit w-fit grid items-start justify-center max-w-xs grid-flow-col grid-rows-2 gap-3 p-2">
       {_.map(COLOR_THEME, (item, key) => (
         <ThemeItem
           key={key}
