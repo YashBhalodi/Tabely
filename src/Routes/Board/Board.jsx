@@ -4,15 +4,7 @@ import { CellWrapper, BoardTopHeader } from "Components";
 import _ from "lodash";
 
 const Board = () => {
-  const {
-    allRows,
-    addColumn,
-    addRow,
-    resetTable,
-    clearTableData,
-    deleteColumn,
-    deleteRow,
-  } = useTable();
+  const { allRows } = useTable();
 
   return (
     <>
@@ -35,44 +27,6 @@ const Board = () => {
               })}
             </tbody>
           </table>
-        </div>
-        <div className="flex flex-row justify-center w-full p-2 space-x-2">
-          <div
-            className="w-36 flex-1 p-4 m-0 bg-red-400 rounded-md"
-            onClick={addColumn}
-          >
-            Add Column
-          </div>
-          <div
-            className="w-36 flex-1 p-4 m-0 bg-blue-400 rounded-md"
-            onClick={addRow}
-          >
-            Add Row
-          </div>
-          <div
-            className="w-36 flex-1 p-4 bg-orange-400 rounded-md"
-            onClick={resetTable}
-          >
-            Reset Table
-          </div>
-          <div
-            className="w-36 flex-1 p-4 bg-red-400 rounded-md"
-            onClick={deleteColumn}
-          >
-            Delete Column
-          </div>
-          <div
-            className="w-36 flex-1 p-4 bg-blue-400 rounded-md"
-            onClick={deleteRow}
-          >
-            Delete Row
-          </div>
-          <div
-            className="w-36 flex-1 p-4 bg-orange-400 rounded-md"
-            onClick={clearTableData}
-          >
-            Clear Table
-          </div>
         </div>
       </div>
     </>

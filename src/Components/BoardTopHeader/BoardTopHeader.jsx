@@ -3,7 +3,9 @@ import { NavLink } from "react-router-dom";
 
 import { FiEdit3, FiLock, FiChevronLeft } from "react-icons/fi";
 
-import { useBoard } from "Hooks";
+import { useBoard, useTable } from "Hooks";
+
+import { PopUpMenu } from "Components";
 import _ from "lodash";
 
 const BoardTitleEditableField = () => {
@@ -46,12 +48,62 @@ const BoardTitleEditableField = () => {
   );
 };
 
+const TableActionDropDown = () => {
+  const {
+    addColumn,
+    addRow,
+    resetTable,
+    clearTableData,
+    deleteColumn,
+    deleteRow,
+  } = useTable();
+
+  const MAP_KEY_ACTION = {
+    ADD_COLUMN: addColumn,
+    ADD_ROW: addRow,
+    RESET_TABLE: resetTable,
+    CLEAR_TABLE: clearTableData,
+    DELETE_COLUMN: deleteColumn,
+    DELETE_ROW: deleteRow,
+  };
+
+  const TABLE_ACTIONS = [
+    {
+      key: "ADD_COLUMN",
+      label: "Add Column",
+    },
+    {
+      key: "ADD_ROW",
+      label: "Add Row",
+    },
+    {
+      key: "DELETE_COLUMN",
+      label: "Delete Column",
+    },
+    {
+      key: "DELETE_ROW",
+      label: "Delete Row",
+    },
+    { key: "CLEAR_TABLE", label: "Clear Table" },
+    { key: "RESET_TABLE", label: "Reset Table" },
+  ];
+
+  return (
+    <PopUpMenu
+      menu={TABLE_ACTIONS}
+      onItemClick={(key) => {
+        MAP_KEY_ACTION[key]?.();
+      }}
+    />
+  );
+};
+
 const BoardTopHeader = () => {
   const { isEditMode, toggleBoardMode } = useBoard();
 
   const iconClass = "text-xl text-blue-900";
   const iconButtonClass =
-    "hover:border-blue-300 hover:border flex flex-col items-center justify-center w-12 h-12 bg-blue-100 rounded-md";
+    "hover:border-blue-300 hover:border flex flex-col items-center justify-center w-12 h-12 bg-blue-100 rounded-md cursor-pointer";
 
   return (
     <div className=" bg-blue-50 flex flex-row justify-between w-full h-20 p-4 space-x-4 border-b-2 border-blue-100">
@@ -68,6 +120,7 @@ const BoardTopHeader = () => {
           <FiEdit3 className={iconClass} />
         )}
       </div>
+      <TableActionDropDown />
     </div>
   );
 };
