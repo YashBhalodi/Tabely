@@ -32,7 +32,7 @@ const ThemePicker = (props) => {
         {
           name: "offset",
           options: {
-            offset: [0, 2],
+            offset: [0, 8],
           },
         },
       ],
