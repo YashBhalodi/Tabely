@@ -189,7 +189,7 @@ export const COLOR_THEME = {
   },
   ZINC: {
     label: "Zinc",
-    class: `${COMMON.class} text-zinc-900 bg-zinc-300 hover:bg-zinc-200`,
+    class: `${COMMON.class} text-zinc-900 bg-zinc-400 hover:bg-zinc-300`,
     activeClass: `${COMMON.activeClass} outline-zinc-500`,
     pickerHoverClass: `${COMMON.pickerHoverClass} hover:outline-zinc-500`,
     bg_tw: "zinc-300",
@@ -199,7 +199,7 @@ export const COLOR_THEME = {
   },
   GRAY: {
     label: "Gray",
-    class: `${COMMON.class} text-gray-900 bg-gray-300 hover:bg-gray-200`,
+    class: `${COMMON.class} text-gray-900 bg-gray-200 hover:bg-gray-100`,
     activeClass: `${COMMON.activeClass} outline-gray-500`,
     pickerHoverClass: `${COMMON.pickerHoverClass} hover:outline-gray-500`,
     bg_tw: "gray-230",

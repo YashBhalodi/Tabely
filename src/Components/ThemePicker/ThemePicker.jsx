@@ -66,9 +66,9 @@ const ThemePicker = (props) => {
       <div
         ref={referenceRef}
         onClick={handleDropdownClick}
-        className={`p-1 rounded-md border border-${bg_tw} w-fit h-fit cursor-pointer flex flex-row justify-center items-center space-x-1 bg-white`}
+        className={`p-1 rounded-md border border-${bg_tw} w-fit h-fit cursor-pointer flex flex-row justify-center items-center space-x-1 bg-white/50`}
       >
-        <div className={`h-4 w-4 rounded-full ${className}`}></div>
+        <div className={`h-4 w-4 shadow-sm rounded-full ${className}`}></div>
         <FiChevronDown className={`text-gray-900/20`} />
       </div>
       <div
@@ -80,7 +80,7 @@ const ThemePicker = (props) => {
           style={styles.offset}
           className={`${
             visible
-              ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-md shadow-gray-200 bg-white"
+              ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-sm shadow-gray-100 bg-white/95"
               : "hidden"
           }`}
         >

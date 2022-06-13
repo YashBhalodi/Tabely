@@ -16,7 +16,7 @@ const ThemeItem = (props) => {
 
   return (
     <div
-      className={`w-4 h-4 rounded-full cursor-pointer ${className} ${
+      className={`w-6 h-6 rounded-full cursor-pointer ${className} ${
         isActive ? activeClass : ""
       } ${pickerHoverClass}`}
       onClick={() => onClick(id)}
@@ -32,7 +32,7 @@ const ColorPalette = (props) => {
   };
 
   return (
-    <div className="h-fit w-fit z-40 grid items-start justify-center max-w-xs grid-flow-col grid-rows-2 gap-3 p-2">
+    <div className="h-fit w-fit z-40 grid items-start justify-center grid-flow-col grid-rows-2 gap-3 p-2">
       {_.map(COLOR_THEME, (item, key) => (
         <ThemeItem
           key={key}
