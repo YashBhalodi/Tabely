@@ -5,6 +5,16 @@ export const COMMON = {
 };
 
 export const COLOR_THEME = {
+  STONE: {
+    label: "Stone",
+    class: `${COMMON.class} text-stone-50 bg-stone-800 hover:bg-stone-700`,
+    activeClass: `${COMMON.activeClass} outline-stone-500`,
+    pickerHoverClass: `${COMMON.pickerHoverClass} hover:outline-stone-500`,
+    bg_tw: "stone-800",
+    ho_tw: "stone-700",
+    tx_tw: "stone-50",
+    tw: "stone",
+  },
   RED: {
     label: "Red",
     class: `${COMMON.class} text-red-50 bg-red-700 hover:bg-red-600`,
@@ -56,7 +66,6 @@ export const COLOR_THEME = {
     tx_tw: "indigo-50",
     tw: "indigo",
   },
-
   CYAN: {
     label: "Cyan",
     class: `${COMMON.class} text-cyan-900 bg-cyan-500 hover:bg-cyan-400`,
@@ -176,16 +185,6 @@ export const COLOR_THEME = {
     ho_tw: "rose-100",
     tx_tw: "rose-900",
     tw: "rose",
-  },
-  STONE: {
-    label: "Stone",
-    class: `${COMMON.class} text-stone-50 bg-stone-800 hover:bg-stone-700`,
-    activeClass: `${COMMON.activeClass} outline-stone-500`,
-    pickerHoverClass: `${COMMON.pickerHoverClass} hover:outline-stone-500`,
-    bg_tw: "stone-800",
-    ho_tw: "stone-700",
-    tx_tw: "stone-50",
-    tw: "stone",
   },
   ZINC: {
     label: "Zinc",
