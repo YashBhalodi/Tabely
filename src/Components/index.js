@@ -5,6 +5,7 @@ import DropDownMenu from "./DropDownMenu";
 import ColorPalette from "./ColorPalette";
 import ThemePicker from "./ThemePicker";
 import CellActionStrip from "./CellActionsStrip";
+import TableActionsCellWrapper from "./TableActionsCellWrapper";
 
 export {
   NavBar,
@@ -14,4 +15,5 @@ export {
   ColorPalette,
   ThemePicker,
   CellActionStrip,
+  TableActionsCellWrapper,
 };

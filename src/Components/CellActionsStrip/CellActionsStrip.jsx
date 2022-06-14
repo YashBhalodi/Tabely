@@ -4,8 +4,6 @@ import { FiTrash } from "react-icons/fi";
 import { useCell } from "Hooks";
 import { ThemePicker } from "Components";
 
-import { COLOR_THEME } from "Utils/colors";
-
 const CellActionStrip = (props) => {
   const { isVisible, cellId } = props;
   const { cellData, updateFields, clearCell } = useCell({ id: cellId });
