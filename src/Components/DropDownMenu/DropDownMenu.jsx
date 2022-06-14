@@ -4,7 +4,7 @@ import { usePopper } from "react-popper";
 import { FiMoreVertical } from "react-icons/fi";
 import _ from "lodash";
 
-const DropdownItem = (props) => {
+const DropDownItem = (props) => {
   const { onClick = () => {}, label } = props;
 
   const handleClick = (e) => {
@@ -22,7 +22,7 @@ const DropdownItem = (props) => {
   );
 };
 
-const DropdownContainer = (props) => {
+const DropDownContainer = (props) => {
   return (
     <div
       className={`bg-blue-50 rounded-md  border-2 border-blue-100 py-2 ${
@@ -34,7 +34,7 @@ const DropdownContainer = (props) => {
   );
 };
 
-const Dropdown = (props) => {
+const DropDownMenu = (props) => {
   const { menu = [], onItemClick = () => {} } = props;
   const [visible, setVisibility] = useState(false);
 
@@ -101,9 +101,9 @@ const Dropdown = (props) => {
         <FiMoreVertical className={iconClass} />
       </div>
       <div ref={popperRef} style={styles.popper} {...attributes.popper}>
-        <DropdownContainer style={styles.offset} visible={visible}>
+        <DropDownContainer style={styles.offset} visible={visible}>
           {_.map(menu, (menuItem) => (
-            <DropdownItem
+            <DropDownItem
               key={menuItem.key}
               label={menuItem.label}
               onClick={() => {
@@ -112,10 +112,10 @@ const Dropdown = (props) => {
               }}
             />
           ))}
-        </DropdownContainer>
+        </DropDownContainer>
       </div>
     </React.Fragment>
   );
 };
 
-export default Dropdown;
+export default DropDownMenu;

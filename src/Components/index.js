@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
 import CellWrapper from "./CellWrapper";
 import BoardTopHeader from "./BoardTopHeader";
-import PopUpMenu from "./PopUpMenu";
+import DropDownMenu from "./DropDownMenu";
 import ColorPalette from "./ColorPalette";
 import ThemePicker from "./ThemePicker";
 import CellActionStrip from "./CellActionsStrip";
@@ -10,7 +10,7 @@ export {
   NavBar,
   CellWrapper,
   BoardTopHeader,
-  PopUpMenu,
+  DropDownMenu,
   ColorPalette,
   ThemePicker,
   CellActionStrip,

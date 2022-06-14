@@ -5,7 +5,7 @@ import { FiEdit3, FiLock, FiChevronLeft } from "react-icons/fi";
 
 import { useBoard, useTable } from "Hooks";
 
-import { PopUpMenu } from "Components";
+import { DropDownMenu } from "Components";
 import _ from "lodash";
 
 const BoardTitleEditableField = () => {
@@ -91,7 +91,7 @@ const TableActionDropDown = () => {
   ];
 
   return (
-    <PopUpMenu
+    <DropDownMenu
       menu={TABLE_ACTIONS}
       onItemClick={(key) => {
         MAP_KEY_ACTION[key]?.();
