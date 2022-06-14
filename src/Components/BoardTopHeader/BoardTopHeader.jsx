@@ -51,18 +51,9 @@ const BoardTitleEditableField = () => {
 };
 
 const TableActionDropDown = () => {
-  const {
-    addColumn,
-    addRow,
-    resetTable,
-    clearTableData,
-    deleteColumn,
-    deleteRow,
-  } = useTable();
+  const { resetTable, clearTableData, deleteColumn, deleteRow } = useTable();
 
   const MAP_KEY_ACTION = {
-    ADD_COLUMN: addColumn,
-    ADD_ROW: addRow,
     RESET_TABLE: resetTable,
     CLEAR_TABLE: clearTableData,
     DELETE_COLUMN: deleteColumn,
@@ -70,14 +61,6 @@ const TableActionDropDown = () => {
   };
 
   const TABLE_ACTIONS = [
-    {
-      key: "ADD_COLUMN",
-      label: "Add Column",
-    },
-    {
-      key: "ADD_ROW",
-      label: "Add Row",
-    },
     {
       key: "DELETE_COLUMN",
       label: "Delete Column",

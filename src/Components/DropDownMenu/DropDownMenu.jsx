@@ -100,7 +100,11 @@ const DropDownMenu = (props) => {
       >
         <FiMoreVertical className={iconClass} />
       </div>
-      <div ref={popperRef} style={styles.popper} {...attributes.popper}>
+      <div
+        ref={popperRef}
+        style={{ ...styles.popper, zIndex: 100 }}
+        {...attributes.popper}
+      >
         <DropDownContainer style={styles.offset} visible={visible}>
           {_.map(menu, (menuItem) => (
             <DropDownItem
