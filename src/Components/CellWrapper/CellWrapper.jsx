@@ -4,12 +4,13 @@ import { useRecoilValue } from "recoil";
 
 import { cellsFamily } from "Atoms";
 
-import { Idle, Basic } from "Components/CellComponents";
+import { Idle, Basic, Blank } from "Components/CellComponents";
 import { CELL_TYPES } from "Utils/constants";
 
 const MAP_TYPE_COMPONENT = {
   [CELL_TYPES.IDLE]: Idle,
   [CELL_TYPES.BASIC]: Basic,
+  [CELL_TYPES.BLANK]: Blank,
 };
 
 const CellWrapper = ({ cellId }) => {

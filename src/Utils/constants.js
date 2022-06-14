@@ -3,6 +3,7 @@ import _ from "lodash";
 export const CELL_TYPES = {
   IDLE: "IDLE",
   BASIC: "BASIC",
+  BLANK: "BLANK",
 };
 
 export const BOARD_MODE = {

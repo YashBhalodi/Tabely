@@ -33,7 +33,7 @@ const Basic = ({ cellId }) => {
         className={"relative"}
       >
         <div
-          className={`hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md font-medium ${themeItem.class}`}
+          className={`hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md font-medium text-lg ${themeItem.class}`}
         >
           {isEditMode ? (
             <textarea
@@ -42,7 +42,7 @@ const Basic = ({ cellId }) => {
               value={title}
               onChange={handleTextChange}
               rows={2}
-              className={`scrollbar outline-none resize-none bg-transparent hover:bg-transparent`}
+              className={`scrollbar outline-none resize-none bg-transparent h-full w-full hover:bg-transparent`}
               autoFocus
             />
           ) : (

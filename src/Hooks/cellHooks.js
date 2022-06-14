@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { cellsFamily } from "Atoms";
-import { initialCellState } from "Utils/constants";
+import { CELL_TYPES, initialCellState } from "Utils/constants";
 
 export const useCell = ({ id }) => {
   const [cellData, setCell] = useRecoilState(cellsFamily(id));
@@ -13,7 +13,10 @@ export const useCell = ({ id }) => {
   };
 
   const clearCell = () => {
-    setCell(initialCellState);
+    setCell({
+      ...initialCellState,
+      type: CELL_TYPES.BLANK,
+    });
   };
 
   return { cellData, updateFields, clearCell };
