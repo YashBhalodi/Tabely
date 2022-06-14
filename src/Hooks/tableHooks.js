@@ -21,30 +21,58 @@ export const useTable = () => {
     }
   };
 
-  // Add a new row to the table at the end of the table
-  const addRow = () => {
+  const getCellIdPosition = (cellId) => {
+    const rowArray = _.find(allRows, (row) => _.includes(row, cellId));
+    const column = _.indexOf(rowArray, cellId);
+    const row = _.indexOf(allRows, rowArray);
+    return { row, column };
+  };
+
+  // Add a new row "above"/"below" the selected cell row if provided,
+  // otherwise add row to the end of the table
+  const addRow = ({ cellId, position }) => {
     setTableRows((prevAllRows) => {
-      const newAllRows = _.isEmpty(prevAllRows)
-        ? [[]]
-        : _.cloneDeep(prevAllRows);
+      if (_.isEmpty(prevAllRows)) {
+        return [[_.uniqueId()]];
+      }
+
+      const newAllRows = _.cloneDeep(prevAllRows);
 
       const newRow = [];
       for (let i = 0; i < newAllRows[0].length; i++) {
         newRow.push(_.uniqueId());
       }
-      newAllRows.push(newRow);
+
+      let splicedInIndex = newAllRows.length;
+      if (cellId) {
+        const { row } = getCellIdPosition(cellId);
+        splicedInIndex = position === "below" ? row + 1 : row;
+      }
+
+      newAllRows.splice(splicedInIndex, 0, newRow);
       return newAllRows;
     });
   };
 
-  // Add a new column to the table at the end of the table
-  const addColumn = () => {
+  // Add a new column "left"/"right" the selected cell column if provided,
+  // otherwise add column to the end of the table
+  const addColumn = ({ cellId, position }) => {
     setTableRows((prevAllRows) => {
-      const newAllRows = _.isEmpty(prevAllRows)
-        ? [[]]
-        : _.cloneDeep(prevAllRows);
+      if (_.isEmpty(prevAllRows)) {
+        return [[_.uniqueId()]];
+      }
 
-      newAllRows.forEach((row) => row.push(_.uniqueId()));
+      const newAllRows = _.cloneDeep(prevAllRows);
+
+      let splicedInIndex = newAllRows[0].length;
+      if (cellId) {
+        const { column } = getCellIdPosition(cellId);
+        splicedInIndex = position === "left" ? column : column + 1;
+      }
+      newAllRows.forEach((row) => {
+        row.splice(splicedInIndex, 0, _.uniqueId());
+      });
+
       return newAllRows;
     });
   };
