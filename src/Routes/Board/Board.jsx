@@ -11,7 +11,7 @@ const Board = () => {
       <div className="flex flex-col items-start justify-center flex-1 overflow-hidden">
         <BoardTopHeader />
         <div className="bg-slate-100 scrollbar flex w-full h-full overflow-auto">
-          <table className="h-fit w-fit border-spacing-3 border-separate table-auto">
+          <table className="h-fit w-fit border-spacing-3 p-12 border-separate table-auto">
             <tbody>
               {_.map(allRows, (row, index) => {
                 // TODO better way to assign key to each row
