@@ -34,6 +34,7 @@ const Basic = ({ cellId }) => {
               rows={2}
               className={`scrollbar outline-none resize-none bg-transparent h-full w-full hover:bg-transparent`}
               autoFocus
+              placeholder="Anything..."
             />
           ) : (
             <div className="scrollbar-hide w-full h-full overflow-auto whitespace-pre-line select-all">
