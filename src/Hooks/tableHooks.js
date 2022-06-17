@@ -28,6 +28,27 @@ export const useTable = () => {
     return { row, column };
   };
 
+  const getCellEdgePosition = (cellId) => {
+    const { row, column } = getCellIdPosition(cellId);
+    let edges = [];
+    if (row === 0) {
+      edges.push("top");
+    }
+    if (row === allRows.length - 1) {
+      edges.push("bottom");
+    }
+    if (column === 0) {
+      edges.push("left");
+    }
+    if (column === allRows[0].length - 1) {
+      edges.push("right");
+    }
+    return {
+      row,
+      column,
+      edges,
+    };
+  };
   // Add a new row "above"/"below" the selected cell row if provided,
   // otherwise add row to the end of the table
   const addRow = ({ cellId, position }) => {
@@ -116,5 +137,6 @@ export const useTable = () => {
     clearTableData: () => clearRangeCells("all"),
     deleteColumn,
     deleteRow,
+    getCellEdgePosition,
   };
 };
