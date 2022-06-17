@@ -83,6 +83,7 @@ const ThemePicker = (props) => {
               ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-sm shadow-gray-100 bg-white/95"
               : "hidden"
           }`}
+          onMouseLeave={() => setVisibility(false)}
         >
           <ColorPalette
             activeTheme={activeTheme}
