@@ -7,20 +7,6 @@ export const useTable = () => {
   const resetTableState = useResetRecoilState(tableAtom);
   const [__, updateSelectedCells] = useRecoilState(cellsSelector);
 
-  const getCellIds = (range) => {
-    switch (range) {
-      case "last-row":
-        return _.last(allRows);
-        break;
-      case "last-column":
-        return _.map(allRows, (row) => row[row.length - 1]);
-        break;
-      case "all":
-      default:
-        return _.flatten(allRows);
-    }
-  };
-
   const getCellIdPosition = (cellId) => {
     const rowArray = _.find(allRows, (row) => _.includes(row, cellId));
     const column = _.indexOf(rowArray, cellId);
@@ -49,6 +35,7 @@ export const useTable = () => {
       edges,
     };
   };
+
   // Add a new row "above"/"below" the selected cell row if provided,
   // otherwise add row to the end of the table
   const addRow = ({ cellId, position }) => {
@@ -99,34 +86,51 @@ export const useTable = () => {
   };
 
   // Delete last colum of the table
-  const deleteColumn = () => {
-    clearRangeCells("last-column");
+  const deleteColumn = ({ column }) => {
+    const cellsIds = _.map(allRows, (row) => row[column]);
+    clearCells(cellsIds);
     setTableRows((prevAllRows) => {
       const newAllRows = _.cloneDeep(prevAllRows);
-      newAllRows.forEach((row) => row.pop());
+      newAllRows.forEach((row) => row.splice(column, 1));
+
+      // if the new table is empty, set correct empty table state
+      if (_.isEmpty(_.flatten(newAllRows))) {
+        return [[]];
+      }
+
       return newAllRows;
     });
   };
 
-  const deleteRow = () => {
-    clearRangeCells("last-row");
+  const deleteRow = ({ row }) => {
+    const cellIds = allRows[row];
+    clearCells(cellIds);
     setTableRows((prevAllRows) => {
       const newAllRows = _.cloneDeep(prevAllRows);
-      newAllRows.pop();
+      newAllRows.splice(row, 1);
+
+      // if the new table is empty, set correct empty table state
+      if (_.isEmpty(_.flatten(newAllRows))) {
+        return [[]];
+      }
+
       return newAllRows;
     });
   };
 
   // clear data of range of cells
-  const clearRangeCells = (range) => {
-    const cellIds = getCellIds(range);
+  const clearCells = (cellIds) => {
     updateSelectedCells({ action: "reset", targetCells: cellIds });
   };
 
   // reset table to initial state
   const resetTable = () => {
-    clearRangeCells("all");
+    clearTableData();
     resetTableState();
+  };
+
+  const clearTableData = () => {
+    clearCells(_.flatten(allRows));
   };
 
   return {
@@ -134,7 +138,7 @@ export const useTable = () => {
     addRow,
     addColumn,
     resetTable,
-    clearTableData: () => clearRangeCells("all"),
+    clearTableData,
     deleteColumn,
     deleteRow,
     getCellEdgePosition,

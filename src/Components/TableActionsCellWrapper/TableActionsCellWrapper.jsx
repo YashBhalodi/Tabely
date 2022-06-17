@@ -108,7 +108,8 @@ const DeleteColumRowActions = (props) => {
 const TableActionsCellWrapper = (props) => {
   const { children, cellId } = props;
   const { cellData } = useCell({ id: cellId });
-  const { addRow, addColumn, getCellEdgePosition } = useTable();
+  const { addRow, addColumn, deleteRow, deleteColumn, getCellEdgePosition } =
+    useTable();
   const { isEditMode } = useBoard();
 
   const { row, column, edges } = getCellEdgePosition(cellId);
@@ -128,8 +129,14 @@ const TableActionsCellWrapper = (props) => {
       case "add_right":
         addColumn({ cellId: cellId, position: "right" });
         break;
+      case "delete_row":
+        deleteRow({ row });
+        break;
+      case "delete_column":
+        deleteColumn({ column });
+        break;
       default:
-        console.log("Invalid position", action);
+        console.log("Invalid action", action);
         break;
     }
   };

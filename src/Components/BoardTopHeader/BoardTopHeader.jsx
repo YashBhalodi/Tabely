@@ -51,24 +51,14 @@ const BoardTitleEditableField = () => {
 };
 
 const TableActionDropDown = () => {
-  const { resetTable, clearTableData, deleteColumn, deleteRow } = useTable();
+  const { resetTable, clearTableData } = useTable();
 
   const MAP_KEY_ACTION = {
     RESET_TABLE: resetTable,
     CLEAR_TABLE: clearTableData,
-    DELETE_COLUMN: deleteColumn,
-    DELETE_ROW: deleteRow,
   };
 
   const TABLE_ACTIONS = [
-    {
-      key: "DELETE_COLUMN",
-      label: "Delete Column",
-    },
-    {
-      key: "DELETE_ROW",
-      label: "Delete Row",
-    },
     { key: "CLEAR_TABLE", label: "Clear Table" },
     { key: "RESET_TABLE", label: "Reset Table" },
   ];
