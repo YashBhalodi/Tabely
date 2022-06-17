@@ -6,6 +6,7 @@ import ColorPalette from "./ColorPalette";
 import ThemePicker from "./ThemePicker";
 import CellActionStrip from "./CellActionsStrip";
 import TableActionsCellWrapper from "./TableActionsCellWrapper";
+import AddButtonBar from "./AddButtonBar";
 
 export {
   NavBar,
@@ -16,4 +17,5 @@ export {
   ThemePicker,
   CellActionStrip,
   TableActionsCellWrapper,
+  AddButtonBar,
 };
