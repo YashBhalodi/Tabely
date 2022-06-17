@@ -1,9 +1,36 @@
 import _ from "lodash";
 
+export const FEATURES = {
+  CONVERT_TYPE: "CONVERT_TYPE",
+  ADD_TABLE_LAYOUT: "ADD_TABLE_LAYOUT",
+  DELETE_TABLE_LAYOUT: "DELETE_TABLE_LAYOUT",
+  CELL_ACTIONS: "CELL_ACTIONS",
+};
+
 export const CELL_TYPES = {
   IDLE: "IDLE",
-  BASIC: "BASIC",
   BLANK: "BLANK",
+  BASIC: "BASIC",
+};
+
+export const CELL_CONFIGS = {
+  IDLE: {
+    features: [
+      FEATURES.CONVERT_TYPE,
+      FEATURES.ADD_TABLE_LAYOUT,
+      FEATURES.DELETE_TABLE_LAYOUT,
+    ],
+  },
+  BLANK: {
+    features: [FEATURES.CONVERT_TYPE, FEATURES.DELETE_TABLE_LAYOUT],
+  },
+  BASIC: {
+    features: [
+      FEATURES.CONVERT_TYPE,
+      FEATURES.CELL_ACTIONS,
+      FEATURES.MODIFY_TABLE_LAYOUT,
+    ],
+  },
 };
 
 export const BOARD_MODE = {

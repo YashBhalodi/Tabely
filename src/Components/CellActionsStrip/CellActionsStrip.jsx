@@ -5,9 +5,9 @@ import { useCell } from "Hooks";
 import { ThemePicker } from "Components";
 
 const CellActionStrip = (props) => {
-  const { isVisible, cellId } = props;
+  const { cellId } = props;
   const { cellData, updateFields, clearCell } = useCell({ id: cellId });
-  const { type, colorTheme } = cellData;
+  const { colorTheme } = cellData;
 
   const setTheme = (theme) => {
     updateFields({
@@ -15,13 +15,9 @@ const CellActionStrip = (props) => {
     });
   };
 
-  if (!isVisible) {
-    return null;
-  }
-
   return (
     <div
-      className={`absolute z-20 -bottom-9 right-0 w-fit h-fit rounded-md grid grid-flow-col grid-rows-1 items-center justify-end flex-1 p-2 space-x-2 shadow-md bg-white`}
+      className={`invisible group-hover:visible absolute z-20 -bottom-0 opacity-0 group-hover:opacity-100 group-hover:-bottom-10 right-0 w-fit h-fit rounded-md grid grid-flow-col grid-rows-1 items-center justify-end flex-1 p-2 space-x-2 shadow-md bg-white transition-all`}
     >
       <ThemePicker onSelectTheme={setTheme} activeTheme={colorTheme} />
 

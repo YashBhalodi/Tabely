@@ -2,9 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { useBoard, useCell, useTable } from "Hooks";
-import { COLOR_THEME } from "Utils/colors";
-import { CELL_TYPES } from "Utils/constants";
-import { AddButtonBar } from "Components";
+import { CELL_CONFIGS, FEATURES } from "Utils/constants";
+import { AddButtonBar, CellActionStrip } from "Components";
 
 import { FiTrash } from "react-icons/fi";
 
@@ -142,8 +141,13 @@ const TableActionsCellWrapper = (props) => {
   };
 
   const showAddColumnActions =
-    isEditMode && ![CELL_TYPES.BLANK, CELL_TYPES.IDLE].includes(type);
-  const showDeleteColumnActions = isEditMode;
+    isEditMode &&
+    CELL_CONFIGS[type].features.includes(FEATURES.ADD_TABLE_LAYOUT);
+  const showDeleteColumnActions =
+    isEditMode &&
+    CELL_CONFIGS[type].features.includes(FEATURES.DELETE_TABLE_LAYOUT);
+  const shouldShowCellActionStrip =
+    isEditMode && CELL_CONFIGS[type].features.includes(FEATURES.CELL_ACTIONS);
 
   return (
     <div className="group relative w-full h-full">
@@ -153,6 +157,7 @@ const TableActionsCellWrapper = (props) => {
       {showDeleteColumnActions && (
         <DeleteColumRowActions cellEdges={edges} onClickAction={handleClick} />
       )}
+      {shouldShowCellActionStrip && <CellActionStrip cellId={cellId} />}
       {children}
     </div>
   );
