@@ -104,6 +104,32 @@ const DeleteColumRowActions = (props) => {
   );
 };
 
+const DragDropWrapper = (props) => {
+  const { cellId, children } = props;
+  const { swapCells } = useTable();
+
+  const onDragOver = (e) => e.preventDefault();
+  const onDragStart = (e) => {
+    e.dataTransfer.setData("incomingCellId", cellId);
+  };
+  const onDrop = (e) => {
+    const incomingCellId = e.dataTransfer.getData("incomingCellId");
+    swapCells(cellId, incomingCellId);
+  };
+
+  return (
+    <div
+      draggable
+      onDragStart={onDragStart}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+      className={"cursor-grab active:cursor-grabbing h-full w-full"}
+    >
+      {children}
+    </div>
+  );
+};
+
 const TableActionsCellWrapper = (props) => {
   const { children, cellId } = props;
   const { cellData } = useCell({ id: cellId });
@@ -158,7 +184,7 @@ const TableActionsCellWrapper = (props) => {
         <DeleteColumRowActions cellEdges={edges} onClickAction={handleClick} />
       )}
       {shouldShowCellActionStrip && <CellActionStrip cellId={cellId} />}
-      {children}
+      <DragDropWrapper cellId={cellId}>{children}</DragDropWrapper>
     </div>
   );
 };

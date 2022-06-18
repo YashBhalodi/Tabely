@@ -133,6 +133,18 @@ export const useTable = () => {
     clearCells(_.flatten(allRows));
   };
 
+  const swapCells = (cellId1, cellId2) => {
+    setTableRows((prevAllRows) => {
+      const { row: row1, column: column1 } = getCellIdPosition(cellId1);
+      const { row: row2, column: column2 } = getCellIdPosition(cellId2);
+      const newAllRows = _.cloneDeep(prevAllRows);
+      const temp = newAllRows[row1][column1];
+      newAllRows[row1][column1] = newAllRows[row2][column2];
+      newAllRows[row2][column2] = temp;
+      return newAllRows;
+    });
+  };
+
   return {
     allRows,
     addRow,
@@ -142,5 +154,6 @@ export const useTable = () => {
     deleteColumn,
     deleteRow,
     getCellEdgePosition,
+    swapCells,
   };
 };
