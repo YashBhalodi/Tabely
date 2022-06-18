@@ -45,7 +45,7 @@ const Button = (props) => {
   );
 };
 
-Button.PropTypes = {
+Button.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
@@ -70,5 +70,6 @@ Button.defaultProps = {
   size: "md",
   variant: "primary",
   shape: "rectangle",
+  onClick: () => {},
 };
 export default Button;
