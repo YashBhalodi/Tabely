@@ -8,6 +8,7 @@ import CellActionStrip from "./CellActionsStrip";
 import TableActionsCellWrapper from "./TableActionsCellWrapper";
 import AddButtonBar from "./AddButtonBar";
 import BoardTable from "./BoardTable";
+import Button from "./Button";
 
 export {
   NavBar,
@@ -20,4 +21,5 @@ export {
   TableActionsCellWrapper,
   AddButtonBar,
   BoardTable,
+  Button,
 };
