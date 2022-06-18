@@ -22,7 +22,7 @@ const CellActionStrip = (props) => {
       <ThemePicker onSelectTheme={setTheme} activeTheme={colorTheme} />
 
       <FiTrash
-        className="hover:text-red-500 w-5 h-5 text-xl text-red-400 transition-all rounded-md"
+        className="hover:text-red-500 w-5 h-5 text-xl text-red-400 transition-all rounded-md cursor-pointer"
         onClick={clearCell}
       />
     </div>

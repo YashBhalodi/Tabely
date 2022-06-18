@@ -32,9 +32,9 @@ const Basic = ({ cellId }) => {
               value={title}
               onChange={handleTextChange}
               rows={2}
-              className={`scrollbar outline-none resize-none bg-transparent h-full w-full hover:bg-transparent ${themeItem.placeholder}`}
+              className={`scrollbar outline-none resize-none bg-transparent h-full w-full hover:bg-transparent ${themeItem.placeholder} placeholder:text-2xl`}
               autoFocus
-              placeholder="Anything..."
+              placeholder=". . . ✍🏻"
             />
           ) : (
             <div className="scrollbar-hide w-full h-full overflow-auto whitespace-pre-line select-all">
