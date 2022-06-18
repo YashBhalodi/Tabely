@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { FiEdit3, FiLock, FiChevronLeft } from "react-icons/fi";
+import { FiEdit3, FiLock, FiChevronLeft, FiMoreVertical } from "react-icons/fi";
 
 import { useBoard, useTable } from "Hooks";
 
@@ -59,8 +59,8 @@ const TableActionDropDown = () => {
   };
 
   const TABLE_ACTIONS = [
-    { key: "CLEAR_TABLE", label: "Clear Table" },
-    { key: "RESET_TABLE", label: "Reset Table" },
+    { key: "CLEAR_TABLE", label: "Clear Table", isDestructive: true },
+    { key: "RESET_TABLE", label: "Reset Table", isDestructive: true },
   ];
 
   return (
@@ -68,6 +68,13 @@ const TableActionDropDown = () => {
       menu={TABLE_ACTIONS}
       onItemClick={(key) => {
         MAP_KEY_ACTION[key]?.();
+      }}
+      TriggerComponent={() => {
+        return (
+          <div className="hover:border-blue-300 hover:border flex flex-col items-center justify-center w-12 h-12 bg-blue-100 rounded-md cursor-pointer">
+            <FiMoreVertical className={"text-xl text-blue-900"} />
+          </div>
+        );
       }}
     />
   );

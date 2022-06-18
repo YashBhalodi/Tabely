@@ -1,20 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import { usePopper } from "react-popper";
 
-import { FiMoreVertical } from "react-icons/fi";
 import _ from "lodash";
 
 const DropDownItem = (props) => {
-  const { onClick = () => {}, label } = props;
+  const { onClick = () => {}, menu } = props;
+
+  const { type = "default", label, isDestructive = false } = menu;
 
   const handleClick = (e) => {
     onClick();
     e.stopPropagation();
   };
 
+  const className = `${
+    isDestructive
+      ? "hover:bg-red-50 hover:text-red-600 text-red-700"
+      : "hover:bg-blue-50 hover:text-blue-700 text-blue-900"
+  }`;
+
   return (
     <div
-      className="hover:bg-blue-100 bg-blue-50 hover:text-blue-700 px-6 py-2 font-medium text-blue-900 transition-all cursor-pointer"
+      className={`px-6 py-2 font-medium transition-all cursor-pointer ${className}`}
       onClick={handleClick}
     >
       {label}
@@ -25,7 +32,7 @@ const DropDownItem = (props) => {
 const DropDownContainer = (props) => {
   return (
     <div
-      className={`bg-blue-50 rounded-md  border-2 border-blue-100 py-2 ${
+      className={`bg-gray-50 rounded-md border-2 border-gray-200 py-2 ${
         props.visible ? "flex flex-col" : "hidden"
       } shadow-md shadow-blue-50`}
     >
@@ -35,7 +42,7 @@ const DropDownContainer = (props) => {
 };
 
 const DropDownMenu = (props) => {
-  const { menu = [], onItemClick = () => {} } = props;
+  const { menu = [], onItemClick = () => {}, TriggerComponent } = props;
   const [visible, setVisibility] = useState(false);
 
   const referenceRef = useRef(null);
@@ -65,12 +72,8 @@ const DropDownMenu = (props) => {
     }
   );
 
-  const iconClass = "text-xl text-blue-900";
-  const iconButtonClass =
-    "hover:border-blue-300 hover:border flex flex-col items-center justify-center w-12 h-12 bg-blue-100 rounded-md cursor-pointer";
-
   useEffect(() => {
-    // listen for clicks and close dropdown on bod
+    // listen for clicks and close dropdown on body
     document.addEventListener("mousedown", handleDocumentClick);
     return () => {
       document.removeEventListener("mousedown", handleDocumentClick);
@@ -93,23 +96,19 @@ const DropDownMenu = (props) => {
 
   return (
     <React.Fragment>
-      <div
-        ref={referenceRef}
-        onClick={handleDropdownClick}
-        className={iconButtonClass}
-      >
-        <FiMoreVertical className={iconClass} />
+      <div ref={referenceRef} onClick={handleDropdownClick}>
+        <TriggerComponent />
       </div>
       <div
         ref={popperRef}
         style={{ ...styles.popper, zIndex: 100 }}
         {...attributes.popper}
       >
-        <DropDownContainer style={styles.offset} visible={visible}>
+        <DropDownContainer visible={visible}>
           {_.map(menu, (menuItem) => (
             <DropDownItem
               key={menuItem.key}
-              label={menuItem.label}
+              menu={menuItem}
               onClick={() => {
                 onItemClick(menuItem.key);
                 setVisibility(false);

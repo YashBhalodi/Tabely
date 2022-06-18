@@ -37,7 +37,7 @@ const Basic = ({ cellId }) => {
               placeholder=". . . ✍🏻"
             />
           ) : (
-            <div className="scrollbar-hide w-full h-full overflow-auto whitespace-pre-line select-all">
+            <div className="scrollbar-hide break-before-all w-full h-full overflow-auto whitespace-pre-line select-all">
               {title}
             </div>
           )}
