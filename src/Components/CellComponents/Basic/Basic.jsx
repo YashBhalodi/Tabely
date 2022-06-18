@@ -19,29 +19,28 @@ const Basic = ({ cellId }) => {
     });
   };
 
+  const commonClass = `h-full w-full rounded-md font-medium text-lg p-4 ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor}`;
+
   return (
     <td>
       <TableActionsCellWrapper cellId={cellId}>
-        <div
-          className={`hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md font-medium text-lg ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor}`}
-        >
-          {isEditMode ? (
-            <textarea
-              type={"text"}
-              name="title"
-              value={title}
-              onChange={handleTextChange}
-              rows={2}
-              className={`scrollbar outline-none resize-none bg-transparent h-full w-full hover:bg-transparent ${themeItem.placeholder} placeholder:text-2xl`}
-              autoFocus
-              placeholder=". . . ✍🏻"
-            />
-          ) : (
-            <div className="scrollbar-hide break-before-all w-full h-full overflow-auto whitespace-pre-line select-all">
-              {title}
-            </div>
-          )}
-        </div>
+        {isEditMode ? (
+          <textarea
+            type={"text"}
+            name="title"
+            value={title}
+            onChange={handleTextChange}
+            className={`${commonClass} ${themeItem.placeholder} ${themeItem.focusOutline} scrollbar-hide outline-none`}
+            placeholder=". . .  ✍🏻"
+            autoFocus
+          />
+        ) : (
+          <div
+            className={`${commonClass} hover:shadow-md max-h-52 scrollbar-hide break-before-all overflow-auto whitespace-pre-line select-all`}
+          >
+            {title}
+          </div>
+        )}
       </TableActionsCellWrapper>
     </td>
   );
