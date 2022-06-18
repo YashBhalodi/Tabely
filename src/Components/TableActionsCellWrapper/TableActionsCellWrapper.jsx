@@ -147,7 +147,7 @@ const TableActionsCellWrapper = (props) => {
     isEditMode &&
     CELL_CONFIGS[type].features.includes(FEATURES.DELETE_TABLE_LAYOUT);
   const shouldShowCellActionStrip =
-    isEditMode && CELL_CONFIGS[type].features.includes(FEATURES.CELL_ACTIONS);
+    CELL_CONFIGS[type].features.includes(FEATURES.CELL_ACTIONS) && !isEditMode;
 
   return (
     <div className="group relative w-full h-full">

@@ -208,7 +208,7 @@ export const COLOR_THEME = {
     bgColor: "bg-zinc-400",
     lightBgColor: "bg-zinc-200/10",
     textColor: "text-zinc-900",
-    hoverBgColor: "hover:bg-zinc-200",
+    hoverBgColor: "hover:bg-zinc-300",
     outline: `${COMMON.outline} outline-zinc-500`,
     hoverOutline: `${COMMON.hoverOutline} outline-zinc-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-zinc-50/30`,

@@ -8,6 +8,12 @@ module.exports = {
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
+      minHeight: {
+        6: "6rem",
+      },
+      minWidth: {
+        14: "14rem",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],

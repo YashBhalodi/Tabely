@@ -30,7 +30,7 @@ const Basic = ({ cellId }) => {
             name="title"
             value={title}
             onChange={handleTextChange}
-            className={`${commonClass} ${themeItem.placeholder} ${themeItem.focusOutline} scrollbar-hide outline-none`}
+            className={`${commonClass} ${themeItem.placeholder} ${themeItem.focusOutline} min-h-6 scrollbar-hide outline-none`}
             placeholder=". . .  ✍🏻"
             autoFocus
           />

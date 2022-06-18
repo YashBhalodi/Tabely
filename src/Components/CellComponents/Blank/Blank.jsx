@@ -35,7 +35,7 @@ const Blank = ({ cellId }) => {
       <TableActionsCellWrapper cellId={cellId}>
         <div
           tabIndex={isEditMode ? 0 : -1}
-          className={`bg-transparent hover:border-2 flex flex-col items-center h-full w-full justify-center min-w-[14rem] min-h-[6rem] p-2 transition-all rounded-md hover:shadow-sm ${
+          className={`bg-transparent hover:border-2 flex flex-col items-center h-full w-full justify-center min-w-14 min-h-6 p-2 transition-all rounded-md hover:shadow-sm ${
             isEditMode
               ? "hover:border-blue-300 hover:bg-slate-50 cursor-pointer"
               : "cursor-not-allowed"
