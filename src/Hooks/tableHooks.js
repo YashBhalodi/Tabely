@@ -229,6 +229,16 @@ export const useTable = () => {
     });
   };
 
+  const getNeighboringCells = (cellId) => {
+    const { row, column } = getCellIdPosition({ layout: allRows, cellId });
+    return {
+      top: allRows[row - 1] && allRows[row - 1][column],
+      bottom: allRows[row + 1] && allRows[row + 1][column],
+      left: allRows[row][column - 1],
+      right: allRows[row][column + 1],
+    };
+  };
+
   return {
     allRows,
     addRow,
@@ -240,5 +250,6 @@ export const useTable = () => {
     getCellEdgePosition,
     swapCells,
     relocateCell,
+    getNeighboringCells,
   };
 };
