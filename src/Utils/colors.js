@@ -15,6 +15,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-red-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-red-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-red-500`,
+    scrollbar: `scrollbar scrollbar-red`,
   },
   STONE: {
     label: "Stone",
@@ -26,6 +27,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-stone-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-stone-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-stone-500`,
+    scrollbar: `scrollbar scrollbar-stone`,
   },
   BLUE: {
     label: "Blue",
@@ -37,6 +39,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-blue-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-blue-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-blue-500`,
+    scrollbar: `scrollbar scrollbar-blue`,
   },
   PINK: {
     label: "Pink",
@@ -48,6 +51,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-pink-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-pink-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-pink-500`,
+    scrollbar: `scrollbar scrollbar-pink`,
   },
   PURPLE: {
     label: "Purple",
@@ -59,6 +63,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-purple-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-purple-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-purple-500`,
+    scrollbar: `scrollbar scrollbar-purple`,
   },
   INDIGO: {
     label: "Indigo",
@@ -70,6 +75,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-indigo-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-indigo-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-indigo-500`,
+    scrollbar: `scrollbar scrollbar-indigo`,
   },
   CYAN: {
     label: "Cyan",
@@ -81,6 +87,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-cyan-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-cyan-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-cyan-500`,
+    scrollbar: `scrollbar scrollbar-cyan`,
   },
   TEAL: {
     label: "Teal",
@@ -92,6 +99,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-teal-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-teal-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-teal-500`,
+    scrollbar: `scrollbar scrollbar-teal`,
   },
   GREEN: {
     label: "Green",
@@ -103,6 +111,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-green-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-green-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-green-500`,
+    scrollbar: `scrollbar scrollbar-green`,
   },
   LIME: {
     label: "Lime",
@@ -114,6 +123,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-lime-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-lime-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-lime-500`,
+    scrollbar: `scrollbar scrollbar-lime`,
   },
   YELLOW: {
     label: "Yellow",
@@ -125,6 +135,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-yellow-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-yellow-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-yellow-500`,
+    scrollbar: `scrollbar scrollbar-yellow`,
   },
   AMBER: {
     label: "Amber",
@@ -136,6 +147,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-amber-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-amber-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-amber-500`,
+    scrollbar: `scrollbar scrollbar-amber`,
   },
   ORANGE: {
     label: "Orange",
@@ -147,6 +159,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-orange-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-orange-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-orange-500`,
+    scrollbar: `scrollbar scrollbar-orange`,
   },
   EMERALD: {
     label: "Emerald",
@@ -158,6 +171,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-emerald-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-emerald-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-emerald-500`,
+    scrollbar: `scrollbar scrollbar-emerald`,
   },
   SKY: {
     label: "Sky",
@@ -169,6 +183,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-sky-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-sky-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-sky-500`,
+    scrollbar: `scrollbar scrollbar-sky`,
   },
   VIOLET: {
     label: "Violet",
@@ -180,8 +195,9 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-violet-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-violet-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-violet-500`,
+    scrollbar: `scrollbar scrollbar-violet`,
   },
-  FUSCHIA: {
+  FUCHSIA: {
     label: "Fuchsia",
     bgColor: "bg-fuchsia-600",
     lightBgColor: "bg-fuchsia-200/10",
@@ -191,6 +207,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-fuchsia-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-fuchsia-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-fuchsia-500`,
+    scrollbar: `scrollbar scrollbar-fuchsia`,
   },
   ROSE: {
     label: "Rose",
@@ -202,6 +219,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-rose-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-rose-900/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-rose-500`,
+    scrollbar: `scrollbar scrollbar-rose`,
   },
   ZINC: {
     label: "Zinc",
@@ -213,6 +231,7 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-zinc-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-zinc-50/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-zinc-500`,
+    scrollbar: `scrollbar scrollbar-zinc`,
   },
   GRAY: {
     label: "Gray",
@@ -224,5 +243,6 @@ export const COLOR_THEME = {
     hoverOutline: `${COMMON.hoverOutline} outline-gray-500`,
     placeholder: `${COMMON.placeholder} placeholder:text-gray-900/30`,
     focusOutline: `${COMMON.focusOutline} focus:outline-gray-500`,
+    scrollbar: `scrollbar scrollbar-gray`,
   },
 };
