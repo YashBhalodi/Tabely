@@ -2,6 +2,12 @@ import React from "react";
 
 import { useTable } from "Hooks";
 
+import { FiPlusCircle } from "react-icons/fi";
+
+const DRAG_DATA = {
+  INCOMING_CELL_ID: "incomingCellId",
+};
+
 const CellEdgeDropZone = React.memo((props) => {
   const { cellId, onDrop, isBottom = false } = props;
   const [show, setShow] = React.useState(false);
@@ -11,8 +17,9 @@ const CellEdgeDropZone = React.memo((props) => {
   };
 
   const onDragEnter = (e) => {
-    const incomingCellId = e.dataTransfer.getData("incomingCellId");
+    const incomingCellId = e.dataTransfer.getData(DRAG_DATA.INCOMING_CELL_ID);
     const isValid = incomingCellId !== cellId;
+    // TODO validity logic, prevent cell being added below itself
     if (isValid) {
       e.preventDefault();
       setShow(true);
@@ -34,8 +41,8 @@ const CellEdgeDropZone = React.memo((props) => {
 
   return (
     <div
-      className={`absolute ${positionClass} inset-x-0 h-8 bg-blue-100 px-2 rounded-md opacity-0 flex flex-row justify-center items-center ${
-        show ? "opacity-100" : ""
+      className={`absolute ${positionClass} inset-x-0 h-8 bg-blue-100 px-2 rounded-md flex flex-row justify-center items-center ${
+        show ? "opacity-100" : "opacity-0"
       }`}
       onDrop={handleDrop}
       onDragOver={onDragOver}
@@ -43,8 +50,7 @@ const CellEdgeDropZone = React.memo((props) => {
       onDragLeave={onDragLeave}
     >
       <div className="flex flex-1 h-0.5 bg-blue-800 rounded-md"></div>
-      {/* <FiPlusCircle className="mx-1 text-sm text-blue-800" /> */}
-      {cellId}
+      <FiPlusCircle className="mx-1 text-sm text-blue-800" />
       <div className="flex flex-1 h-0.5 bg-blue-800 rounded-sm"></div>
     </div>
   );
@@ -52,29 +58,38 @@ const CellEdgeDropZone = React.memo((props) => {
 
 const DragDropWrapper = (props) => {
   const { cellId, children } = props;
-  const { swapCells, getCellEdgePosition } = useTable();
+  const { swapCells, getCellEdgePosition, relocateCell } = useTable();
 
   const onDragOver = (e) => {
     e.preventDefault();
     return false;
   };
   const onDragStart = (e) => {
-    e.dataTransfer.setData("incomingCellId", cellId);
+    e.dataTransfer.setData(DRAG_DATA.INCOMING_CELL_ID, cellId);
   };
 
   const handleDropAction = ({ e, action }) => {
-    const incomingCellId = e.dataTransfer.getData("incomingCellId");
+    const incomingCellId = e.dataTransfer.getData(DRAG_DATA.INCOMING_CELL_ID);
     if (incomingCellId !== cellId) {
       if (action === "swap") {
         swapCells(cellId, incomingCellId);
         return;
       }
       if (action === "add_above") {
-        console.log("add_above", { cellId, incomingCellId });
+        relocateCell({
+          cellId: incomingCellId,
+          targetCellId: cellId,
+          position: "above",
+        });
         return;
       }
       if (action === "add_below") {
-        console.log("add_below", { cellId, incomingCellId });
+        // TODO: fix edge case of appending a cell to the bottom of the table
+        relocateCell({
+          cellId: incomingCellId,
+          targetCellId: cellId,
+          position: "below",
+        });
         return;
       }
     }
