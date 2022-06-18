@@ -29,6 +29,10 @@ export default defineConfig({
         find: "Hooks",
         replacement: path.resolve(__dirname, "/src/Hooks"),
       },
+      {
+        find: "Sandbox",
+        replacement: path.resolve(__dirname, "/src/Sandbox"),
+      },
     ],
   },
 });
