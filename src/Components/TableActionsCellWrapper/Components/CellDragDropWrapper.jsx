@@ -12,15 +12,22 @@ const CellEdgeDropZone = React.memo((props) => {
   const { cellId, onDrop, isBottom = false } = props;
   const [show, setShow] = React.useState(false);
 
+  const isValidDropZone = (e) => {
+    // hack to get the incoming cellId
+    // refer for necessity of hack: https://stackoverflow.com/a/40940963
+    const incomingCellId = e.dataTransfer.types[1];
+    const isValid = incomingCellId !== cellId;
+    return isValid;
+  };
+
   const onDragOver = (e) => {
-    e.preventDefault();
+    if (isValidDropZone(e)) {
+      e.preventDefault();
+    }
   };
 
   const onDragEnter = (e) => {
-    const incomingCellId = e.dataTransfer.getData(DRAG_DATA.INCOMING_CELL_ID);
-    const isValid = incomingCellId !== cellId;
-    // TODO validity logic, prevent cell being added below itself
-    if (isValid) {
+    if (isValidDropZone(e)) {
       e.preventDefault();
       setShow(true);
     }
@@ -64,8 +71,12 @@ const DragDropWrapper = (props) => {
     e.preventDefault();
     return false;
   };
+
   const onDragStart = (e) => {
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.dropEffect = "move";
     e.dataTransfer.setData(DRAG_DATA.INCOMING_CELL_ID, cellId);
+    e.dataTransfer.setData(cellId, cellId);
   };
 
   const handleDropAction = ({ e, action }) => {
