@@ -79,7 +79,7 @@ const DragDropWrapper = (props) => {
         relocateCell({
           cellId: incomingCellId,
           targetCellId: cellId,
-          position: "above",
+          direction: "above",
         });
         return;
       }
@@ -88,7 +88,7 @@ const DragDropWrapper = (props) => {
         relocateCell({
           cellId: incomingCellId,
           targetCellId: cellId,
-          position: "below",
+          direction: "below",
         });
         return;
       }
