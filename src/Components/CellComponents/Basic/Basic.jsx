@@ -32,7 +32,7 @@ const Basic = ({ cellId }) => {
               value={title}
               onChange={handleTextChange}
               rows={2}
-              className={`scrollbar outline-none resize-none bg-transparent h-full w-full hover:bg-transparent`}
+              className={`scrollbar outline-none resize-none bg-transparent h-full w-full hover:bg-transparent ${themeItem.placeholder}`}
               autoFocus
               placeholder="Anything..."
             />
