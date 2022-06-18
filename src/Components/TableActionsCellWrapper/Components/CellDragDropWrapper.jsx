@@ -16,8 +16,11 @@ const CellEdgeDropZone = React.memo((props) => {
     // hack to get the incoming cellId
     // refer for necessity of hack: https://stackoverflow.com/a/40940963
     const incomingCellId = e.dataTransfer.types[1];
-    const isValid = incomingCellId !== cellId;
-    return isValid;
+    const bottomNeighboringCellId = e.dataTransfer.types[2];
+
+    const isInValid =
+      incomingCellId === cellId || bottomNeighboringCellId === cellId;
+    return !isInValid;
   };
 
   const onDragOver = (e) => {
@@ -65,8 +68,9 @@ const CellEdgeDropZone = React.memo((props) => {
 
 const DragDropWrapper = (props) => {
   const { cellId, children } = props;
-  const { swapCells, getCellEdgePosition, relocateCell } = useTable();
-
+  const { swapCells, getCellEdgePosition, relocateCell, getNeighboringCells } =
+    useTable();
+  const bottomNeighboringCellId = getNeighboringCells(cellId).bottom;
   const onDragOver = (e) => {
     e.preventDefault();
     return false;
@@ -76,7 +80,8 @@ const DragDropWrapper = (props) => {
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.dropEffect = "move";
     e.dataTransfer.setData(DRAG_DATA.INCOMING_CELL_ID, cellId);
-    e.dataTransfer.setData(cellId, cellId);
+    e.dataTransfer.setData(cellId, cellId); // dragging cell
+    e.dataTransfer.setData(bottomNeighboringCellId, bottomNeighboringCellId); // bottom neighboring cell of the dragging cell
   };
 
   const handleDropAction = ({ e, action }) => {
