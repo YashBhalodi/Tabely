@@ -7,21 +7,12 @@ import _ from "lodash";
 
 const ThemeItem = (props) => {
   const { id, isActive, onClick } = props;
-  const {
-    label,
-    class: className,
-    activeClass,
-    pickerHoverClass,
-  } = COLOR_THEME[id];
+  const { bgColor, outline, hoverOutline } = COLOR_THEME[id];
+  const className = `transition-all duration-75 ease-in-out w-6 h-6 rounded-full cursor-pointer ${bgColor} ${
+    isActive ? outline : ""
+  } ${hoverOutline}`;
 
-  return (
-    <div
-      className={`w-6 h-6 rounded-full cursor-pointer ${className} ${
-        isActive ? activeClass : ""
-      } ${pickerHoverClass}`}
-      onClick={() => onClick(id)}
-    />
-  );
+  return <div className={className} onClick={() => onClick(id)} />;
 };
 
 const ColorPalette = (props) => {

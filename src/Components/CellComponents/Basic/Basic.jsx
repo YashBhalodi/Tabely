@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TableActionsCellWrapper, CellActionStrip } from "Components";
+import { TableActionsCellWrapper } from "Components";
 
 import { useCell, useBoard } from "Hooks";
 
@@ -23,7 +23,7 @@ const Basic = ({ cellId }) => {
     <td>
       <TableActionsCellWrapper cellId={cellId}>
         <div
-          className={`hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md font-medium text-lg ${themeItem.class}`}
+          className={`hover:shadow-xl relative flex flex-col items-start justify-center w-56 h-24 px-4 py-4 rounded-md font-medium text-lg ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor}`}
         >
           {isEditMode ? (
             <textarea
