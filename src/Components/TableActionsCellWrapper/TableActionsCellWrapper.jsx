@@ -108,13 +108,18 @@ const DragDropWrapper = (props) => {
   const { cellId, children } = props;
   const { swapCells } = useTable();
 
-  const onDragOver = (e) => e.preventDefault();
+  const onDragOver = (e) => {
+    e.preventDefault();
+    return false;
+  };
   const onDragStart = (e) => {
     e.dataTransfer.setData("incomingCellId", cellId);
   };
   const onDrop = (e) => {
     const incomingCellId = e.dataTransfer.getData("incomingCellId");
-    swapCells(cellId, incomingCellId);
+    if (incomingCellId !== cellId) {
+      swapCells(cellId, incomingCellId);
+    }
   };
 
   return (

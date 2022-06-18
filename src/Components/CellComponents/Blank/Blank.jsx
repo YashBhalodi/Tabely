@@ -31,7 +31,7 @@ const Blank = ({ cellId }) => {
           className={`group bg-transparent hover:border-2 flex flex-col items-center h-full w-full justify-center min-w-14 min-h-6 p-2 transition-all rounded-md hover:shadow-sm ${
             isEditMode
               ? "hover:border-blue-300 hover:bg-slate-50 cursor-pointer"
-              : "cursor-not-allowed"
+              : ""
           }`}
           onClick={handleClick}
           onKeyDownCapture={handleKeyboardEvent}

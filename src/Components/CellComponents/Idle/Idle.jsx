@@ -30,7 +30,7 @@ const Idle = ({ cellId }) => {
           className={`group bg-slate-10 hover:border-2 flex flex-col items-center h-full w-full justify-center min-w-14 min-h-6 p-2 transition-all rounded-md shadow-sm border border-1 border-slate-200 ${
             isEditMode
               ? "hover:border-blue-300 hover:bg-slate-50 cursor-pointer"
-              : "cursor-not-allowed"
+              : ""
           }`}
           onClick={handleClick}
           onKeyDownCapture={handleKeyboardEvent}
