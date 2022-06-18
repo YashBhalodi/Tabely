@@ -84,7 +84,6 @@ const DragDropWrapper = (props) => {
         return;
       }
       if (action === "add_below") {
-        // TODO: fix edge case of appending a cell to the bottom of the table
         relocateCell({
           cellId: incomingCellId,
           targetCellId: cellId,
