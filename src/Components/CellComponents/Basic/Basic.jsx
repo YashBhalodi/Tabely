@@ -19,7 +19,7 @@ const Basic = ({ cellId }) => {
     });
   };
 
-  const commonClass = `h-full w-full rounded-md font-medium text-lg p-4 min-h-6 ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor}`;
+  const commonClass = `h-full w-full rounded-md font-medium text-lg p-4 min-h-6 min-w-14 ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor}`;
 
   return (
     <td>
