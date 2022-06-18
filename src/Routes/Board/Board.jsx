@@ -1,5 +1,5 @@
 import { useTable } from "Hooks";
-import { BoardTopHeader, BoardTable } from "Components";
+import { BoardTopHeader, BoardTable, Button } from "Components";
 
 import _ from "lodash";
 
@@ -10,12 +10,7 @@ const BoardTableEmptyState = () => {
       <div className="font-regular text-2xl text-blue-900">
         Start organizing your thoughts with table
       </div>
-      <div
-        className="text-blue-50 tex-2xl hover:bg-blue-600 hover:scale-110 shadow-blue-500 px-6 py-2 font-medium transition-all bg-blue-500 rounded-lg shadow-sm cursor-pointer"
-        onClick={resetTable}
-      >
-        Create Table
-      </div>
+      <Button onClick={resetTable}>Create Table</Button>
     </div>
   );
 };

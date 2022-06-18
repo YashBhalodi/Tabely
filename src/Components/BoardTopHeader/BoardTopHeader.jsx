@@ -5,7 +5,7 @@ import { FiEdit3, FiLock, FiChevronLeft, FiMoreVertical } from "react-icons/fi";
 
 import { useBoard, useTable } from "Hooks";
 
-import { DropDownMenu } from "Components";
+import { DropDownMenu, Button } from "Components";
 import _ from "lodash";
 
 const BoardTitleEditableField = () => {
@@ -71,9 +71,9 @@ const TableActionDropDown = () => {
       }}
       TriggerComponent={() => {
         return (
-          <div className="hover:border-blue-300 hover:border flex flex-col items-center justify-center w-12 h-12 bg-blue-100 rounded-md cursor-pointer">
-            <FiMoreVertical className={"text-xl text-blue-900"} />
-          </div>
+          <Button variant={"primary-plain"} shape={"square"} size={"md"}>
+            <FiMoreVertical />
+          </Button>
         );
       }}
     />
@@ -83,25 +83,24 @@ const TableActionDropDown = () => {
 const BoardTopHeader = () => {
   const { isEditMode, toggleBoardMode } = useBoard();
 
-  const iconClass = "text-xl text-blue-900";
-  const iconButtonClass =
-    "hover:border-blue-300 hover:border flex flex-col items-center justify-center w-12 h-12 bg-blue-100 rounded-md cursor-pointer";
-
   return (
-    <div className=" bg-blue-50 flex flex-row justify-between w-full h-20 p-4 space-x-4 border-b-2 border-blue-100">
+    <div className=" bg-blue-50 flex flex-row items-center justify-between w-full h-20 p-4 space-x-4 border-b-2 border-blue-100">
       <div className="flex flex-row items-center justify-start flex-1 space-x-4">
-        <NavLink to="/" className={iconButtonClass}>
-          <FiChevronLeft className={"text-blue-900 text-2xl"} />
-        </NavLink>
+        <Button variant={"primary-plain"} shape={"square"} size={"md"}>
+          <NavLink to="/">
+            <FiChevronLeft />
+          </NavLink>
+        </Button>
         <BoardTitleEditableField />
       </div>
-      <div className={iconButtonClass} onClick={toggleBoardMode}>
-        {isEditMode ? (
-          <FiLock className={iconClass} />
-        ) : (
-          <FiEdit3 className={iconClass} />
-        )}
-      </div>
+      <Button
+        variant={"primary-plain"}
+        shape={"square"}
+        size={"md"}
+        onClick={toggleBoardMode}
+      >
+        {isEditMode ? <FiLock /> : <FiEdit3 />}
+      </Button>
       <TableActionDropDown />
     </div>
   );
