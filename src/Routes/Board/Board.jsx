@@ -10,10 +10,7 @@ const BoardTableEmptyState = () => {
   const { resetTable } = useTable({ id: tableId });
   return (
     <div className="flex flex-col items-center justify-center w-full h-full space-y-6">
-      <div className="font-regular text-2xl text-blue-900">
-        Start organizing your thoughts with table
-      </div>
-      <Button onClick={resetTable}>Create Table</Button>
+      <Button onClick={resetTable}>Add Table</Button>
     </div>
   );
 };
