@@ -1,8 +1,7 @@
 import React from "react";
-import { ButtonsSandbox } from "Sandbox";
 
 const Home = () => {
-  return <ButtonsSandbox />;
+  return <div>Home</div>;
 };
 
 export default Home;
