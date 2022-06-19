@@ -5,12 +5,17 @@ import {
   initialBoardState,
   initialAppState,
 } from "Utils/constants";
-
+import { recoilPersist } from "recoil-persist";
 import _ from "lodash";
+
+const { persistAtom } = recoilPersist({
+  key: "tabley",
+});
 
 export const cellsFamily = atomFamily({
   key: "cells",
   default: initialCellState,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const cellsSelector = selector({
@@ -31,11 +36,13 @@ export const cellsSelector = selector({
 export const tableFamily = atomFamily({
   key: "tables",
   default: initialTableState,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const boardFamily = atomFamily({
   key: "boards",
   default: initialBoardState,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const boardFamilySelector = selectorFamily({
@@ -56,4 +63,5 @@ export const boardFamilySelector = selectorFamily({
 export const appStateAtom = atom({
   key: "appState",
   default: initialAppState,
+  effects_UNSTABLE: [persistAtom],
 });
