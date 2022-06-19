@@ -52,7 +52,9 @@ const BoardTitleEditableField = () => {
 };
 
 const TableActionDropDown = () => {
-  const { resetTable, clearTableData } = useTable();
+  const { boardId } = useParams();
+  const { tableId } = useBoard({ id: boardId });
+  const { resetTable, clearTableData } = useTable({ id: tableId });
 
   const MAP_KEY_ACTION = {
     RESET_TABLE: resetTable,

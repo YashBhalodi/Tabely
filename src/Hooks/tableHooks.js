@@ -1,5 +1,5 @@
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { tableAtom, cellsSelector } from "Atoms";
+import { tableFamily, cellsSelector } from "Atoms";
 import _ from "lodash";
 
 const getColumnBasedLayout = (allRows) => {
@@ -75,9 +75,9 @@ const getCellRelocatedLayout = ({
   }
 };
 
-export const useTable = () => {
-  const [allRows, setTableRows] = useRecoilState(tableAtom);
-  const resetTableState = useResetRecoilState(tableAtom);
+export const useTable = ({ id }) => {
+  const [allRows, setTableRows] = useRecoilState(tableFamily(id));
+  const resetTableState = useResetRecoilState(tableFamily(id));
   const [__, updateSelectedCells] = useRecoilState(cellsSelector);
 
   const getCellEdgePosition = (cellId) => {

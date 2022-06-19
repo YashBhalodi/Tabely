@@ -1,9 +1,13 @@
-import { useTable } from "Hooks";
+import { useParams } from "react-router-dom";
+import { useTable, useBoard } from "Hooks";
 import { CellWrapper } from "Components";
 import _ from "lodash";
 
 const BoardTable = (props) => {
-  const { allRows } = useTable();
+  const { boardId } = useParams();
+  const { tableId } = useBoard({ id: boardId });
+  const { allRows } = useTable({ id: tableId });
+
   return (
     <table className="h-fit w-fit border-spacing-3 p-12 border-separate table-auto">
       <tbody>

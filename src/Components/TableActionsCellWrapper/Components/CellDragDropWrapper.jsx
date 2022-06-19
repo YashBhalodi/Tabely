@@ -1,6 +1,7 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
-import { useTable } from "Hooks";
+import { useTable, useBoard } from "Hooks";
 
 import { FiPlusCircle } from "react-icons/fi";
 
@@ -68,8 +69,10 @@ const CellEdgeDropZone = React.memo((props) => {
 
 const DragDropWrapper = (props) => {
   const { cellId, children } = props;
+  const { boardId } = useParams();
+  const { tableId } = useBoard({ id: boardId });
   const { swapCells, getCellEdgePosition, relocateCell, getNeighboringCells } =
-    useTable();
+    useTable({ id: tableId });
   const bottomNeighboringCellId = getNeighboringCells(cellId).bottom;
   const onDragOver = (e) => {
     e.preventDefault();

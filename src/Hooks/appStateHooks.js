@@ -5,15 +5,18 @@ import _ from "lodash";
 export const useApp = () => {
   const [appState, setAppState] = useRecoilState(appStateAtom);
   const { boardIds } = appState;
-  const [boardsData, __] = useRecoilState(boardFamilySelector({ boardIds }));
+  const [boardsData, setBoardData] = useRecoilState(
+    boardFamilySelector({ boardIds })
+  );
 
   const createBoard = () => {
-    const newId = _.uniqueId();
+    const newBoardId = _.uniqueId();
     setAppState((prevState) => ({
       ...prevState,
-      boardIds: [newId, ...prevState.boardIds],
+      boardIds: [newBoardId, ...prevState.boardIds],
     }));
-    return newId;
+    setBoardData({ action: "initialize_board", newBoardId });
+    return newBoardId;
   };
 
   // TODO delete a board

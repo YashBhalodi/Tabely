@@ -6,11 +6,7 @@ import {
   initialAppState,
 } from "Utils/constants";
 
-// to be deprecated
-export const tableAtom = atom({
-  key: "tableData",
-  default: initialTableState,
-});
+import _ from "lodash";
 
 export const cellsFamily = atomFamily({
   key: "cells",
@@ -54,6 +50,28 @@ export const boardFamilySelector = selectorFamily({
           ...get(boardFamily(boardId)),
         };
       });
+    },
+  set:
+    (params) =>
+    ({ set, reset }, newValue) => {
+      const { action, newBoardId } = newValue;
+      if (action === "initialize_board") {
+        // Serious hack here. This should not be needed ideally. Recoil should be able to handle this somehow.
+        // When a new member of board family is created it doesn't get latest uniqueId for table,
+        // similarly when a new table is created it doesn't get latest uniqueIds for its cells initialState.
+        const tableId = _.uniqueId();
+        set(boardFamily(newBoardId), (prevState) => {
+          return {
+            ...prevState,
+            tableId,
+          };
+        });
+        const tableInitialState = [
+          [_.uniqueId(), _.uniqueId()],
+          [_.uniqueId(), _.uniqueId()],
+        ];
+        set(tableFamily(tableId), tableInitialState);
+      }
     },
 });
 

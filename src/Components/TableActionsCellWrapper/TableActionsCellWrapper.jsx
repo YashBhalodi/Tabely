@@ -15,9 +15,9 @@ const TableActionsCellWrapper = (props) => {
   const { children, cellId } = props;
   const { boardId } = useParams();
   const { cellData } = useCell({ id: cellId });
+  const { tableId, isEditMode } = useBoard({ id: boardId });
   const { addRow, addColumn, deleteRow, deleteColumn, getCellEdgePosition } =
-    useTable();
-  const { isEditMode } = useBoard({ id: boardId });
+    useTable({ id: tableId });
 
   const { row, column, edges } = getCellEdgePosition(cellId);
   const { type } = cellData;

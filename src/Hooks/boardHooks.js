@@ -5,7 +5,7 @@ import { BOARD_MODE } from "Utils/constants";
 
 export const useBoard = ({ id }) => {
   const [boardData, setBoardData] = useRecoilState(boardFamily(id));
-  const { title } = boardData;
+  const { title, tableId } = boardData;
   const isEditMode = boardData.mode === BOARD_MODE.EDIT;
 
   const toggleBoardMode = () => {
@@ -27,5 +27,6 @@ export const useBoard = ({ id }) => {
     title,
     toggleBoardMode,
     updateBoard,
+    tableId,
   };
 };
