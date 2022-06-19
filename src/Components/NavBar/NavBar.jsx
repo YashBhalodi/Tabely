@@ -5,14 +5,14 @@ const NavBar = () => {
   const location = useLocation();
   const { pathname } = location;
 
-  if (pathname === "/board") {
+  if (pathname.includes("/boards")) {
     return null;
   }
 
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/board">Board</NavLink>
+      <NavLink to="/boards">Board</NavLink>
       <NavLink to="/updates">Updates</NavLink>
       <NavLink to="/roadmap">Roadmap</NavLink>
       <NavLink to="/contact">Contact</NavLink>
