@@ -21,7 +21,7 @@ const Basic = ({ cellId }) => {
     });
   };
 
-  const commonClass = `h-full w-full rounded-md font-medium text-lg p-4 min-w-14 ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
+  const commonClass = `flex w-full h-full rounded-md font-medium text-lg p-4 min-h-6 min-w-14 ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
 
   return (
     <td>
@@ -32,13 +32,13 @@ const Basic = ({ cellId }) => {
             name="title"
             value={title}
             onChange={handleTextChange}
-            className={`${commonClass} ${themeItem.placeholder} ${themeItem.focusOutline} outline-none resize-none`}
+            className={`${commonClass} ${themeItem.placeholder} outline-none resize-none border-0`}
             placeholder=". . .  ✍🏻"
             autoFocus
           />
         ) : (
           <div
-            className={`${commonClass} min-h-6 max-h-40 hover:shadow-md break-before-all overflow-auto whitespace-pre-line select-all`}
+            className={`${commonClass} max-h-40 hover:shadow-md break-before-all overflow-auto whitespace-pre-line select-all`}
           >
             {title}
           </div>

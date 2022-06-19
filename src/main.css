@@ -4,12 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  td {
+    @apply p-0;
+  }
+}
+
 @layer utilities {
   .scrollbar::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
-
   .scrollbar::-webkit-scrollbar-track {
     @apply bg-blue-100;
   }
@@ -23,7 +28,6 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-blue-900/100;
   }
-
   .scrollbar-red::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -36,7 +40,6 @@
   .scrollbar-red::-webkit-scrollbar-thumb:hover {
     @apply bg-red-900/100;
   }
-
   .scrollbar-stone::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -49,7 +52,6 @@
   .scrollbar-stone::-webkit-scrollbar-thumb:hover {
     @apply bg-stone-900/100;
   }
-
   .scrollbar-blue::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -62,7 +64,6 @@
   .scrollbar-blue::-webkit-scrollbar-thumb:hover {
     @apply bg-blue-900/100;
   }
-
   .scrollbar-pink::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -75,7 +76,6 @@
   .scrollbar-pink::-webkit-scrollbar-thumb:hover {
     @apply bg-pink-900/100;
   }
-
   .scrollbar-purple::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -88,7 +88,6 @@
   .scrollbar-purple::-webkit-scrollbar-thumb:hover {
     @apply bg-purple-900/100;
   }
-
   .scrollbar-indigo::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -101,7 +100,6 @@
   .scrollbar-indigo::-webkit-scrollbar-thumb:hover {
     @apply bg-indigo-900/100;
   }
-
   .scrollbar-cyan::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -114,7 +112,6 @@
   .scrollbar-cyan::-webkit-scrollbar-thumb:hover {
     @apply bg-cyan-900/100;
   }
-
   .scrollbar-teal::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -127,7 +124,6 @@
   .scrollbar-teal::-webkit-scrollbar-thumb:hover {
     @apply bg-teal-900/100;
   }
-
   .scrollbar-green::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -140,7 +136,6 @@
   .scrollbar-green::-webkit-scrollbar-thumb:hover {
     @apply bg-green-900/100;
   }
-
   .scrollbar-lime::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -153,7 +148,6 @@
   .scrollbar-lime::-webkit-scrollbar-thumb:hover {
     @apply bg-lime-900/100;
   }
-
   .scrollbar-yellow::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -166,7 +160,6 @@
   .scrollbar-yellow::-webkit-scrollbar-thumb:hover {
     @apply bg-yellow-900/100;
   }
-
   .scrollbar-amber::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -179,7 +172,6 @@
   .scrollbar-amber::-webkit-scrollbar-thumb:hover {
     @apply bg-amber-900/100;
   }
-
   .scrollbar-orange::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -192,7 +184,6 @@
   .scrollbar-orange::-webkit-scrollbar-thumb:hover {
     @apply bg-orange-900/100;
   }
-
   .scrollbar-emerald::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -205,7 +196,6 @@
   .scrollbar-emerald::-webkit-scrollbar-thumb:hover {
     @apply bg-emerald-900/100;
   }
-
   .scrollbar-sky::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -218,7 +208,6 @@
   .scrollbar-sky::-webkit-scrollbar-thumb:hover {
     @apply bg-sky-900/100;
   }
-
   .scrollbar-violet::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -231,7 +220,6 @@
   .scrollbar-violet::-webkit-scrollbar-thumb:hover {
     @apply bg-violet-900/100;
   }
-
   .scrollbar-fuchsia::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -244,7 +232,6 @@
   .scrollbar-fuchsia::-webkit-scrollbar-thumb:hover {
     @apply bg-fuchsia-900/100;
   }
-
   .scrollbar-rose::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -257,7 +244,6 @@
   .scrollbar-rose::-webkit-scrollbar-thumb:hover {
     @apply bg-rose-400/100;
   }
-
   .scrollbar-zinc::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
@@ -270,7 +256,6 @@
   .scrollbar-zinc::-webkit-scrollbar-thumb:hover {
     @apply bg-zinc-900/100;
   }
-
   .scrollbar-gray::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
