@@ -1,13 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FiPlus } from "react-icons/fi";
+import { FiChevronRight, FiPlus } from "react-icons/fi";
+
+import { useBoard } from "Hooks";
 
 import { TopHeader } from "./Components";
 
 const SectionSeparator = (props) => {
   const { text = "OR" } = props;
   return (
-    <div className="flex flex-row items-center justify-center w-full px-4 my-2">
+    <div className="flex flex-row items-center justify-center w-full px-4">
       <hr className="border-blue-500/20 flex-1" />
       <div className="text-blue-500/20 mx-2 font-medium">{text}</div>
       <hr className="border-blue-500/20 flex-1" />
@@ -29,31 +31,49 @@ const CreateBoardButton = (props) => {
   );
 };
 
+const BoardFeedItem = (props) => {
+  const { title, onClick } = props;
+  return (
+    <div
+      className="shadow-blue-100 hover:bg-blue-50 hover:border hover:border-blue-200 bg-blue-100/50 flex flex-row items-center justify-center px-8 py-4 space-x-4 text-lg text-blue-900 transition-all duration-200 border border-transparent rounded-md shadow-sm cursor-pointer"
+      onClick={onClick}
+    >
+      <div className="flex-1 truncate">{title}</div>
+      <FiChevronRight className="text-2xl" />
+    </div>
+  );
+};
+
 const BoardFeed = () => {
   const navigate = useNavigate();
-
+  const { title } = useBoard();
   const navigateToBoard = () => {
     navigate("1");
   };
+
+  const sectionContainerClass = "flex flex-col w-full pt-8 pb-4 space-y-8";
+  const sectionTitleClass =
+    "underline-offset-2 decoration-blue-200 text-2xl font-semibold text-blue-600 underline;";
 
   return (
     <div className="flex flex-col items-start justify-center w-full h-full">
       <TopHeader />
       <div className="bg-slate-100 scrollbar flex-1 w-full h-full overflow-auto">
         <div className="flex flex-col items-start justify-start w-3/4 h-full m-auto">
-          <section className="flex flex-col w-full pt-8 pb-4 space-y-8">
-            <h1 className="underline-offset-2 decoration-blue-200 text-2xl font-semibold text-blue-600 underline">
-              Create a new board
-            </h1>
+          <section className={sectionContainerClass}>
+            <h1 className={sectionTitleClass}>Create a new board</h1>
             <div className="scrollbar-hide flex flex-row items-center self-start justify-start w-full space-x-4 overflow-auto">
               <CreateBoardButton onClick={navigateToBoard} />
+              <div className="opacity-10 hover:opacity-30 pl-8 transition-opacity">
+                <div>Coming up...</div>
+                <div>Start from a template</div>
+              </div>
             </div>
           </section>
           <SectionSeparator />
-          <section className="w-full h-48 py-8">
-            <h1 className="underline-offset-2 decoration-blue-200 text-2xl font-semibold text-blue-600 underline">
-              Continue Working
-            </h1>
+          <section className={sectionContainerClass}>
+            <h1 className={sectionTitleClass}>Continue Working</h1>
+            <BoardFeedItem title={title} onClick={navigateToBoard} />
           </section>
         </div>
       </div>
