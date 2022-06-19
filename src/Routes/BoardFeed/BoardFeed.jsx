@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { FiChevronRight, FiPlus } from "react-icons/fi";
 
-import { useBoard } from "Hooks";
+import { useApp } from "Hooks";
 
 import { TopHeader } from "./Components";
+import _ from "lodash";
 
 const SectionSeparator = (props) => {
   const { text = "OR" } = props;
@@ -32,11 +34,18 @@ const CreateBoardButton = (props) => {
 };
 
 const BoardFeedItem = (props) => {
-  const { title, onClick } = props;
+  const { board } = props;
+  const { title, id } = board;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`${id}`);
+  };
+
   return (
     <div
       className="shadow-blue-100 hover:bg-blue-50 hover:border hover:border-blue-200 bg-blue-100/50 flex flex-row items-center justify-center px-8 py-4 space-x-4 text-lg text-blue-900 transition-all duration-200 border border-transparent rounded-md shadow-sm cursor-pointer"
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className="flex-1 truncate">{title}</div>
       <FiChevronRight className="text-2xl" />
@@ -46,9 +55,10 @@ const BoardFeedItem = (props) => {
 
 const BoardFeed = () => {
   const navigate = useNavigate();
-  const { title } = useBoard();
+  const { boardsData, createBoard } = useApp();
+
   const navigateToBoard = () => {
-    navigate("1");
+    navigate(createBoard());
   };
 
   const sectionContainerClass = "flex flex-col w-full pt-8 pb-4 space-y-8";
@@ -70,11 +80,21 @@ const BoardFeed = () => {
               </div>
             </div>
           </section>
-          <SectionSeparator />
-          <section className={sectionContainerClass}>
-            <h1 className={sectionTitleClass}>Continue Working</h1>
-            <BoardFeedItem title={title} onClick={navigateToBoard} />
-          </section>
+          {_.isEmpty(boardsData) ? (
+            <></>
+          ) : (
+            <>
+              <SectionSeparator />
+              <section className={sectionContainerClass}>
+                <h1 className={sectionTitleClass}>Continue Working</h1>
+                <div className="pb-8 space-y-4">
+                  {boardsData.map((board) => (
+                    <BoardFeedItem board={board} key={board.id} />
+                  ))}
+                </div>
+              </section>
+            </>
+          )}
         </div>
       </div>
     </div>

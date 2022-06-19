@@ -53,4 +53,9 @@ export const initialTableState = [
 export const initialBoardState = {
   title: "",
   mode: BOARD_MODE.EDIT,
+  table: _.uniqueId(),
+};
+
+export const initialAppState = {
+  boardIds: [],
 };
