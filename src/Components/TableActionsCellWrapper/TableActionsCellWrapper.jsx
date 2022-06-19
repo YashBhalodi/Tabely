@@ -54,8 +54,12 @@ const TableActionsCellWrapper = (props) => {
   const showDeleteColumnActions =
     isEditMode &&
     CELL_CONFIGS[type].features.includes(FEATURES.DELETE_TABLE_LAYOUT);
-  const shouldShowCellActionStrip =
-    CELL_CONFIGS[type].features.includes(FEATURES.CELL_ACTIONS) && !isEditMode;
+  const shouldShowCellActionStrip = CELL_CONFIGS[type].features.includes(
+    FEATURES.CELL_ACTIONS
+  );
+  const isDragDropAllowed = CELL_CONFIGS[type].features.includes(
+    FEATURES.DELETE_TABLE_LAYOUT
+  );
 
   return (
     <div className="group relative w-full h-full">
@@ -66,7 +70,11 @@ const TableActionsCellWrapper = (props) => {
         <DeleteColumRowActions cellEdges={edges} onClickAction={handleClick} />
       )}
       {shouldShowCellActionStrip && <CellActionStrip cellId={cellId} />}
-      <CellDragDropWrapper cellId={cellId}>{children}</CellDragDropWrapper>
+      {isDragDropAllowed ? (
+        <CellDragDropWrapper cellId={cellId}>{children}</CellDragDropWrapper>
+      ) : (
+        children
+      )}
     </div>
   );
 };
