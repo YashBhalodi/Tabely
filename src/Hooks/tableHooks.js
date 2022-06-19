@@ -1,5 +1,6 @@
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { tableFamily, cellsSelector } from "Atoms";
+import { getUniqId } from "Utils/helpers";
 import _ from "lodash";
 
 const getColumnBasedLayout = (allRows) => {
@@ -64,9 +65,9 @@ const getCellRelocatedLayout = ({
     columnLayout.forEach((column, index) => {
       if (index !== targetRow) {
         if (index === row) {
-          column.push(_.uniqueId(), _.uniqueId());
+          column.push(getUniqId(), getUniqId());
         } else {
-          column.push(_.uniqueId());
+          column.push(getUniqId());
         }
       }
     });
@@ -107,14 +108,14 @@ export const useTable = ({ id }) => {
   const addRow = ({ cellId, position }) => {
     setTableRows((prevAllRows) => {
       if (_.isEmpty(prevAllRows)) {
-        return [[_.uniqueId()]];
+        return [[getUniqId()]];
       }
 
       const newAllRows = _.cloneDeep(prevAllRows);
 
       const newRow = [];
       for (let i = 0; i < newAllRows[0].length; i++) {
-        newRow.push(_.uniqueId());
+        newRow.push(getUniqId());
       }
 
       let splicedInIndex = newAllRows.length;
@@ -133,7 +134,7 @@ export const useTable = ({ id }) => {
   const addColumn = ({ cellId, position }) => {
     setTableRows((prevAllRows) => {
       if (_.isEmpty(prevAllRows)) {
-        return [[_.uniqueId()]];
+        return [[getUniqId()]];
       }
 
       const newAllRows = _.cloneDeep(prevAllRows);
@@ -144,7 +145,7 @@ export const useTable = ({ id }) => {
         splicedInIndex = position === "left" ? column : column + 1;
       }
       newAllRows.forEach((row) => {
-        row.splice(splicedInIndex, 0, _.uniqueId());
+        row.splice(splicedInIndex, 0, getUniqId());
       });
 
       return newAllRows;

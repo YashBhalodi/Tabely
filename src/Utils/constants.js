@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { getUniqId } from "Utils/helpers";
 
 export const FEATURES = {
   CONVERT_TYPE: "CONVERT_TYPE",
@@ -56,8 +56,8 @@ export const initialCellState = () => {
 
 export const initialTableState = () => {
   return [
-    [_.uniqueId(), _.uniqueId()],
-    [_.uniqueId(), _.uniqueId()],
+    [getUniqId(), getUniqId()],
+    [getUniqId(), getUniqId()],
   ];
 };
 
@@ -65,7 +65,7 @@ export const initialBoardState = () => {
   return {
     title: "",
     mode: BOARD_MODE.EDIT,
-    tableId: _.uniqueId(),
+    tableId: getUniqId(),
   };
 };
 

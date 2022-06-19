@@ -12,10 +12,21 @@ const { persistAtom } = recoilPersist({
   key: "tabley",
 });
 
+const logger = ({ onSet, node, trigger, setSelf }) => {
+  console.log(`trigger=${trigger} on ${node.key}`, { node });
+  onSet((newValue, oldValue, isReset) => {
+    console.log(`onSet=> trigger=${trigger} on ${node.key}`, {
+      newValue,
+      oldValue,
+      node,
+    });
+  });
+};
+
 export const cellsFamily = atomFamily({
   key: "cells",
   default: initialCellState,
-  effects_UNSTABLE: [persistAtom],
+  effects: [persistAtom, logger],
 });
 
 export const cellsSelector = selector({
@@ -36,13 +47,13 @@ export const cellsSelector = selector({
 export const tableFamily = atomFamily({
   key: "tables",
   default: initialTableState,
-  effects_UNSTABLE: [persistAtom],
+  effects: [persistAtom, logger],
 });
 
 export const boardFamily = atomFamily({
   key: "boards",
   default: initialBoardState,
-  effects_UNSTABLE: [persistAtom],
+  effects: [persistAtom, logger],
 });
 
 export const boardFamilySelector = selectorFamily({
@@ -63,5 +74,5 @@ export const boardFamilySelector = selectorFamily({
 export const appStateAtom = atom({
   key: "appState",
   default: initialAppState,
-  effects_UNSTABLE: [persistAtom],
+  effects: [persistAtom, logger],
 });

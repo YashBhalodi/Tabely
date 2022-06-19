@@ -1,5 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { appStateAtom, boardFamilySelector } from "Atoms";
+import { getUniqId } from "Utils/helpers";
 import _ from "lodash";
 
 export const useApp = () => {
@@ -8,7 +9,7 @@ export const useApp = () => {
   const boardsData = useRecoilValue(boardFamilySelector({ boardIds }));
 
   const createBoard = () => {
-    const newBoardId = _.uniqueId();
+    const newBoardId = getUniqId();
     setAppState((prevState) => ({
       ...prevState,
       boardIds: [newBoardId, ...prevState.boardIds],
