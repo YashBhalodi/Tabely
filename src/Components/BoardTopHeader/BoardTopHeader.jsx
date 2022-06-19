@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 import { FiEdit3, FiLock, FiChevronLeft, FiMoreVertical } from "react-icons/fi";
 
@@ -9,8 +9,9 @@ import { DropDownMenu, Button } from "Components";
 import _ from "lodash";
 
 const BoardTitleEditableField = () => {
+  const { boardId } = useParams();
   const [isEditingTitle, setIsEditingTitle] = useState(false);
-  const { isEditMode, title, updateBoard } = useBoard();
+  const { isEditMode, title, updateBoard } = useBoard({ id: boardId });
 
   useEffect(() => {
     if (_.isEmpty(title) && isEditMode) {
@@ -81,7 +82,8 @@ const TableActionDropDown = () => {
 };
 
 const BoardTopHeader = () => {
-  const { isEditMode, toggleBoardMode } = useBoard();
+  const { boardId } = useParams();
+  const { isEditMode, toggleBoardMode } = useBoard({ id: boardId });
 
   return (
     <div className=" bg-blue-50 flex flex-row items-center justify-between w-full h-20 p-4 space-x-4 border-b-2 border-blue-100">

@@ -32,12 +32,6 @@ export const cellsSelector = selector({
   },
 });
 
-// to be deprecated
-export const boardAtom = atom({
-  key: "board",
-  default: initialBoardState,
-});
-
 export const tableFamily = atomFamily({
   key: "tables",
   default: initialTableState,

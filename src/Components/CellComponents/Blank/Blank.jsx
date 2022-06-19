@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { FiPlusCircle } from "react-icons/fi";
 
 import { useCell, useBoard } from "Hooks";
@@ -7,8 +8,8 @@ import { TableActionsCellWrapper } from "Components";
 
 const Blank = ({ cellId }) => {
   const { updateFields } = useCell({ id: cellId });
-
-  const { isEditMode } = useBoard();
+  const { boardId } = useParams();
+  const { isEditMode } = useBoard({ id: boardId });
 
   const handleClick = () => {
     isEditMode &&

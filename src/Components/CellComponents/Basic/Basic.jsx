@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 import { TableActionsCellWrapper } from "Components";
 
@@ -8,7 +9,8 @@ import { COLOR_THEME } from "Utils/colors";
 
 const Basic = ({ cellId }) => {
   const { cellData, updateFields } = useCell({ id: cellId });
-  const { isEditMode } = useBoard();
+  const { boardId } = useParams();
+  const { isEditMode } = useBoard({ id: boardId });
   const { title = "", colorTheme } = cellData;
 
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;

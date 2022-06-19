@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
 
 import { useBoard, useCell, useTable } from "Hooks";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
@@ -12,10 +13,11 @@ import {
 
 const TableActionsCellWrapper = (props) => {
   const { children, cellId } = props;
+  const { boardId } = useParams();
   const { cellData } = useCell({ id: cellId });
   const { addRow, addColumn, deleteRow, deleteColumn, getCellEdgePosition } =
     useTable();
-  const { isEditMode } = useBoard();
+  const { isEditMode } = useBoard({ id: boardId });
 
   const { row, column, edges } = getCellEdgePosition(cellId);
   const { type } = cellData;

@@ -1,10 +1,10 @@
 import { useRecoilState } from "recoil";
-import { boardAtom } from "Atoms";
+import { boardFamily } from "Atoms";
 
 import { BOARD_MODE } from "Utils/constants";
 
-export const useBoard = () => {
-  const [boardData, setBoardData] = useRecoilState(boardAtom);
+export const useBoard = ({ id }) => {
+  const [boardData, setBoardData] = useRecoilState(boardFamily(id));
   const { title } = boardData;
   const isEditMode = boardData.mode === BOARD_MODE.EDIT;
 
