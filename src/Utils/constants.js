@@ -39,21 +39,27 @@ export const BOARD_MODE = {
   EDIT: "EDIT",
 };
 
-export const initialCellState = {
-  type: CELL_TYPES.IDLE,
-  title: "",
-  colorTheme: "STONE",
+export const initialCellState = () => {
+  return {
+    type: CELL_TYPES.IDLE,
+    title: "",
+    colorTheme: "STONE",
+  };
 };
 
-export const initialTableState = [
-  [_.uniqueId(), _.uniqueId()],
-  [_.uniqueId(), _.uniqueId()],
-];
+export const initialTableState = () => {
+  return [
+    [_.uniqueId(), _.uniqueId()],
+    [_.uniqueId(), _.uniqueId()],
+  ];
+};
 
-export const initialBoardState = {
-  title: "",
-  mode: BOARD_MODE.EDIT,
-  tableId: _.uniqueId(),
+export const initialBoardState = () => {
+  return {
+    title: "",
+    mode: BOARD_MODE.EDIT,
+    tableId: _.uniqueId(),
+  };
 };
 
 export const initialAppState = {
