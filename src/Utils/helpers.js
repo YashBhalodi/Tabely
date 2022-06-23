@@ -1,6 +1,7 @@
 import _ from "lodash";
+import ShortUniqueId from "short-unique-id";
+const uid = new ShortUniqueId({ length: 6 });
 
 export const getUniqId = () => {
-  // TODO ID delivery mechanism is fundamentally flawed to make it compatible with localStorage persistence with recoil persist
-  return _.uniqueId();
+  return uid();
 };

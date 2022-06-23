@@ -5,28 +5,17 @@ import {
   initialBoardState,
   initialAppState,
 } from "Utils/constants";
-import { recoilPersist } from "recoil-persist";
+import { recoilPersist } from "Atoms/customAtomEffects";
 import _ from "lodash";
 
 const { persistAtom } = recoilPersist({
   key: "tabley",
 });
 
-const logger = ({ onSet, node, trigger, setSelf }) => {
-  console.log(`trigger=${trigger} on ${node.key}`, { node });
-  onSet((newValue, oldValue, isReset) => {
-    console.log(`onSet=> trigger=${trigger} on ${node.key}`, {
-      newValue,
-      oldValue,
-      node,
-    });
-  });
-};
-
 export const cellsFamily = atomFamily({
   key: "cells",
   default: initialCellState,
-  effects: [persistAtom, logger],
+  effects: [persistAtom],
 });
 
 export const cellsSelector = selector({
@@ -47,13 +36,13 @@ export const cellsSelector = selector({
 export const tableFamily = atomFamily({
   key: "tables",
   default: initialTableState,
-  effects: [persistAtom, logger],
+  effects: [persistAtom],
 });
 
 export const boardFamily = atomFamily({
   key: "boards",
   default: initialBoardState,
-  effects: [persistAtom, logger],
+  effects: [persistAtom],
 });
 
 export const boardFamilySelector = selectorFamily({
@@ -74,5 +63,5 @@ export const boardFamilySelector = selectorFamily({
 export const appStateAtom = atom({
   key: "appState",
   default: initialAppState,
-  effects: [persistAtom, logger],
+  effects: [persistAtom],
 });
