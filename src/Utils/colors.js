@@ -8,7 +8,7 @@ export const COLOR_THEME = {
   RED: {
     label: "Red",
     bgColor: "bg-red-600",
-    lightBgColor: "bg-red-200/10",
+    lightBgColor: "bg-red-50",
     textColor: "text-red-50",
     hoverBgColor: "hover:bg-red-500",
     outline: `${COMMON.outline} outline-red-500`,
@@ -20,7 +20,7 @@ export const COLOR_THEME = {
   STONE: {
     label: "Stone",
     bgColor: "bg-stone-800",
-    lightBgColor: "bg-stone-200/10",
+    lightBgColor: "bg-stone-50",
     textColor: "text-stone-50",
     hoverBgColor: "hover:bg-stone-700",
     outline: `${COMMON.outline} outline-stone-500`,
@@ -32,7 +32,7 @@ export const COLOR_THEME = {
   BLUE: {
     label: "Blue",
     bgColor: "bg-blue-700",
-    lightBgColor: "bg-blue-200/10",
+    lightBgColor: "bg-blue-50",
     textColor: "text-blue-50",
     hoverBgColor: "hover:bg-blue-600",
     outline: `${COMMON.outline} outline-blue-500`,
@@ -44,7 +44,7 @@ export const COLOR_THEME = {
   PINK: {
     label: "Pink",
     bgColor: "bg-pink-600",
-    lightBgColor: "bg-pink-200/10",
+    lightBgColor: "bg-pink-50",
     textColor: "text-pink-50",
     hoverBgColor: "hover:bg-pink-700",
     outline: `${COMMON.outline} outline-pink-500`,
@@ -56,7 +56,7 @@ export const COLOR_THEME = {
   PURPLE: {
     label: "Purple",
     bgColor: "bg-purple-600",
-    lightBgColor: "bg-purple-200/10",
+    lightBgColor: "bg-purple-50",
     textColor: "text-purple-50",
     hoverBgColor: "hover:bg-purple-700",
     outline: `${COMMON.outline} outline-purple-500`,
@@ -68,7 +68,7 @@ export const COLOR_THEME = {
   INDIGO: {
     label: "Indigo",
     bgColor: "bg-indigo-600",
-    lightBgColor: "bg-indigo-200/10",
+    lightBgColor: "bg-indigo-50",
     textColor: "text-indigo-50",
     hoverBgColor: "hover:bg-indigo-700",
     outline: `${COMMON.outline} outline-indigo-500`,
@@ -80,7 +80,7 @@ export const COLOR_THEME = {
   CYAN: {
     label: "Cyan",
     bgColor: "bg-cyan-600",
-    lightBgColor: "bg-cyan-200/10",
+    lightBgColor: "bg-cyan-50",
     textColor: "text-cyan-50",
     hoverBgColor: "hover:bg-cyan-700",
     outline: `${COMMON.outline} outline-cyan-500`,
@@ -92,7 +92,7 @@ export const COLOR_THEME = {
   TEAL: {
     label: "Teal",
     bgColor: "bg-teal-600",
-    lightBgColor: "bg-teal-200/10",
+    lightBgColor: "bg-teal-50",
     textColor: "text-teal-50",
     hoverBgColor: "hover:bg-teal-700",
     outline: `${COMMON.outline} outline-teal-500`,
@@ -104,7 +104,7 @@ export const COLOR_THEME = {
   GREEN: {
     label: "Green",
     bgColor: "bg-green-600",
-    lightBgColor: "bg-green-200/10",
+    lightBgColor: "bg-green-50",
     textColor: "text-green-50",
     hoverBgColor: "hover:bg-green-700",
     outline: `${COMMON.outline} outline-green-500`,
@@ -116,7 +116,7 @@ export const COLOR_THEME = {
   LIME: {
     label: "Lime",
     bgColor: "bg-lime-600",
-    lightBgColor: "bg-lime-200/10",
+    lightBgColor: "bg-lime-50",
     textColor: "text-lime-50",
     hoverBgColor: "hover:bg-lime-700",
     outline: `${COMMON.outline} outline-lime-500`,
@@ -128,7 +128,7 @@ export const COLOR_THEME = {
   YELLOW: {
     label: "Yellow",
     bgColor: "bg-yellow-600",
-    lightBgColor: "bg-yellow-200/10",
+    lightBgColor: "bg-yellow-50",
     textColor: "text-yellow-50",
     hoverBgColor: "hover:bg-yellow-700",
     outline: `${COMMON.outline} outline-yellow-500`,
@@ -140,7 +140,7 @@ export const COLOR_THEME = {
   AMBER: {
     label: "Amber",
     bgColor: "bg-amber-600",
-    lightBgColor: "bg-amber-200/10",
+    lightBgColor: "bg-amber-50",
     textColor: "text-amber-50",
     hoverBgColor: "hover:bg-amber-700",
     outline: `${COMMON.outline} outline-amber-500`,
@@ -152,7 +152,7 @@ export const COLOR_THEME = {
   ORANGE: {
     label: "Orange",
     bgColor: "bg-orange-600",
-    lightBgColor: "bg-orange-200/10",
+    lightBgColor: "bg-orange-50",
     textColor: "text-orange-50",
     hoverBgColor: "hover:bg-orange-700",
     outline: `${COMMON.outline} outline-orange-500`,
@@ -164,7 +164,7 @@ export const COLOR_THEME = {
   EMERALD: {
     label: "Emerald",
     bgColor: "bg-emerald-600",
-    lightBgColor: "bg-emerald-200/10",
+    lightBgColor: "bg-emerald-50",
     textColor: "text-emerald-50",
     hoverBgColor: "hover:bg-emerald-700",
     outline: `${COMMON.outline} outline-emerald-500`,
@@ -176,7 +176,7 @@ export const COLOR_THEME = {
   SKY: {
     label: "Sky",
     bgColor: "bg-sky-600",
-    lightBgColor: "bg-sky-200/10",
+    lightBgColor: "bg-sky-50",
     textColor: "text-sky-50",
     hoverBgColor: "hover:bg-sky-700",
     outline: `${COMMON.outline} outline-sky-500`,
@@ -188,7 +188,7 @@ export const COLOR_THEME = {
   VIOLET: {
     label: "Violet",
     bgColor: "bg-violet-600",
-    lightBgColor: "bg-violet-200/10",
+    lightBgColor: "bg-violet-50",
     textColor: "text-violet-50",
     hoverBgColor: "hover:bg-violet-700",
     outline: `${COMMON.outline} outline-violet-500`,
@@ -200,7 +200,7 @@ export const COLOR_THEME = {
   FUCHSIA: {
     label: "Fuchsia",
     bgColor: "bg-fuchsia-600",
-    lightBgColor: "bg-fuchsia-200/10",
+    lightBgColor: "bg-fuchsia-50",
     textColor: "text-fuchsia-50",
     hoverBgColor: "hover:bg-fuchsia-700",
     outline: `${COMMON.outline} outline-fuchsia-500`,
@@ -212,7 +212,7 @@ export const COLOR_THEME = {
   ROSE: {
     label: "Rose",
     bgColor: "bg-rose-200",
-    lightBgColor: "bg-rose-200/10",
+    lightBgColor: "bg-rose-50",
     textColor: "text-rose-900",
     hoverBgColor: "hover:bg-rose-300",
     outline: `${COMMON.outline} outline-rose-500`,
@@ -224,7 +224,7 @@ export const COLOR_THEME = {
   ZINC: {
     label: "Zinc",
     bgColor: "bg-zinc-400",
-    lightBgColor: "bg-zinc-200/10",
+    lightBgColor: "bg-zinc-50",
     textColor: "text-zinc-900",
     hoverBgColor: "hover:bg-zinc-300",
     outline: `${COMMON.outline} outline-zinc-500`,
@@ -236,7 +236,7 @@ export const COLOR_THEME = {
   GRAY: {
     label: "Gray",
     bgColor: "bg-gray-200",
-    lightBgColor: "bg-gray-200/10",
+    lightBgColor: "bg-gray-50",
     textColor: "text-gray-900",
     hoverBgColor: "hover:bg-gray-100",
     outline: `${COMMON.outline} outline-gray-500`,
