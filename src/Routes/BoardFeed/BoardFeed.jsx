@@ -47,7 +47,7 @@ const BoardFeedItem = (props) => {
       className="shadow-blue-100 hover:bg-blue-50 hover:border hover:border-blue-200 bg-blue-100/50 flex flex-row items-center justify-center px-8 py-4 space-x-4 text-lg text-blue-900 transition-all duration-200 border border-transparent rounded-md shadow-sm cursor-pointer"
       onClick={handleClick}
     >
-      <div className="flex-1 truncate">{title}</div>
+      <div className="flex-1 truncate">{title || "Untitled board"}</div>
       <FiChevronRight className="text-2xl" />
     </div>
   );
