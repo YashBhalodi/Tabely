@@ -1,7 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { usePopper } from "react-popper";
 
-import { ThemePicker, ClearCell } from "./Components";
+import {
+  ThemePicker,
+  ClearCell,
+  TableLayoutActions,
+  TableLayoutDestructiveActions,
+} from "./Components";
 
 import { useCell } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
@@ -33,7 +38,7 @@ const ContextMenu = (props) => {
         {
           name: "offset",
           options: {
-            offset: [2, 0],
+            offset: [0, 0],
           },
         },
       ],
@@ -84,6 +89,8 @@ const ContextMenu = (props) => {
             theme.lightBgColor
           }`}
         >
+          <TableLayoutActions cellId={cellId} />
+          <TableLayoutDestructiveActions cellId={cellId} />
           <ThemePicker cellId={cellId} />
           <ClearCell cellId={cellId} />
         </div>
