@@ -38,7 +38,7 @@ const Basic = ({ cellId }) => {
           />
         ) : (
           <div
-            className={`${commonClass} max-h-40 max-w-cell hover:shadow-md break-before-all overflow-auto whitespace-pre-line select-all`}
+            className={`${commonClass} max-h-cell max-w-cell hover:shadow-md break-before-all overflow-auto whitespace-pre-line select-all`}
           >
             {title}
           </div>

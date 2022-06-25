@@ -11,6 +11,9 @@ module.exports = {
       minHeight: {
         cell: "6rem",
       },
+      maxHeight: {
+        cell: "10rem",
+      },
       minWidth: {
         cell: "14rem",
       },

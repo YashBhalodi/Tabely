@@ -7,7 +7,7 @@
 @layer base {
   td {
     @apply p-0;
-    @apply w-cell;
+    @apply w-cell max-h-cell;
     @apply min-h-cell;
   }
 }
