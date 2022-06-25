@@ -11,8 +11,8 @@ const ThemePicker = (props) => {
   const { cellId } = props;
   const [visible, setVisibility] = useState(false);
 
-  const { cellData, updateFields, clearCell } = useCell({ id: cellId });
-  const { colorTheme } = cellData;
+  const { cellData, updateFields } = useCell({ id: cellId });
+  const { colorTheme = "STONE" } = cellData;
   const activeTheme = COLOR_THEME[colorTheme];
 
   const setTheme = (theme) => {

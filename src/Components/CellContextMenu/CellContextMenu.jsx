@@ -1,11 +1,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import { usePopper } from "react-popper";
 
-import { ThemePicker } from "./Components";
+import { ThemePicker, ClearCell } from "./Components";
+
+import { useCell } from "Hooks";
+import { COLOR_THEME } from "Utils/colors";
 
 const ContextMenu = (props) => {
   const { cellId, children } = props;
   const [visible, setVisibility] = useState(false);
+  const { cellData } = useCell({ id: cellId });
+  const { colorTheme = "STONE" } = cellData;
+  const theme = COLOR_THEME[colorTheme];
 
   const referenceRef = useRef(null);
   const popperRef = useRef(null);
@@ -73,12 +79,13 @@ const ContextMenu = (props) => {
         <div
           style={styles.offset}
           className={`${
-            visible
-              ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-sm px-4 py-2 bg-white"
-              : "hidden"
+            visible ? "visible" : "hidden"
+          } h-fit w-fit border rounded-md shadow-sm px-2 py-2 flex flex-row space-x-1 justify-center items-center ${
+            theme.lightBgColor
           }`}
         >
           <ThemePicker cellId={cellId} />
+          <ClearCell cellId={cellId} />
         </div>
       </div>
     </React.Fragment>

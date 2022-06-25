@@ -1,3 +1,3 @@
 import ThemePicker from "./ThemePicker";
-
-export { ThemePicker };
+import ClearCell from "./ClearCell";
+export { ThemePicker, ClearCell };
