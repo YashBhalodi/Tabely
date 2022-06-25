@@ -14,7 +14,7 @@ const TableActionsCellWrapper = (props) => {
   const { type } = cellData;
 
   const isDragDropAllowed = CELL_CONFIGS[type].features.includes(
-    FEATURES.DELETE_TABLE_LAYOUT
+    FEATURES.DRAG_N_DROP
   );
 
   return (

@@ -10,12 +10,13 @@ import {
 
 import { useCell } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
+import { CELL_CONFIGS, FEATURES } from "Utils/constants";
 
 const ContextMenu = (props) => {
   const { cellId, children } = props;
   const [visible, setVisibility] = useState(false);
   const { cellData } = useCell({ id: cellId });
-  const { colorTheme = "STONE" } = cellData;
+  const { colorTheme = "STONE", type } = cellData;
   const theme = COLOR_THEME[colorTheme];
 
   const referenceRef = useRef(null);
@@ -68,6 +69,27 @@ const ContextMenu = (props) => {
     setVisibility(!visible);
   }
 
+  const isContextMenuAllowed = CELL_CONFIGS[type].features.includes(
+    FEATURES.CONTEXT_MENU
+  );
+  const showAddTableLayoutActions = CELL_CONFIGS[
+    type
+  ].contextMenuFeatures.includes(FEATURES.ADD_TABLE_LAYOUT);
+  const showDeleteTableLayoutActions = CELL_CONFIGS[
+    type
+  ].contextMenuFeatures.includes(FEATURES.DELETE_TABLE_LAYOUT);
+  const showThemePicker = CELL_CONFIGS[type].contextMenuFeatures.includes(
+    FEATURES.CHANGE_THEME
+  );
+
+  if (!isContextMenuAllowed) {
+    return (
+      <div className="w-full h-full" onContextMenu={(e) => e.preventDefault()}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <React.Fragment>
       {children}
@@ -85,13 +107,34 @@ const ContextMenu = (props) => {
           style={styles.offset}
           className={`${
             visible ? "visible" : "hidden"
-          } h-fit w-fit border rounded-md shadow-sm px-2 py-2 flex flex-row space-x-1 justify-center items-center ${
+          } h-fit w-fit border rounded-md shadow-sm px-3 py-2 flex flex-row space-x-4 justify-center items-center ${
             theme.lightBgColor
-          }`}
+          } ${theme.lightBgBorderColor}`}
         >
-          <TableLayoutActions cellId={cellId} />
-          <TableLayoutDestructiveActions cellId={cellId} />
-          <ThemePicker cellId={cellId} />
+          {showAddTableLayoutActions ? (
+            <>
+              <TableLayoutActions cellId={cellId} />
+              <hr
+                className={`h-4 border ${theme.lightBgBorderColor} opacity-50`}
+              />
+            </>
+          ) : null}
+          {showDeleteTableLayoutActions ? (
+            <>
+              <TableLayoutDestructiveActions cellId={cellId} />
+              <hr
+                className={`h-4 border ${theme.lightBgBorderColor} opacity-50`}
+              />
+            </>
+          ) : null}
+          {showThemePicker ? (
+            <>
+              <ThemePicker cellId={cellId} />
+              <hr
+                className={`h-4 border ${theme.lightBgBorderColor} opacity-50`}
+              />
+            </>
+          ) : null}
           <ClearCell cellId={cellId} />
         </div>
       </div>

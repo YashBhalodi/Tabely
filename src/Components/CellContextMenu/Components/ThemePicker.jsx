@@ -75,7 +75,7 @@ const ThemePicker = (props) => {
       <div
         ref={referenceRef}
         onClick={handleDropdownClick}
-        className={`h-5 w-5 shadow-sm rounded-full ${activeTheme.bgColor}`}
+        className={`h-5 w-5 shadow-sm rounded-full ${activeTheme.bgColor} ${activeTheme.outline}`}
       ></div>
       <div
         ref={popperRef}

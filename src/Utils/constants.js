@@ -6,6 +6,8 @@ export const FEATURES = {
   DELETE_TABLE_LAYOUT: "DELETE_TABLE_LAYOUT",
   CELL_ACTIONS: "CELL_ACTIONS",
   DRAG_N_DROP: "DRAG_N_DROP",
+  CHANGE_THEME: "CHANGE_THEME",
+  CONTEXT_MENU: "CONTEXT_MENU",
 };
 
 export const CELL_TYPES = {
@@ -17,31 +19,31 @@ export const CELL_TYPES = {
 
 export const CELL_CONFIGS = {
   IDLE: {
-    features: [
+    features: [FEATURES.CONTEXT_MENU, FEATURES.DRAG_N_DROP],
+    contextMenuFeatures: [
       FEATURES.ADD_TABLE_LAYOUT,
       FEATURES.DELETE_TABLE_LAYOUT,
-      FEATURES.DRAG_N_DROP,
+      FEATURES.CHANGE_THEME,
     ],
   },
   BLANK: {
-    features: [FEATURES.DELETE_TABLE_LAYOUT, FEATURES.DRAG_N_DROP],
+    features: [FEATURES.DRAG_N_DROP],
+    contextMenuFeatures: [],
   },
   BASIC: {
-    features: [
-      FEATURES.CONVERT_TYPE,
-      FEATURES.CELL_ACTIONS,
+    features: [FEATURES.CONTEXT_MENU, FEATURES.DRAG_N_DROP],
+    contextMenuFeatures: [
       FEATURES.ADD_TABLE_LAYOUT,
       FEATURES.DELETE_TABLE_LAYOUT,
-      FEATURES.DRAG_N_DROP,
+      FEATURES.CHANGE_THEME,
     ],
   },
   DUAL_FIELD: {
-    features: [
-      FEATURES.CONVERT_TYPE,
-      FEATURES.CELL_ACTIONS,
+    features: [FEATURES.CONTEXT_MENU, FEATURES.DRAG_N_DROP],
+    contextMenuFeatures: [
       FEATURES.ADD_TABLE_LAYOUT,
       FEATURES.DELETE_TABLE_LAYOUT,
-      FEATURES.DRAG_N_DROP,
+      FEATURES.CHANGE_THEME,
     ],
   },
 };
