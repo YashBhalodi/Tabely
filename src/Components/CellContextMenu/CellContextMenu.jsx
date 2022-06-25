@@ -55,8 +55,8 @@ const ContextMenu = (props) => {
 
   function handleDocumentClick(event) {
     if (
-      referenceRef.current.contains(event.target) ||
-      popperRef.current.contains(event.target)
+      referenceRef.current?.contains(event.target) ||
+      popperRef.current?.contains(event.target)
     ) {
       return;
     }
@@ -115,7 +115,7 @@ const ContextMenu = (props) => {
             <>
               <TableLayoutActions cellId={cellId} />
               <hr
-                className={`h-4 border ${theme.lightBgBorderColor} opacity-50`}
+                className={`h-16 border ${theme.lightBgBorderColor} opacity-50`}
               />
             </>
           ) : null}
