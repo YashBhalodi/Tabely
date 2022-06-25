@@ -21,7 +21,7 @@ const Basic = ({ cellId }) => {
     });
   };
 
-  const commonClass = `flex w-full h-full rounded-md font-medium text-lg p-4 min-h-6 min-w-14 ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
+  const commonClass = `flex w-full h-full rounded-md font-medium text-lg p-4 min-h-cell min-w-cell ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
 
   return (
     <td>
@@ -38,7 +38,7 @@ const Basic = ({ cellId }) => {
           />
         ) : (
           <div
-            className={`${commonClass} max-h-40 hover:shadow-md break-before-all overflow-auto whitespace-pre-line select-all`}
+            className={`${commonClass} max-h-40 max-w-cell hover:shadow-md break-before-all overflow-auto whitespace-pre-line select-all`}
           >
             {title}
           </div>

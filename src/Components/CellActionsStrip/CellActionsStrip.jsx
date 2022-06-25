@@ -11,7 +11,7 @@ const CellActionStrip = (props) => {
   const { cellData, updateFields, clearCell } = useCell({ id: cellId });
   const { colorTheme } = cellData;
   const theme = COLOR_THEME[colorTheme];
-  console.log({ theme });
+
   const setTheme = (theme) => {
     updateFields({
       colorTheme: theme,

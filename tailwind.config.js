@@ -9,10 +9,19 @@ module.exports = {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
       minHeight: {
-        6: "6rem",
+        cell: "6rem",
       },
       minWidth: {
-        14: "14rem",
+        cell: "14rem",
+      },
+      maxWidth: {
+        cell: "14rem",
+      },
+      width: {
+        cell: "14rem",
+      },
+      height: {
+        cell: "6rem",
       },
     },
   },
