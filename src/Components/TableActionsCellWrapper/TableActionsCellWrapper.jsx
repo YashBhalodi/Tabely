@@ -4,12 +4,8 @@ import { useParams } from "react-router-dom";
 
 import { useBoard, useCell, useTable } from "Hooks";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
-import { CellActionStrip } from "Components";
-import {
-  CellDragDropWrapper,
-  DeleteColumRowActions,
-  AddColumnRowActions,
-} from "./Components";
+import { CellContextMenu } from "Components";
+import { CellDragDropWrapper } from "./Components";
 
 const TableActionsCellWrapper = (props) => {
   const { children, cellId } = props;
@@ -63,18 +59,20 @@ const TableActionsCellWrapper = (props) => {
 
   return (
     <div className="group relative w-full h-full">
-      {showAddColumnActions && (
+      {/* {showAddColumnActions && (
         <AddColumnRowActions onClickAction={handleClick} />
       )}
       {showDeleteColumnActions && (
         <DeleteColumRowActions cellEdges={edges} onClickAction={handleClick} />
-      )}
-      {shouldShowCellActionStrip && <CellActionStrip cellId={cellId} />}
-      {isDragDropAllowed ? (
-        <CellDragDropWrapper cellId={cellId}>{children}</CellDragDropWrapper>
-      ) : (
-        children
-      )}
+      )} */}
+      {/* {shouldShowCellActionStrip && <CellActionStrip cellId={cellId} />} */}
+      <CellContextMenu cellId={cellId}>
+        {isDragDropAllowed ? (
+          <CellDragDropWrapper cellId={cellId}>{children}</CellDragDropWrapper>
+        ) : (
+          children
+        )}
+      </CellContextMenu>
     </div>
   );
 };

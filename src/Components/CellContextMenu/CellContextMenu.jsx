@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { usePopper } from "react-popper";
-import PropTypes from "prop-types";
-import { FiChevronDown } from "react-icons/fi";
 
-import { ColorPalette } from "Components";
-import { COLOR_THEME } from "Utils/colors";
+import { ThemePicker } from "./Components";
 
-const ThemePicker = (props) => {
-  const { activeTheme = "STONE", onSelectTheme = () => {} } = props;
+const ContextMenu = (props) => {
+  const { cellId, children } = props;
   const [visible, setVisibility] = useState(false);
-
-  const { bgColor } = COLOR_THEME[activeTheme];
 
   const referenceRef = useRef(null);
   const popperRef = useRef(null);
@@ -32,7 +27,7 @@ const ThemePicker = (props) => {
         {
           name: "offset",
           options: {
-            offset: [0, 8],
+            offset: [2, 0],
           },
         },
       ],
@@ -40,7 +35,6 @@ const ThemePicker = (props) => {
   );
 
   useEffect(() => {
-    // listen for clicks and close dropdown on bod
     document.addEventListener("mousedown", handleDocumentClick);
     return () => {
       document.removeEventListener("mousedown", handleDocumentClick);
@@ -58,19 +52,19 @@ const ThemePicker = (props) => {
   }
 
   function handleDropdownClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
     setVisibility(!visible);
   }
 
   return (
     <React.Fragment>
+      {children}
       <div
         ref={referenceRef}
-        onClick={handleDropdownClick}
-        className={`p-1 rounded-md border border-gray-100 w-fit h-fit cursor-pointer flex flex-row justify-center items-center space-x-1 bg-white/50`}
-      >
-        <div className={`h-4 w-4 shadow-sm rounded-full ${bgColor}`}></div>
-        <FiChevronDown className={`text-gray-900/20`} />
-      </div>
+        className={`absolute inset-0 rounded-lg m-1`}
+        onContextMenu={handleDropdownClick}
+      />
       <div
         ref={popperRef}
         style={{ ...styles.popper, zIndex: 10 }}
@@ -80,24 +74,15 @@ const ThemePicker = (props) => {
           style={styles.offset}
           className={`${
             visible
-              ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-sm shadow-gray-100 bg-white/95"
+              ? "visible h-fit w-fit border-gray-100 border rounded-md shadow-sm px-4 py-2 bg-white"
               : "hidden"
           }`}
-          onMouseLeave={() => setVisibility(false)}
         >
-          <ColorPalette
-            activeTheme={activeTheme}
-            onClickTheme={onSelectTheme}
-          />
+          <ThemePicker cellId={cellId} />
         </div>
       </div>
     </React.Fragment>
   );
 };
 
-ThemePicker.propTypes = {
-  activeTheme: PropTypes.string,
-  onSelectTheme: PropTypes.func.isRequired,
-};
-
-export default ThemePicker;
+export default ContextMenu;
