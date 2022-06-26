@@ -36,35 +36,45 @@ const TableLayoutActions = (props) => {
     }
   };
 
+  const buttonCommonClass = `hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md cursor-pointer`;
+
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-row gap-2">
-        <div
-          onClick={() => handleClick("add_left")}
-          className="hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md"
-        >
-          <AddColumnLeft />
-        </div>
-        <div
-          onClick={() => handleClick("add_right")}
-          className="hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md"
-        >
-          <AddColumnRight />
-        </div>
+        <abbr title="Add column left">
+          <div
+            onClick={() => handleClick("add_left")}
+            className={buttonCommonClass}
+          >
+            <AddColumnLeft />
+          </div>
+        </abbr>
+        <abbr title="Add column right">
+          <div
+            onClick={() => handleClick("add_right")}
+            className={buttonCommonClass}
+          >
+            <AddColumnRight />
+          </div>
+        </abbr>
       </div>
       <div className="flex flex-row gap-2">
-        <div
-          onClick={() => handleClick("add_top")}
-          className="hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md"
-        >
-          <AddRowAbove />
-        </div>
-        <div
-          onClick={() => handleClick("add_bottom")}
-          className="hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md"
-        >
-          <AddRowBelow />
-        </div>
+        <abbr title="Add row above">
+          <div
+            onClick={() => handleClick("add_top")}
+            className={buttonCommonClass}
+          >
+            <AddRowAbove />
+          </div>
+        </abbr>
+        <abbr title="Add row below">
+          <div
+            onClick={() => handleClick("add_bottom")}
+            className={buttonCommonClass}
+          >
+            <AddRowBelow />
+          </div>
+        </abbr>
       </div>
     </div>
   );

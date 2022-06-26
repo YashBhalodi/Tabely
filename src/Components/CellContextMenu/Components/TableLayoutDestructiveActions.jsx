@@ -27,20 +27,26 @@ const TableLayoutDestructiveActions = (props) => {
     }
   };
 
+  const buttonCommonClass = `hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md cursor-pointer`;
+
   return (
     <div className="flex flex-col gap-2">
-      <div
-        onClick={() => handleClick("delete_column")}
-        className="hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md"
-      >
-        <DeleteColumn />
-      </div>
-      <div
-        onClick={() => handleClick("delete_row")}
-        className="hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md"
-      >
-        <DeleteRow pathClass="fill-red-700" />
-      </div>
+      <abbr title="Delete column">
+        <div
+          onClick={() => handleClick("delete_column")}
+          className={buttonCommonClass}
+        >
+          <DeleteColumn />
+        </div>
+      </abbr>
+      <abbr title="Delete row">
+        <div
+          onClick={() => handleClick("delete_row")}
+          className={buttonCommonClass}
+        >
+          <DeleteRow pathClass="fill-red-700" />
+        </div>
+      </abbr>
     </div>
   );
 };

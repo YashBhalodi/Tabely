@@ -72,11 +72,13 @@ const ThemePicker = (props) => {
 
   return (
     <React.Fragment>
-      <div
-        ref={referenceRef}
-        onClick={handleDropdownClick}
-        className={`h-5 w-5 shadow-sm rounded-full ${activeTheme.bgColor} ${activeTheme.outline}`}
-      ></div>
+      <abbr title="Change theme">
+        <div
+          ref={referenceRef}
+          onClick={handleDropdownClick}
+          className={`h-5 w-5 shadow-sm rounded-full cursor-pointer ${activeTheme.bgColor} ${activeTheme.outline}`}
+        ></div>
+      </abbr>
       <div
         ref={popperRef}
         style={{ ...styles.popper, zIndex: 10 }}
