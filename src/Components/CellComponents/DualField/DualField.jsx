@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { useParams } from "react-router-dom";
 
-import { TableActionsCellWrapper } from "Components";
+import { TableActionsCellWrapper, CellContextMenu } from "Components";
 
 import { useCell, useBoard } from "Hooks";
 
@@ -12,6 +12,10 @@ const DualField = ({ cellId }) => {
   const { cellData, updateFields } = useCell({ id: cellId });
   const { boardId } = useParams();
   const { isEditMode } = useBoard({ id: boardId });
+
+  const contextMenuRef = useRef(null);
+  const containerRef = useRef(null);
+
   const { title, subtitle, colorTheme } = cellData;
 
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
@@ -26,39 +30,54 @@ const DualField = ({ cellId }) => {
     updateFields({ [e.target.name]: e.target.value });
   };
 
+  const handleContextMenu = (event) => {
+    contextMenuRef?.current?.launchContextMenu(event);
+  };
+
   return (
     <td>
       <TableActionsCellWrapper cellId={cellId}>
-        {isEditMode ? (
-          <div className={containerClass}>
-            <input
-              className={`${commonFieldClass} ${commonInputClass} ${commonTitleClass}`}
-              placeholder={". . . ✍🏻"}
-              autoFocus
-              type={"text"}
-              name="title"
-              value={title}
-              onChange={handleInput}
-            />
-            <input
-              className={`${commonFieldClass} ${commonInputClass} ${commonSubtitleClass}`}
-              placeholder={". . . ✍🏻"}
-              type={"text"}
-              name="subtitle"
-              value={subtitle}
-              onChange={handleInput}
-            />
-          </div>
-        ) : (
-          <div className={containerClass}>
-            <div className={`${commonFieldClass} ${commonTitleClass}`}>
-              {title}
+        <div
+          className="w-full h-full"
+          onContextMenu={handleContextMenu}
+          ref={containerRef}
+        >
+          {isEditMode ? (
+            <div className={containerClass}>
+              <input
+                className={`${commonFieldClass} ${commonInputClass} ${commonTitleClass}`}
+                placeholder={". . . ✍🏻"}
+                autoFocus
+                type={"text"}
+                name="title"
+                value={title}
+                onChange={handleInput}
+              />
+              <input
+                className={`${commonFieldClass} ${commonInputClass} ${commonSubtitleClass}`}
+                placeholder={". . . ✍🏻"}
+                type={"text"}
+                name="subtitle"
+                value={subtitle}
+                onChange={handleInput}
+              />
             </div>
-            <div className={`${commonFieldClass} ${commonSubtitleClass}`}>
-              {subtitle}
+          ) : (
+            <div className={containerClass}>
+              <div className={`${commonFieldClass} ${commonTitleClass}`}>
+                {title}
+              </div>
+              <div className={`${commonFieldClass} ${commonSubtitleClass}`}>
+                {subtitle}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
+        <CellContextMenu
+          ref={contextMenuRef}
+          containerRef={containerRef}
+          cellId={cellId}
+        />
       </TableActionsCellWrapper>
     </td>
   );
