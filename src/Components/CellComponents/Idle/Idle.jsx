@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import { FiPlusCircle } from "react-icons/fi";
 
 import { useCell, useBoard } from "Hooks";
 import { CELL_TYPES } from "Utils/constants";
-import { TableActionsCellWrapper } from "Components";
+import { TableActionsCellWrapper, CellContextMenu } from "Components";
 
 const Idle = ({ cellId }) => {
   const { boardId } = useParams();
   const { updateFields } = useCell({ id: cellId });
   const { isEditMode } = useBoard({ id: boardId });
+  const contextMenuRef = useRef(null);
+  const containerRef = useRef(null);
 
   const handleClick = () => {
     isEditMode &&
@@ -24,6 +26,10 @@ const Idle = ({ cellId }) => {
     }
   };
 
+  const handleContextClick = (event) => {
+    contextMenuRef?.current?.launchContextMenu(event);
+  };
+
   return (
     <td key={cellId}>
       <TableActionsCellWrapper cellId={cellId}>
@@ -36,11 +42,18 @@ const Idle = ({ cellId }) => {
           }`}
           onClick={handleClick}
           onKeyDownCapture={handleKeyboardEvent}
+          onContextMenu={handleContextClick}
+          ref={containerRef}
         >
           {isEditMode && (
             <FiPlusCircle className="group-hover:visible invisible text-xl text-blue-300" />
           )}
         </div>
+        <CellContextMenu
+          ref={contextMenuRef}
+          cellId={cellId}
+          containerRef={containerRef}
+        />
       </TableActionsCellWrapper>
     </td>
   );
