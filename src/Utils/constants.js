@@ -16,11 +16,13 @@ export const CELL_TYPES = {
   BLANK: "BLANK",
   BASIC: "BASIC",
   DUAL_FIELD: "DUAL_FIELD",
+  CARD: "CARD",
 };
 
 export const USER_CELL_TYPES = [
   { key: CELL_TYPES.BASIC, label: "Basic" },
   { key: CELL_TYPES.DUAL_FIELD, label: "Dual Field" },
+  { key: CELL_TYPES.CARD, label: "Card" },
 ];
 
 export const BOARD_MODE = {
@@ -54,6 +56,13 @@ export const CELL_CONFIGS_VIEW = {
       FEATURES.DELETE_TABLE_LAYOUT,
     ],
   },
+  CARD: {
+    features: [FEATURES.CONTEXT_MENU],
+    contextMenuFeatures: [
+      FEATURES.ADD_TABLE_LAYOUT,
+      FEATURES.DELETE_TABLE_LAYOUT,
+    ],
+  },
 };
 
 export const CELL_CONFIGS_EDIT = {
@@ -80,6 +89,16 @@ export const CELL_CONFIGS_EDIT = {
     ],
   },
   DUAL_FIELD: {
+    features: [FEATURES.CONTEXT_MENU, FEATURES.DRAG_N_DROP],
+    contextMenuFeatures: [
+      FEATURES.ADD_TABLE_LAYOUT,
+      FEATURES.DELETE_TABLE_LAYOUT,
+      FEATURES.CONVERT_TYPE,
+      FEATURES.CHANGE_THEME,
+      FEATURES.CLEAR_CELL,
+    ],
+  },
+  CARD: {
     features: [FEATURES.CONTEXT_MENU, FEATURES.DRAG_N_DROP],
     contextMenuFeatures: [
       FEATURES.ADD_TABLE_LAYOUT,

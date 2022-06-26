@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import { cellsFamily } from "Atoms";
 
-import { Idle, Basic, Blank, DualField } from "Components/CellComponents";
+import { Idle, Basic, Blank, DualField, Card } from "Components/CellComponents";
 import { CELL_TYPES } from "Utils/constants";
 
 const MAP_TYPE_COMPONENT = {
@@ -12,6 +12,7 @@ const MAP_TYPE_COMPONENT = {
   [CELL_TYPES.BASIC]: Basic,
   [CELL_TYPES.BLANK]: Blank,
   [CELL_TYPES.DUAL_FIELD]: DualField,
+  [CELL_TYPES.CARD]: Card,
 };
 
 const CellWrapper = ({ cellId }) => {
