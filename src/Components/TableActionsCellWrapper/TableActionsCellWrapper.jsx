@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
 
-import { useBoard, useCell, useTable } from "Hooks";
+import { useCell } from "Hooks";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
-import { CellContextMenu } from "Components";
 import { CellDragDropWrapper } from "./Components";
 
 const TableActionsCellWrapper = (props) => {
@@ -19,13 +17,11 @@ const TableActionsCellWrapper = (props) => {
 
   return (
     <div className="group relative w-full h-full">
-      <CellContextMenu cellId={cellId}>
-        {isDragDropAllowed ? (
-          <CellDragDropWrapper cellId={cellId}>{children}</CellDragDropWrapper>
-        ) : (
-          children
-        )}
-      </CellContextMenu>
+      {isDragDropAllowed ? (
+        <CellDragDropWrapper cellId={cellId}>{children}</CellDragDropWrapper>
+      ) : (
+        children
+      )}
     </div>
   );
 };

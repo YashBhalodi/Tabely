@@ -1,4 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
+import PropTypes from "prop-types";
 import { usePopper } from "react-popper";
 
 import {
@@ -12,18 +19,17 @@ import { useCell } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
 
-const ContextMenu = (props) => {
-  const { cellId, children } = props;
+const ContextMenu = (props, ref) => {
+  const { cellId, containerRef } = props;
   const [visible, setVisibility] = useState(false);
   const { cellData } = useCell({ id: cellId });
   const { colorTheme = "STONE", type } = cellData;
   const theme = COLOR_THEME[colorTheme];
 
-  const referenceRef = useRef(null);
   const popperRef = useRef(null);
 
   const { styles, attributes } = usePopper(
-    referenceRef.current,
+    containerRef.current,
     popperRef.current,
     {
       placement: "bottom",
@@ -46,6 +52,12 @@ const ContextMenu = (props) => {
     }
   );
 
+  useImperativeHandle(ref, () => {
+    return {
+      launchContextMenu: handleDropdownClick,
+    };
+  });
+
   useEffect(() => {
     document.addEventListener("mousedown", handleDocumentClick);
     return () => {
@@ -55,7 +67,7 @@ const ContextMenu = (props) => {
 
   function handleDocumentClick(event) {
     if (
-      referenceRef.current?.contains(event.target) ||
+      containerRef.current?.contains(event.target) ||
       popperRef.current?.contains(event.target)
     ) {
       return;
@@ -92,12 +104,6 @@ const ContextMenu = (props) => {
 
   return (
     <React.Fragment>
-      {children}
-      <div
-        ref={referenceRef}
-        className={`absolute inset-0 rounded-lg m-1`}
-        onContextMenu={handleDropdownClick}
-      />
       <div
         ref={popperRef}
         style={{ ...styles.popper, zIndex: 10 }}
@@ -142,4 +148,12 @@ const ContextMenu = (props) => {
   );
 };
 
-export default ContextMenu;
+const ContextMenuForwardedRef = forwardRef(ContextMenu);
+
+ContextMenuForwardedRef.propTypes = {
+  cellId: PropTypes.string.isRequired,
+  ref: PropTypes.shape({ current: PropTypes.object }), // this doesn't actually work, but keeping it here for documenting purpose
+  containerRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+};
+
+export default ContextMenuForwardedRef;
