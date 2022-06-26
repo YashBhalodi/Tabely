@@ -19,6 +19,14 @@ import { useCell } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
 
+const Separator = ({ theme }) => {
+  return (
+    <div
+      className={`self-stretch w-1 my-1 rounded-full border-2 ${theme.lightBgBorderColor} opacity-20`}
+    />
+  );
+};
+
 const ContextMenu = (props, ref) => {
   const { cellId, containerRef } = props;
   const [visible, setVisibility] = useState(false);
@@ -109,32 +117,26 @@ const ContextMenu = (props, ref) => {
           style={styles.offset}
           className={`${
             visible ? "visible" : "hidden"
-          } h-fit w-fit border rounded-md shadow-sm px-3 py-2 flex flex-row space-x-4 justify-center items-center ${
+          } h-fit w-fit border rounded-md shadow-sm px-3 py-2 flex flex-row space-x-4 justify-center items-center cursor-auto ${
             theme.lightBgColor
           } ${theme.lightBgBorderColor}`}
         >
           {showAddTableLayoutActions ? (
             <>
               <TableLayoutActions cellId={cellId} />
-              <hr
-                className={`h-16 border ${theme.lightBgBorderColor} opacity-50`}
-              />
+              <Separator theme={theme} />
             </>
           ) : null}
           {showDeleteTableLayoutActions ? (
             <>
               <TableLayoutDestructiveActions cellId={cellId} />
-              <hr
-                className={`h-4 border ${theme.lightBgBorderColor} opacity-50`}
-              />
+              <Separator theme={theme} />
             </>
           ) : null}
           {showThemePicker ? (
             <>
               <ThemePicker cellId={cellId} />
-              <hr
-                className={`h-4 border ${theme.lightBgBorderColor} opacity-50`}
-              />
+              <Separator theme={theme} />
             </>
           ) : null}
           <ClearCell cellId={cellId} />
