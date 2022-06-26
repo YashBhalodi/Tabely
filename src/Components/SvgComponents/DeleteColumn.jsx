@@ -5,7 +5,7 @@ const DeleteColumn = (props) => {
     width = 24,
     height = 24,
     containerClass = "",
-    pathClass = "fill-black",
+    pathClass = "stroke-red-700",
   } = props;
   return (
     <svg
@@ -40,6 +40,7 @@ const DeleteColumn = (props) => {
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
+        className={pathClass}
       />
     </svg>
   );

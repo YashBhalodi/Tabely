@@ -44,7 +44,7 @@ const TableLayoutDestructiveActions = (props) => {
           onClick={() => handleClick("delete_row")}
           className={buttonCommonClass}
         >
-          <DeleteRow pathClass="fill-red-700" />
+          <DeleteRow />
         </div>
       </abbr>
     </div>
