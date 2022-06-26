@@ -13,6 +13,7 @@ import {
   ClearCell,
   TableLayoutActions,
   TableLayoutDestructiveActions,
+  CardSwitcher,
 } from "./Components";
 
 import { useCell } from "Hooks";
@@ -98,6 +99,9 @@ const ContextMenu = (props, ref) => {
   const showDeleteTableLayoutActions = CELL_CONFIGS[
     type
   ].contextMenuFeatures.includes(FEATURES.DELETE_TABLE_LAYOUT);
+  const showTypeSwitcher = CELL_CONFIGS[type].contextMenuFeatures.includes(
+    FEATURES.CONVERT_TYPE
+  );
   const showThemePicker = CELL_CONFIGS[type].contextMenuFeatures.includes(
     FEATURES.CHANGE_THEME
   );
@@ -130,6 +134,13 @@ const ContextMenu = (props, ref) => {
           {showDeleteTableLayoutActions ? (
             <>
               <TableLayoutDestructiveActions cellId={cellId} />
+              <Separator theme={theme} />
+            </>
+          ) : null}
+
+          {showTypeSwitcher ? (
+            <>
+              <CardSwitcher cellId={cellId} />
               <Separator theme={theme} />
             </>
           ) : null}
