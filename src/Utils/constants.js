@@ -121,6 +121,7 @@ export const initialCellState = () => {
     colorTheme: "STONE",
     title: "",
     subtitle: "",
+    content: "",
   };
 };
 
