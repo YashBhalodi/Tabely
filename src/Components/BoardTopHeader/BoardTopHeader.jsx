@@ -74,7 +74,12 @@ const TableActionDropDown = () => {
       }}
       TriggerComponent={() => {
         return (
-          <Button variant={"primary-plain"} shape={"square"} size={"md"}>
+          <Button
+            variant={"primary-plain"}
+            shape={"square"}
+            size={"md"}
+            tooltip={"More board actions"}
+          >
             <FiMoreVertical />
           </Button>
         );
@@ -91,7 +96,12 @@ const BoardTopHeader = () => {
     <div className=" bg-blue-50 flex flex-row items-center justify-between w-full h-20 p-4 space-x-4 border-b-2 border-blue-100">
       <div className="flex flex-row items-center justify-start flex-1 space-x-4">
         <NavLink to={"/boards"}>
-          <Button variant={"primary-plain"} shape={"square"} size={"md"}>
+          <Button
+            variant={"primary-plain"}
+            shape={"square"}
+            size={"md"}
+            tooltip={"Back to all boards"}
+          >
             <FiChevronLeft />
           </Button>
         </NavLink>
@@ -102,6 +112,7 @@ const BoardTopHeader = () => {
         shape={"square"}
         size={"md"}
         onClick={toggleBoardMode}
+        tooltip={isEditMode ? "Switch to View Mode" : "Switch to Edit Mode"}
       >
         {isEditMode ? <FiLock /> : <FiEdit3 />}
       </Button>

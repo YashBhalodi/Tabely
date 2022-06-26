@@ -33,15 +33,17 @@ const SIZE_CLASS_MAP = {
 };
 
 const Button = (props) => {
-  const { children, onClick, size, variant, shape } = props;
+  const { children, onClick, size, variant, shape, tooltip } = props;
 
   return (
-    <div
-      className={`${VARIANT_CLASS_MAP[variant]} ${SIZE_CLASS_MAP[shape][size]}`}
-      onClick={onClick}
-    >
-      {children}
-    </div>
+    <abbr title={tooltip ? tooltip : null}>
+      <div
+        className={`${VARIANT_CLASS_MAP[variant]} ${SIZE_CLASS_MAP[shape][size]}`}
+        onClick={onClick}
+      >
+        {children}
+      </div>
+    </abbr>
   );
 };
 
@@ -64,6 +66,7 @@ Button.propTypes = {
     "destructive-plain",
     "destructive-text",
   ]),
+  tooltip: PropTypes.string,
 };
 Button.defaultProps = {
   children: null,
