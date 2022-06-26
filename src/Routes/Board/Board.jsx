@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useTable, useBoard } from "Hooks";
 import { Button } from "Components";
-import { BoardTable, BoardTopHeader } from "./Components";
+import { BoardTable, TopHeader } from "./Components";
 
 import _ from "lodash";
 
@@ -25,7 +25,7 @@ const Board = () => {
   return (
     <>
       <div className="flex flex-col items-start justify-center flex-1 overflow-hidden">
-        <BoardTopHeader />
+        <TopHeader />
         <div className="bg-slate-100 scrollbar flex w-full h-full overflow-auto">
           {!isTableEmpty ? <BoardTable /> : <BoardTableEmptyState />}
         </div>
