@@ -19,6 +19,15 @@ import {
 import { useCell } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
+import _ from "lodash";
+
+const FEATURE_COMPONENT_MAP = {
+  [FEATURES.ADD_TABLE_LAYOUT]: TableLayoutActions,
+  [FEATURES.DELETE_TABLE_LAYOUT]: TableLayoutDestructiveActions,
+  [FEATURES.CONVERT_TYPE]: CardSwitcher,
+  [FEATURES.CHANGE_THEME]: ThemePicker,
+  [FEATURES.CLEAR_CELL]: ClearCell,
+};
 
 const Separator = ({ theme }) => {
   return (
@@ -93,21 +102,7 @@ const ContextMenu = (props, ref) => {
   const isContextMenuAllowed = CELL_CONFIGS[type].features.includes(
     FEATURES.CONTEXT_MENU
   );
-  const showAddTableLayoutActions = CELL_CONFIGS[
-    type
-  ].contextMenuFeatures.includes(FEATURES.ADD_TABLE_LAYOUT);
-  const showDeleteTableLayoutActions = CELL_CONFIGS[
-    type
-  ].contextMenuFeatures.includes(FEATURES.DELETE_TABLE_LAYOUT);
-  const showTypeSwitcher = CELL_CONFIGS[type].contextMenuFeatures.includes(
-    FEATURES.CONVERT_TYPE
-  );
-  const showThemePicker = CELL_CONFIGS[type].contextMenuFeatures.includes(
-    FEATURES.CHANGE_THEME
-  );
-  const showClearCell = CELL_CONFIGS[type].contextMenuFeatures.includes(
-    FEATURES.CLEAR_CELL
-  );
+  const cellTypeContextMenuFeatures = CELL_CONFIGS[type].contextMenuFeatures;
 
   if (!isContextMenuAllowed) {
     return null;
@@ -128,32 +123,17 @@ const ContextMenu = (props, ref) => {
             theme.lightBgColor
           } ${theme.lightBgBorderColor}`}
         >
-          {showAddTableLayoutActions ? (
-            <>
-              <TableLayoutActions cellId={cellId} />
-              <Separator theme={theme} />
-            </>
-          ) : null}
-          {showDeleteTableLayoutActions ? (
-            <>
-              <TableLayoutDestructiveActions cellId={cellId} />
-              <Separator theme={theme} />
-            </>
-          ) : null}
+          {_.map(cellTypeContextMenuFeatures, (feature, index) => {
+            const Component = FEATURE_COMPONENT_MAP[feature];
+            const isLast = index === cellTypeContextMenuFeatures.length - 1;
 
-          {showTypeSwitcher ? (
-            <>
-              <CardSwitcher cellId={cellId} />
-              <Separator theme={theme} />
-            </>
-          ) : null}
-          {showThemePicker ? (
-            <>
-              <ThemePicker cellId={cellId} />
-              <Separator theme={theme} />
-            </>
-          ) : null}
-          {showClearCell ? <ClearCell cellId={cellId} /> : null}
+            return (
+              <>
+                <Component cellId={cellId} />
+                {!isLast ? <Separator theme={theme} /> : null}
+              </>
+            );
+          })}
         </div>
       </div>
     </React.Fragment>
