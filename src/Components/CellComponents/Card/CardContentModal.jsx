@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
 import { UIModal } from "Components";
 import { useCell, useBoard } from "Hooks";
 
 import { COLOR_THEME } from "Utils/colors";
-import { FiMinimize2 } from "react-icons/fi";
+import { FiEdit3, FiEye, FiMinimize2 } from "react-icons/fi";
 
 const CardContentModal = (props) => {
   const { isModalOpen, closeModal, cellId } = props;
   const { cellData, updateFields } = useCell({ id: cellId });
   const { boardId } = useParams();
   const { isEditMode } = useBoard({ id: boardId });
+  const [showContentPreview, setShowContentPreview] = useState(false);
   const { title = "", content = "", colorTheme } = cellData;
 
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
@@ -20,7 +22,7 @@ const CardContentModal = (props) => {
   };
 
   const commonTitleClass = `${themeItem.darkTextColor} text-xl font-medium break-words`;
-  const commonContentClass = `flex flex-1 p-4 rounded-md text-lg font-medium whitespace-pre-wrap leading-8 ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-scroll`;
+  const commonContentClass = `flex-1 p-4 rounded-md text-lg font-medium whitespace-pre-wrap leading-8 ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-scroll`;
   const commonTextAreaClass = ` ${themeItem.lightBgColor} ${themeItem.scrollbar} rounded-md px-2 py-1 mix-blend-multiply outline-none resize-none border-0`;
 
   return (
@@ -37,7 +39,11 @@ const CardContentModal = (props) => {
         {!isEditMode ? (
           <>
             <div className={`${commonTitleClass}`}>{title}</div>
-            <div className={`${commonContentClass}`}>{content}</div>
+            <div
+              className={`flex-1 p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
+            >
+              <ReactMarkdown>{content}</ReactMarkdown>
+            </div>
           </>
         ) : (
           <>
@@ -50,14 +56,37 @@ const CardContentModal = (props) => {
               className={`${commonTitleClass} ${commonTextAreaClass} px-2 py-1`}
               placeholder=". . .  ✍🏻"
             />
-            <textarea
-              type={"text"}
-              name="content"
-              value={content}
-              onChange={handleTextChange}
-              className={`${commonContentClass} ${commonTextAreaClass}`}
-              placeholder=". . .  ✍🏻"
-            />
+
+            <div className="relative flex flex-col flex-1 overflow-auto">
+              {showContentPreview ? (
+                <div
+                  className={`h-auto p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
+                >
+                  <ReactMarkdown>{content}</ReactMarkdown>
+                </div>
+              ) : (
+                <textarea
+                  type={"text"}
+                  name="content"
+                  value={content}
+                  onChange={handleTextChange}
+                  className={`${commonContentClass} ${commonTextAreaClass}`}
+                  placeholder=". . .  ✍🏻"
+                />
+              )}
+              <div
+                className={`absolute top-3 right-3 p-2 ${themeItem.lightBgColor} rounded-md border ${themeItem.lightBgBorderColor} hover:p-3 transition-all`}
+                onClick={() => {
+                  setShowContentPreview(!showContentPreview);
+                }}
+              >
+                {showContentPreview ? (
+                  <FiEdit3 className={`${themeItem.darkTextColor} text-lg`} />
+                ) : (
+                  <FiEye className={`${themeItem.darkTextColor} text-lg`} />
+                )}
+              </div>
+            </div>
           </>
         )}
       </div>
