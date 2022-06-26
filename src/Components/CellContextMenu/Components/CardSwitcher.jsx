@@ -24,9 +24,11 @@ const CardSwitcher = ({ cellId }) => {
       }}
       TriggerComponent={() => {
         return (
-          <div className={buttonCommonClass}>
-            <TbExchange className={`text-lg`} />
-          </div>
+          <abbr title="Switch type">
+            <div className={buttonCommonClass}>
+              <TbExchange className={`text-lg`} />
+            </div>
+          </abbr>
         );
       }}
     />

@@ -18,7 +18,40 @@ export const CELL_TYPES = {
   DUAL_FIELD: "DUAL_FIELD",
 };
 
-export const CELL_CONFIGS = {
+export const BOARD_MODE = {
+  VIEW: "VIEW",
+  EDIT: "EDIT",
+};
+
+export const CELL_CONFIGS_VIEW = {
+  IDLE: {
+    features: [FEATURES.CONTEXT_MENU],
+    contextMenuFeatures: [
+      FEATURES.ADD_TABLE_LAYOUT,
+      FEATURES.DELETE_TABLE_LAYOUT,
+    ],
+  },
+  BLANK: {
+    features: [],
+    contextMenuFeatures: [],
+  },
+  BASIC: {
+    features: [FEATURES.CONTEXT_MENU],
+    contextMenuFeatures: [
+      FEATURES.ADD_TABLE_LAYOUT,
+      FEATURES.DELETE_TABLE_LAYOUT,
+    ],
+  },
+  DUAL_FIELD: {
+    features: [FEATURES.CONTEXT_MENU],
+    contextMenuFeatures: [
+      FEATURES.ADD_TABLE_LAYOUT,
+      FEATURES.DELETE_TABLE_LAYOUT,
+    ],
+  },
+};
+
+export const CELL_CONFIGS_EDIT = {
   IDLE: {
     features: [FEATURES.CONTEXT_MENU, FEATURES.DRAG_N_DROP],
     contextMenuFeatures: [
@@ -53,9 +86,9 @@ export const CELL_CONFIGS = {
   },
 };
 
-export const BOARD_MODE = {
-  VIEW: "VIEW",
-  EDIT: "EDIT",
+export const CELL_CONFIGS = {
+  [BOARD_MODE.VIEW]: CELL_CONFIGS_VIEW,
+  [BOARD_MODE.EDIT]: CELL_CONFIGS_EDIT,
 };
 
 export const initialCellState = () => {

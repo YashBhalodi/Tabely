@@ -6,6 +6,7 @@ import React, {
   useImperativeHandle,
 } from "react";
 import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
 import { usePopper } from "react-popper";
 
 import {
@@ -16,7 +17,7 @@ import {
   CardSwitcher,
 } from "./Components";
 
-import { useCell } from "Hooks";
+import { useCell, useBoard } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
 import _ from "lodash";
@@ -40,6 +41,8 @@ const Separator = ({ theme }) => {
 const ContextMenu = (props, ref) => {
   const { cellId, containerRef } = props;
   const [visible, setVisibility] = useState(false);
+  const { boardId } = useParams();
+  const { mode } = useBoard({ id: boardId });
   const { cellData } = useCell({ id: cellId });
   const { colorTheme = "STONE", type } = cellData;
   const theme = COLOR_THEME[colorTheme];
@@ -99,11 +102,12 @@ const ContextMenu = (props, ref) => {
     setVisibility(!visible);
   }
 
-  const isContextMenuAllowed = CELL_CONFIGS[type].features.includes(
+  const isContextMenuAllowed = CELL_CONFIGS[mode][type].features.includes(
     FEATURES.CONTEXT_MENU
   );
-  const cellTypeContextMenuFeatures = CELL_CONFIGS[type].contextMenuFeatures;
-
+  const cellTypeContextMenuFeatures =
+    CELL_CONFIGS[mode][type].contextMenuFeatures;
+  console.log({ mode, cellTypeContextMenuFeatures, isContextMenuAllowed });
   if (!isContextMenuAllowed) {
     return null;
   }
