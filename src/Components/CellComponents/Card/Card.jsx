@@ -69,7 +69,7 @@ const Card = ({ cellId }) => {
             className="bottom-2 right-2 bg-slate-400/30 hover:p-1.5 absolute p-1 transition-all rounded-md cursor-pointer"
             onClick={launchModal}
           >
-            <FiMaximize2 className="text-slate-200/40 text-lg" />
+            <FiMaximize2 className="text-slate-200 text-lg" />
           </div>
         </div>
         <CellContextMenu
