@@ -8,8 +8,8 @@ const UIModal = (props) => {
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
       shouldFocusAfterRender={false}
-      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-50`}
-      overlayClassName={`fixed inset-0 bg-black/40`}
+      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+      overlayClassName={`fixed inset-0 bg-black/70`}
       {...props}
     >
       {children}

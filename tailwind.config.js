@@ -22,9 +22,11 @@ module.exports = {
       },
       width: {
         cell: "14rem",
+        modal: "80vw",
       },
       height: {
         cell: "6rem",
+        modal: "80vh",
       },
     },
   },
