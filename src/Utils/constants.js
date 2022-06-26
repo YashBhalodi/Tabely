@@ -18,6 +18,11 @@ export const CELL_TYPES = {
   DUAL_FIELD: "DUAL_FIELD",
 };
 
+export const USER_CELL_TYPES = [
+  { key: CELL_TYPES.BASIC, label: "Basic" },
+  { key: CELL_TYPES.DUAL_FIELD, label: "Dual Field" },
+];
+
 export const BOARD_MODE = {
   VIEW: "VIEW",
   EDIT: "EDIT",

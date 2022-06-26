@@ -42,7 +42,12 @@ const DropDownContainer = (props) => {
 };
 
 const DropDownMenu = (props) => {
-  const { menu = [], onItemClick = () => {}, TriggerComponent } = props;
+  const {
+    menu = [],
+    onItemClick = () => {},
+    TriggerComponent,
+    PopoverComponent,
+  } = props;
   const [visible, setVisibility] = useState(false);
 
   const referenceRef = useRef(null);
@@ -104,18 +109,24 @@ const DropDownMenu = (props) => {
         style={{ ...styles.popper, zIndex: 100 }}
         {...attributes.popper}
       >
-        <DropDownContainer visible={visible}>
-          {_.map(menu, (menuItem) => (
-            <DropDownItem
-              key={menuItem.key}
-              menu={menuItem}
-              onClick={() => {
-                onItemClick(menuItem.key);
-                setVisibility(false);
-              }}
-            />
-          ))}
-        </DropDownContainer>
+        {PopoverComponent ? (
+          <div className={visible ? "visible" : "invisible"}>
+            <PopoverComponent />
+          </div>
+        ) : (
+          <DropDownContainer visible={visible}>
+            {_.map(menu, (menuItem) => (
+              <DropDownItem
+                key={menuItem.key}
+                menu={menuItem}
+                onClick={() => {
+                  onItemClick(menuItem.key);
+                  setVisibility(false);
+                }}
+              />
+            ))}
+          </DropDownContainer>
+        )}
       </div>
     </React.Fragment>
   );

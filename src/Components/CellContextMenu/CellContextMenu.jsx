@@ -14,7 +14,7 @@ import {
   ClearCell,
   TableLayoutActions,
   TableLayoutDestructiveActions,
-  CardSwitcher,
+  TypeSwitcher,
 } from "./Components";
 
 import { useCell, useBoard } from "Hooks";
@@ -25,7 +25,7 @@ import _ from "lodash";
 const FEATURE_COMPONENT_MAP = {
   [FEATURES.ADD_TABLE_LAYOUT]: TableLayoutActions,
   [FEATURES.DELETE_TABLE_LAYOUT]: TableLayoutDestructiveActions,
-  [FEATURES.CONVERT_TYPE]: CardSwitcher,
+  [FEATURES.CONVERT_TYPE]: TypeSwitcher,
   [FEATURES.CHANGE_THEME]: ThemePicker,
   [FEATURES.CLEAR_CELL]: ClearCell,
 };
