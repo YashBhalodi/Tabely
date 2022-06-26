@@ -20,7 +20,7 @@ const DualField = ({ cellId }) => {
 
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
 
-  const containerClass = `group flex flex-col justify-center items-start space-y-1 rounded-md py-4  min-h-cell max-w-cell max-h-cell ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
+  const containerClass = `group flex flex-col justify-center items-start space-y-1 rounded-md py-4 h-full min-h-cell max-w-cell max-h-cell ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
   const commonFieldClass = `scrollbar-hide flex-1 overflow-x-auto whitespace-nowrap w-cell px-4`;
   const commonInputClass = `${themeItem.bgColor} ${themeItem.placeholder} group-hover:bg-transparent outline-none`;
   const commonTitleClass = `text-xl font-medium`;
