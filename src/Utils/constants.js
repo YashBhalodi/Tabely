@@ -8,6 +8,7 @@ export const FEATURES = {
   DRAG_N_DROP: "DRAG_N_DROP",
   CHANGE_THEME: "CHANGE_THEME",
   CONTEXT_MENU: "CONTEXT_MENU",
+  CLEAR_CELL: "CLEAR_CELL",
 };
 
 export const CELL_TYPES = {
@@ -23,7 +24,7 @@ export const CELL_CONFIGS = {
     contextMenuFeatures: [
       FEATURES.ADD_TABLE_LAYOUT,
       FEATURES.DELETE_TABLE_LAYOUT,
-      FEATURES.CHANGE_THEME,
+      FEATURES.CLEAR_CELL,
     ],
   },
   BLANK: {
@@ -35,8 +36,9 @@ export const CELL_CONFIGS = {
     contextMenuFeatures: [
       FEATURES.ADD_TABLE_LAYOUT,
       FEATURES.DELETE_TABLE_LAYOUT,
-      FEATURES.CHANGE_THEME,
       FEATURES.CONVERT_TYPE,
+      FEATURES.CHANGE_THEME,
+      FEATURES.CLEAR_CELL,
     ],
   },
   DUAL_FIELD: {
@@ -44,8 +46,9 @@ export const CELL_CONFIGS = {
     contextMenuFeatures: [
       FEATURES.ADD_TABLE_LAYOUT,
       FEATURES.DELETE_TABLE_LAYOUT,
-      FEATURES.CHANGE_THEME,
       FEATURES.CONVERT_TYPE,
+      FEATURES.CHANGE_THEME,
+      FEATURES.CLEAR_CELL,
     ],
   },
 };

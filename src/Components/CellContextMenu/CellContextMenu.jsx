@@ -105,6 +105,9 @@ const ContextMenu = (props, ref) => {
   const showThemePicker = CELL_CONFIGS[type].contextMenuFeatures.includes(
     FEATURES.CHANGE_THEME
   );
+  const showClearCell = CELL_CONFIGS[type].contextMenuFeatures.includes(
+    FEATURES.CLEAR_CELL
+  );
 
   if (!isContextMenuAllowed) {
     return null;
@@ -150,7 +153,7 @@ const ContextMenu = (props, ref) => {
               <Separator theme={theme} />
             </>
           ) : null}
-          <ClearCell cellId={cellId} />
+          {showClearCell ? <ClearCell cellId={cellId} /> : null}
         </div>
       </div>
     </React.Fragment>
