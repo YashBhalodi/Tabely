@@ -14,10 +14,10 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",
+    "react-modal": "^3.15.1",
     "react-popper": "^2.3.0",
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.3",
-    "recoil-nexus": "^0.3.15",
     "short-unique-id": "^4.4.4",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
