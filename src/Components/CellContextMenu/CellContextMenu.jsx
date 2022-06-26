@@ -95,11 +95,7 @@ const ContextMenu = (props, ref) => {
   );
 
   if (!isContextMenuAllowed) {
-    return (
-      <div className="w-full h-full" onContextMenu={(e) => e.preventDefault()}>
-        {children}
-      </div>
-    );
+    return null;
   }
 
   return (
