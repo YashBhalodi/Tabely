@@ -107,7 +107,7 @@ const ContextMenu = (props, ref) => {
   );
   const cellTypeContextMenuFeatures =
     CELL_CONFIGS[mode][type].contextMenuFeatures;
-  console.log({ mode, cellTypeContextMenuFeatures, isContextMenuAllowed });
+
   if (!isContextMenuAllowed) {
     return null;
   }
