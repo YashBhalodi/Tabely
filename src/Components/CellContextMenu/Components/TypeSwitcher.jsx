@@ -39,7 +39,7 @@ const TypeSwitcher = ({ cellId }) => {
               const isActive = key === type;
               const className = isActive
                 ? `${theme.bgColor} ${theme.textColor} cursor-auto`
-                : `${theme.lightBgColor} ${theme.hoverBgColor}`;
+                : `${theme.lightBgColor} ${theme.hoverBgColor} ${theme.darkTextColor}`;
               return (
                 <div
                   key={key}
