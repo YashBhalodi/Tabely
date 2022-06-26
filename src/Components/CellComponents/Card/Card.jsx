@@ -66,7 +66,7 @@ const Card = ({ cellId }) => {
             </div>
           )}
           <div
-            className={`bottom-2 right-2 ${themeItem.bgColor} mix-blend-multiply hover:p-1.5 absolute p-1 transition-all rounded-md cursor-pointer`}
+            className={`bottom-2 right-2 ${themeItem.bgColor} mix-blend-hard-light hover:p-1.5 absolute p-1 transition-all rounded-md cursor-pointer`}
             onClick={launchModal}
           >
             <FiMaximize2 className={`${themeItem.textColor} text-lg`} />
