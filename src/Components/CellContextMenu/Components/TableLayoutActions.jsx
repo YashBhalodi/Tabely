@@ -39,8 +39,8 @@ const TableLayoutActions = (props) => {
   const buttonCommonClass = `hover:bg-slate-100 h-fit w-fit p-1 transition-colors border rounded-md cursor-pointer`;
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2">
+      <div className="flex flex-col justify-center gap-2">
         <abbr title="Add column left">
           <div
             onClick={() => handleClick("add_left")}
@@ -49,16 +49,8 @@ const TableLayoutActions = (props) => {
             <AddColumnLeft />
           </div>
         </abbr>
-        <abbr title="Add column right">
-          <div
-            onClick={() => handleClick("add_right")}
-            className={buttonCommonClass}
-          >
-            <AddColumnRight />
-          </div>
-        </abbr>
       </div>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-col gap-2">
         <abbr title="Add row above">
           <div
             onClick={() => handleClick("add_top")}
@@ -73,6 +65,16 @@ const TableLayoutActions = (props) => {
             className={buttonCommonClass}
           >
             <AddRowBelow />
+          </div>
+        </abbr>
+      </div>
+      <div className="flex flex-col justify-center gap-2">
+        <abbr title="Add column right">
+          <div
+            onClick={() => handleClick("add_right")}
+            className={buttonCommonClass}
+          >
+            <AddColumnRight />
           </div>
         </abbr>
       </div>
