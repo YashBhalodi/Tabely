@@ -88,7 +88,7 @@ const TableActionDropDown = () => {
   );
 };
 
-const BoardTopHeader = () => {
+const TopHeader = () => {
   const { boardId } = useParams();
   const { isEditMode, toggleBoardMode } = useBoard({ id: boardId });
 
@@ -120,4 +120,4 @@ const BoardTopHeader = () => {
     </div>
   );
 };
-export default BoardTopHeader;
+export default TopHeader;

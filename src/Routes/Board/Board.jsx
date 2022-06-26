@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useTable, useBoard } from "Hooks";
-import { BoardTopHeader, BoardTable, Button } from "Components";
+import { Button } from "Components";
+import { BoardTable, BoardTopHeader } from "./Components";
 
 import _ from "lodash";
 
