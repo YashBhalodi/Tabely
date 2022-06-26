@@ -19,29 +19,25 @@ const CardContentModal = (props) => {
     updateFields({ [e.target.name]: e.target.value });
   };
 
+  const commonTitleClass = `${themeItem.darkTextColor} text-xl font-medium break-words`;
+  const commonContentClass = `flex flex-1 p-4 rounded-md text-lg font-medium whitespace-pre-wrap leading-8 ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-scroll`;
+  const commonTextAreaClass = ` ${themeItem.lightBgColor} ${themeItem.scrollbar} rounded-md px-2 py-1 mix-blend-multiply outline-none resize-none border-0`;
+
   return (
     <UIModal isOpen={isModalOpen} onRequestClose={closeModal}>
       <div
         className={`relative w-modal h-modal py-8 px-6 border-4 shadow-md rounded-lg flex flex-col space-y-4 ${themeItem.lightBgBorderColor} ${themeItem.lightBgColor}`}
       >
         <div
-          className={`absolute top-1 right-1 ${themeItem.lightBgColor} mix-blend-multiply hover:p-1.5 p-1 transition-all rounded-md cursor-pointer`}
+          className={`absolute top-1 right-1 hover:p-1.5 p-1 transition-all rounded-md cursor-pointer ${themeItem.lightBgColor} mix-blend-multiply`}
           onClick={closeModal}
         >
           <FiMinimize2 className={`${themeItem.darkTextColor} text-xl`} />
         </div>
         {!isEditMode ? (
           <>
-            <div
-              className={`${themeItem.darkTextColor} text-xl font-medium break-words`}
-            >
-              {title}
-            </div>
-            <div
-              className={`flex flex-1 p-4 rounded-md text-lg font-medium whitespace-pre-wrap leading-8 ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-scroll ${themeItem.scrollbar}`}
-            >
-              {content}
-            </div>
+            <div className={`${commonTitleClass}`}>{title}</div>
+            <div className={`${commonContentClass}`}>{content}</div>
           </>
         ) : (
           <>
@@ -51,16 +47,15 @@ const CardContentModal = (props) => {
               value={title}
               rows={2}
               onChange={handleTextChange}
-              className={`${themeItem.scrollbar} ${themeItem.darkTextColor} text-xl font-medium break-words bg-transparent outline-none resize-none border-0`}
+              className={`${commonTitleClass} ${commonTextAreaClass} px-2 py-1`}
               placeholder=". . .  ✍🏻"
-              autoFocus
             />
             <textarea
               type={"text"}
               name="content"
               value={content}
               onChange={handleTextChange}
-              className={`${themeItem.scrollbar} ${themeItem.darkTextColor} ${themeItem.lightBgColor} flex flex-1 text-lg font-medium leading-8 break-words bg-transparent outline-none resize-none border-0`}
+              className={`${commonContentClass} ${commonTextAreaClass}`}
               placeholder=". . .  ✍🏻"
             />
           </>

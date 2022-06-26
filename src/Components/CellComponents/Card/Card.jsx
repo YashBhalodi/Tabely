@@ -33,12 +33,18 @@ const Card = ({ cellId }) => {
     setIsModalOpen(true);
   };
 
+  const handleKeyboardEvent = (e) => {
+    if (e.code === "Enter") {
+      launchModal();
+    }
+  };
+
   const handleTitleChange = (e) => {
     updateFields({ title: e.target.value });
   };
 
   const containerClass = `relative flex w-full h-full rounded-md font-medium text-lg min-h-cell min-w-cell max-w-cell max-h-cell ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
-  const inputClass = `${themeItem.bgColor} w-full h-full rounded-md min-h-cell hover:bg-transparent p-4 ${themeItem.scrollbar}`;
+  const titleInputClass = `${themeItem.bgColor} w-full h-full rounded-md min-h-cell hover:bg-transparent p-4 ${themeItem.scrollbar}`;
 
   return (
     <td>
@@ -47,6 +53,8 @@ const Card = ({ cellId }) => {
           ref={containerRef}
           onContextMenu={handleContextMenu}
           className={containerClass}
+          tabIndex={0}
+          onKeyDownCapture={handleKeyboardEvent}
         >
           {isEditMode ? (
             <textarea
@@ -54,7 +62,7 @@ const Card = ({ cellId }) => {
               name="title"
               value={title}
               onChange={handleTitleChange}
-              className={`${inputClass} ${themeItem.placeholder} outline-none resize-none border-0`}
+              className={`${titleInputClass} ${themeItem.placeholder} outline-none resize-none border-0`}
               placeholder=". . .  ✍🏻"
               autoFocus
             />
