@@ -18,17 +18,17 @@ const DeleteRow = (props) => {
     >
       <path
         stroke="#000"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
         d="M2.75 19.424h18.5"
         className={pathClass}
       />
       <g
-        clip-path="url(#a)"
+        clipPath="url(#a)"
         stroke="#000"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         className={pathClass}
       >
         <path d="M6.75 7.326h10.5m-1.167 0v8.167a1.167 1.167 0 0 1-1.166 1.167H9.083a1.167 1.167 0 0 1-1.166-1.167V7.326m1.75 0V6.16a1.167 1.167 0 0 1 1.166-1.167h2.334a1.167 1.167 0 0 1 1.166 1.167v1.166" />

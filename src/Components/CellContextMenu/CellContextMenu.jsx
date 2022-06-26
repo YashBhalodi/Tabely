@@ -132,10 +132,13 @@ const ContextMenu = (props, ref) => {
             const isLast = index === cellTypeContextMenuFeatures.length - 1;
 
             return (
-              <>
+              <div
+                key={feature}
+                className={`h-fit w-fit flex flex-row justify-center items-center space-x-4`}
+              >
                 <Component cellId={cellId} />
                 {!isLast ? <Separator theme={theme} /> : null}
-              </>
+              </div>
             );
           })}
         </div>
@@ -148,7 +151,7 @@ const ContextMenuForwardedRef = forwardRef(ContextMenu);
 
 ContextMenuForwardedRef.propTypes = {
   cellId: PropTypes.string.isRequired,
-  ref: PropTypes.shape({ current: PropTypes.object }), // this doesn't actually work, but keeping it here for documenting purpose
+  // ref: PropTypes.shape({ current: PropTypes.object }), // this doesn't actually work, but keeping it here for documenting purpose
   containerRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
 };
 
