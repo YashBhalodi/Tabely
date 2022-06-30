@@ -44,7 +44,7 @@ const CardContentModal = (props) => {
             <div
               className={`flex-1 p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
             >
-              <ReactMarkdown>{content}</ReactMarkdown>
+              <ReactMarkdown linkTarget={"_blank"}>{content}</ReactMarkdown>
             </div>
           </>
         ) : (
@@ -64,7 +64,7 @@ const CardContentModal = (props) => {
                 <div
                   className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
                 >
-                  <ReactMarkdown>{content}</ReactMarkdown>
+                  <ReactMarkdown linkTarget={"_blank"}>{content}</ReactMarkdown>
                 </div>
               ) : (
                 <textarea
