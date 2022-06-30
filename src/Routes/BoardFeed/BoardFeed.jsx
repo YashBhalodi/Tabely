@@ -66,7 +66,7 @@ const BoardFeed = () => {
             <>
               <SectionSeparator />
               <section className={sectionContainerClass}>
-                <h1 className={sectionTitleClass}>Continue Working</h1>
+                <h1 className={sectionTitleClass}>Continue working</h1>
                 <div className="pb-8 space-y-4">
                   {boardsData.map((board) => (
                     <FeedItem board={board} key={board.id} />

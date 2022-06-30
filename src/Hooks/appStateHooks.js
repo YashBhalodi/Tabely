@@ -29,10 +29,27 @@ export const useApp = () => {
     updateBoardFamilyState({ action: "delete", boardIds: [id] });
   };
 
+  const reorderBoards = ({ movingBoardId, targetBoardId }) => {
+    if (movingBoardId === targetBoardId) {
+      return;
+    }
+    setAppState((prevState) => {
+      const newState = _.cloneDeep(prevState);
+      const newBoardIds = newState.boardIds;
+
+      const targetBoardIndex = newBoardIds.indexOf(targetBoardId);
+      const movingBoardIndex = newBoardIds.indexOf(movingBoardId);
+      newBoardIds.splice(movingBoardIndex, 1);
+      newBoardIds.splice(targetBoardIndex, 0, movingBoardId);
+      return newState;
+    });
+  };
+
   return {
     boardIds,
     boardsData,
     createBoard,
     deleteBoard,
+    reorderBoards,
   };
 };
