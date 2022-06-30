@@ -47,9 +47,8 @@ export const boardFamily = atomFamily({
 
 export const boardFamilySelector = selectorFamily({
   key: "boardFamilySelector",
-  get:
-    (params) =>
-    ({ get }) => {
+  get: (params) => {
+    return ({ get }) => {
       const { boardIds = [] } = params;
       return boardIds.map((boardId) => {
         return {
@@ -57,10 +56,10 @@ export const boardFamilySelector = selectorFamily({
           ...get(boardFamily(boardId)),
         };
       });
-    },
-  set:
-    (params) =>
-    ({ get, reset }, newValue) => {
+    };
+  },
+  set: (params) => {
+    return ({ get, reset }, newValue) => {
       const { action = "delete", boardIds = [] } = newValue;
       if (action === "delete") {
         // clear tables for each board
@@ -76,7 +75,8 @@ export const boardFamilySelector = selectorFamily({
           reset(boardFamily(id));
         });
       }
-    },
+    };
+  },
 });
 
 export const appStateAtom = atom({

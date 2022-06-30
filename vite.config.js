@@ -1,12 +1,19 @@
+/* eslint-disable no-undef */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-// eslint-disable-next-line no-undef
+import eslint from "@rollup/plugin-eslint";
 const path = require("path");
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      ...eslint(),
+      enforce: "pre",
+      apply: "build",
+    },
+  ],
   resolve: {
-    // eslint-disable-next-line no-undef
     alias: [
       { find: "@", replacement: path.resolve(__dirname, "/src") },
       {

@@ -18,7 +18,6 @@ module.exports = {
     "no-unused-vars": 1,
     indent: ["error", 2],
     "linebreak-style": 1,
-    quotes: ["error", "double"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": [
       "warn",
