@@ -1,3 +1,4 @@
 import TopHeader from "./TopHeader";
+import FeedItem from "./FeedItem";
 
-export { TopHeader };
+export { TopHeader, FeedItem };
