@@ -6,7 +6,9 @@ import _ from "lodash";
 export const useApp = () => {
   const [appState, setAppState] = useRecoilState(appStateAtom);
   const { boardIds } = appState;
-  const boardsData = useRecoilValue(boardFamilySelector({ boardIds }));
+  const [boardsData, updateBoardFamilyState] = useRecoilState(
+    boardFamilySelector({ boardIds })
+  );
 
   const createBoard = () => {
     const newBoardId = getUniqId();
@@ -17,13 +19,20 @@ export const useApp = () => {
     return newBoardId;
   };
 
-  // TODO delete a board
-
-  // TODO get list of board items
+  const deleteBoard = ({ id }) => {
+    setAppState((prevState) => {
+      const newAppState = _.cloneDeep(prevState);
+      const deletedBoardIndex = newAppState.boardIds.indexOf(id);
+      newAppState.boardIds.splice(deletedBoardIndex, 1);
+      return newAppState;
+    });
+    updateBoardFamilyState({ action: "delete", boardIds: [id] });
+  };
 
   return {
     boardIds,
     boardsData,
     createBoard,
+    deleteBoard,
   };
 };

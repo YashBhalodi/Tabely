@@ -58,6 +58,25 @@ export const boardFamilySelector = selectorFamily({
         };
       });
     },
+  set:
+    (params) =>
+    ({ get, reset }, newValue) => {
+      const { action = "delete", boardIds = [] } = newValue;
+      if (action === "delete") {
+        // clear tables for each board
+        boardIds.forEach((id) => {
+          const { tableId } = get(boardFamily(id));
+          const tableData = get(tableFamily(tableId));
+          const allCells = _.flatten(tableData);
+
+          allCells.forEach((cellId) => {
+            reset(cellsFamily(cellId));
+          });
+          reset(tableFamily(tableId));
+          reset(boardFamily(id));
+        });
+      }
+    },
 });
 
 export const appStateAtom = atom({
