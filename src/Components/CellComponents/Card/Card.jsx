@@ -7,7 +7,7 @@ import { useCell, useBoard } from "Hooks";
 import { FiMaximize2 } from "react-icons/fi";
 
 import { COLOR_THEME } from "Utils/colors";
-import CardContentModal from "./CardContentModal";
+import CardModal from "./CardModal";
 
 const Card = ({ cellId }) => {
   const { cellData, updateFields } = useCell({ id: cellId });
@@ -85,7 +85,7 @@ const Card = ({ cellId }) => {
           ref={contextMenuRef}
           containerRef={containerRef}
         />
-        <CardContentModal
+        <CardModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
           cellId={cellId}
