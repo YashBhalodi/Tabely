@@ -12,8 +12,10 @@ const CardContentModal = (props) => {
   const { cellData, updateFields } = useCell({ id: cellId });
   const { boardId } = useParams();
   const { isEditMode } = useBoard({ id: boardId });
-  const [showContentPreview, setShowContentPreview] = useState(false);
   const { title = "", content = "", colorTheme } = cellData;
+  const [showContentPreview, setShowContentPreview] = useState(
+    Boolean(content)
+  );
 
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
 
@@ -60,7 +62,7 @@ const CardContentModal = (props) => {
             <div className="relative flex flex-col flex-1 overflow-auto">
               {showContentPreview ? (
                 <div
-                  className={`h-auto p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
+                  className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
                 >
                   <ReactMarkdown>{content}</ReactMarkdown>
                 </div>
