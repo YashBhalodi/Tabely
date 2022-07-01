@@ -31,7 +31,7 @@ const CardContentModal = (props) => {
 
         <TitleComponent cellId={cellId} />
 
-        <div className="flex flex-row items-center justify-start h-full space-x-4">
+        <div className="flex flex-row items-stretch justify-start h-full space-x-4 overflow-hidden">
           <ContentComponent cellId={cellId} />
           <SidePanelComponent cellId={cellId} />
         </div>

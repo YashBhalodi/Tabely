@@ -16,7 +16,7 @@ const SidePanelComponent = (props) => {
 
   return (
     <div
-      className={`w-72 h-full rounded-md flex flex-col ${themeItem.lightBgColor} mix-blend-multiply`}
+      className={`flex-[2_2_0%] h-full rounded-md flex flex-col ${themeItem.lightBgColor} mix-blend-multiply`}
     ></div>
   );
 };

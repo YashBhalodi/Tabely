@@ -18,9 +18,9 @@ const TitleComponent = (props) => {
     updateFields({ [e.target.name]: e.target.value });
   };
 
-  const commonTitleClass = `${themeItem.darkTextColor} text-xl font-medium break-words`;
+  const commonTitleClass = `${themeItem.darkTextColor} text-xl font-medium break-words min-h-[2rem]`;
 
-  const commonTextAreaClass = ` ${themeItem.lightBgColor} ${themeItem.scrollbar} rounded-md px-2 py-1 mix-blend-multiply outline-none resize-none border-0`;
+  const commonTextAreaClass = ` ${themeItem.lightBgColor} ${themeItem.scrollbar} rounded-md px-2 py-1 mix-blend-multiply outline-none resize-none border-0 min-h-[4rem]`;
 
   return !isEditMode ? (
     <div className={`${commonTitleClass}`}>{title}</div>

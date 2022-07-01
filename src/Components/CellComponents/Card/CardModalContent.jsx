@@ -34,10 +34,10 @@ const ContentComponent = (props) => {
   const previewIconClass = `${themeItem.darkTextColor} text-lg`;
 
   return (
-    <div className="flex-1 h-full">
+    <div className="flex-[6_6_0%]">
       {!isEditMode ? (
         <div
-          className={`flex-1 h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
+          className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
         >
           <ContentMarkDown content={content} />
         </div>
