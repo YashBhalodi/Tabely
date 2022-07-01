@@ -32,12 +32,13 @@ const ContentComponent = (props) => {
   const commonContentClass = `flex-1 p-4 rounded-md text-lg font-medium whitespace-pre-wrap leading-8 ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-scroll`;
   const commonTextAreaClass = ` ${themeItem.lightBgColor} ${themeItem.scrollbar} rounded-md px-2 py-1 mix-blend-multiply outline-none resize-none border-0`;
   const previewIconClass = `${themeItem.darkTextColor} text-lg`;
+  const commonProseClass = `prose prose-lg prose-code:bg-slate-200 prose-code:p-1 prose-code:rounded prose-pre:bg-slate-100 prose-pre:border prose-pre:text-stone-900`;
 
   return (
     <div className="flex-[6_6_0%]">
       {!isEditMode ? (
         <div
-          className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
+          className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none ${commonProseClass}`}
         >
           <ContentMarkDown content={content} />
         </div>
@@ -45,7 +46,7 @@ const ContentComponent = (props) => {
         <div className="relative flex flex-col h-full overflow-auto">
           {showContentPreview ? (
             <div
-              className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none prose prose-lg`}
+              className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none ${commonProseClass}`}
             >
               <ContentMarkDown content={content} />
             </div>
