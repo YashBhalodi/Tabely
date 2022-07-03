@@ -10,16 +10,6 @@ import { FiCalendar, FiXCircle } from "react-icons/fi";
 import { COLOR_THEME } from "Utils/colors";
 import "react-datepicker/dist/react-datepicker.css";
 
-const DAY_INDEX = {
-  0: "Sun",
-  1: "Mon",
-  2: "Tue",
-  3: "Wed",
-  4: "Thu",
-  5: "Fri",
-  6: "Sat",
-};
-
 const CellDatePicker = (props) => {
   const { cellId } = props;
   const { cellData, updateFields } = useCell({ id: cellId });
@@ -34,9 +24,9 @@ const CellDatePicker = (props) => {
 
   const DateInput = forwardRef(({ value, onClick }, ref) => {
     const getDateString = () => {
-      if (value) {
-        const d = new Date(value);
-        return value + " " + DAY_INDEX[d?.getDay()];
+      if (date) {
+        const d = new Date(date);
+        return d.toDateString();
       }
       return "";
     };
@@ -52,7 +42,7 @@ const CellDatePicker = (props) => {
         onClick={onClick}
         ref={ref}
       >
-        <FiCalendar className={`text-xl`} />
+        <FiCalendar className={`text-xl opacity-30`} />
         <div className="flex-1">{getDateString()}</div>
         {getDateString() && isEditMode ? (
           <FiXCircle className={`text-xl opacity-30`} onClick={clearDate} />
