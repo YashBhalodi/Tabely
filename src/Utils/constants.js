@@ -122,6 +122,7 @@ export const initialCellState = () => {
     title: "",
     subtitle: "",
     content: "",
+    date: null,
   };
 };
 
