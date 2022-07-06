@@ -116,32 +116,34 @@ const ContextMenu = (props, ref) => {
     <React.Fragment>
       <div
         ref={popperRef}
-        style={{ ...styles.popper, zIndex: 10 }}
+        style={{ ...styles.popper, zIndex: 110 }}
         {...attributes.popper}
       >
-        <div
-          style={styles.offset}
-          className={`${
-            visible ? "visible" : "hidden"
-          } h-fit w-fit border rounded-md shadow-sm px-3 py-2 flex flex-row space-x-4 justify-center items-center cursor-auto ${
-            theme.lightBgColor
-          } ${theme.lightBgBorderColor}`}
-        >
-          {_.map(cellTypeContextMenuFeatures, (feature, index) => {
-            const Component = FEATURE_COMPONENT_MAP[feature];
-            const isLast = index === cellTypeContextMenuFeatures.length - 1;
+        {visible ? (
+          <div
+            style={styles.offset}
+            className={`${
+              visible ? "visible" : "invisible"
+            } h-fit w-fit border rounded-md shadow-sm px-3 py-2 flex flex-row space-x-4 justify-center items-center cursor-auto ${
+              theme.lightBgColor
+            } ${theme.lightBgBorderColor}`}
+          >
+            {_.map(cellTypeContextMenuFeatures, (feature, index) => {
+              const Component = FEATURE_COMPONENT_MAP[feature];
+              const isLast = index === cellTypeContextMenuFeatures.length - 1;
 
-            return (
-              <div
-                key={feature}
-                className={`h-fit w-fit flex flex-row justify-center items-center space-x-4`}
-              >
-                <Component cellId={cellId} />
-                {!isLast ? <Separator theme={theme} /> : null}
-              </div>
-            );
-          })}
-        </div>
+              return (
+                <div
+                  key={feature}
+                  className={`h-fit w-fit flex flex-row justify-center items-center space-x-4`}
+                >
+                  <Component cellId={cellId} />
+                  {!isLast ? <Separator theme={theme} /> : null}
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
     </React.Fragment>
   );

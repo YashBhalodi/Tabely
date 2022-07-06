@@ -110,9 +110,7 @@ const DropDownMenu = (props) => {
         {...attributes.popper}
       >
         {PopoverComponent ? (
-          <div className={visible ? "visible" : "invisible"}>
-            <PopoverComponent />
-          </div>
+          <div>{visible ? <PopoverComponent /> : null}</div>
         ) : (
           <DropDownContainer visible={visible}>
             {_.map(menu, (menuItem) => (
