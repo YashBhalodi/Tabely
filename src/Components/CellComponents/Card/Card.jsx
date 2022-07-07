@@ -47,7 +47,7 @@ const Card = ({ cellId }) => {
   const titleInputClass = `${themeItem.bgColor} w-full h-full rounded-md min-h-cell hover:bg-transparent p-4 ${themeItem.scrollbar}`;
 
   return (
-    <td>
+    <td key={cellId} id={cellId}>
       <TableActionsCellWrapper cellId={cellId}>
         <div
           ref={containerRef}

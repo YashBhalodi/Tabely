@@ -31,7 +31,7 @@ const Basic = ({ cellId }) => {
   };
 
   return (
-    <td>
+    <td key={cellId} id={cellId}>
       <TableActionsCellWrapper cellId={cellId}>
         <div
           className="w-full h-full"

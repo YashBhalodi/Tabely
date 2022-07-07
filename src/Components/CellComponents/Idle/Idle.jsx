@@ -31,7 +31,7 @@ const Idle = ({ cellId }) => {
   };
 
   return (
-    <td key={cellId}>
+    <td key={cellId} id={cellId}>
       <TableActionsCellWrapper cellId={cellId}>
         <div
           tabIndex={isEditMode ? 0 : -1}
