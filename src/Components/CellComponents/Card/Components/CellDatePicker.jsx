@@ -27,7 +27,13 @@ const DateInput = forwardRef(
 
     return (
       <div
-        className={`flex flex-row space-x-2 items-center w-full min-h-[42px] rounded-md ${themeItem.lightBgColor} ${themeItem.lightBgBorderColor} ${themeItem.darkTextColor} border mix-blend-multiply p-2 cursor-pointer hover:mix-blend-normal transition`}
+        className={`flex flex-row space-x-2 items-center w-full min-h-[42px] rounded-md ${
+          themeItem.lightBgColor
+        } ${themeItem.lightBgBorderColor} ${
+          themeItem.darkTextColor
+        } border mix-blend-multiply p-2 hover:mix-blend-normal transition ${
+          isEditMode ? "cursor-pointer" : "cursor-not-allowed"
+        }`}
         onClick={onClick}
         ref={ref}
       >
