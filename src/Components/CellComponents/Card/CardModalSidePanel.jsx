@@ -15,7 +15,7 @@ const SidePanelComponent = (props) => {
 
   return (
     <div
-      className={`flex-[2_2_0%] h-full rounded-md flex flex-col space-y-4 ${themeItem.lightBgColor} mix-blend-multiply p-2`}
+      className={`flex-[2_2_0%] h-full rounded-md flex flex-col space-y-4 ${themeItem.lightBgColor} mix-blend-multiply p-4`}
     >
       <CellDatePicker cellId={cellId} />
       <CellThemeSwitcher cellId={cellId} />
