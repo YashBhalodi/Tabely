@@ -1,3 +1,4 @@
 import CellDatePicker from "./CellDatePicker";
+import CellThemeSwitcher from "./CellThemeSwitcher";
 
-export { CellDatePicker };
+export { CellDatePicker, CellThemeSwitcher };
