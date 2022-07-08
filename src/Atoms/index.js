@@ -4,6 +4,7 @@ import {
   initialTableState,
   initialBoardState,
   initialAppState,
+  initialTagState,
 } from "Utils/constants";
 import { recoilPersist } from "Atoms/customAtomEffects";
 import _ from "lodash";
@@ -42,6 +43,12 @@ export const tableFamily = atomFamily({
 export const boardFamily = atomFamily({
   key: "boards",
   default: initialBoardState,
+  effects: [persistAtom],
+});
+
+export const tagsFamily = atomFamily({
+  key: "tags",
+  default: initialTagState,
   effects: [persistAtom],
 });
 

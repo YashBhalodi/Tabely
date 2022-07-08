@@ -33,7 +33,9 @@ const CellThemeSwitcher = (props) => {
         }`}
       >
         <div className={`h-5 w-5 rounded-full ${themeItem.bgColor}`}></div>
-        <div className={`${themeItem.darkTextColor}`}>{themeDisplayName}</div>
+        <div className={`${themeItem.darkTextColor} opacity-70`}>
+          {themeDisplayName}
+        </div>
       </div>
     );
   };

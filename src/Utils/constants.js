@@ -123,6 +123,7 @@ export const initialCellState = () => {
     subtitle: "",
     content: "",
     date: null,
+    tagIds: [],
   };
 };
 
@@ -138,6 +139,15 @@ export const initialBoardState = () => {
     title: "",
     mode: BOARD_MODE.EDIT,
     tableId: getUniqId(),
+    tagIds: [],
+  };
+};
+
+export const initialTagState = () => {
+  return {
+    title: "",
+    colorTheme: "STONE",
+    cellIds: [],
   };
 };
 
