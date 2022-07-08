@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useTag } from "Hooks";
 import { DropDownMenu, ColorPalette } from "Components";
 import { COLOR_THEME } from "Utils/colors";
 import { FiX, FiCheck, FiEdit2 } from "react-icons/fi";
 
+import _ from "lodash";
+
 const Tag = (props) => {
   const { id, onRemoveClick } = props;
   const { data, updateTag } = useTag({ id });
-  const [isEditMode, setIsEditMode] = useState(false);
   const { title, colorTheme } = data;
+  const [isEditMode, setIsEditMode] = useState(false);
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
+
+  useEffect(() => {
+    if (_.isEmpty(title)) {
+      setIsEditMode(true);
+    }
+  }, [title]);
 
   const updateTitle = (e) => {
     updateTag({ title: e.target.value });
@@ -27,11 +35,17 @@ const Tag = (props) => {
     onRemoveClick?.({ id });
   };
 
+  const onInputKeyDown = (e) => {
+    if (e.key === "Enter") {
+      toggleMode();
+    }
+  };
+
   const iconClass = `text-xs ${themeItem.darkTextColor} cursor-pointer`;
 
   return (
     <div
-      className={`group flex flex-row gap-1 items-center text-sm rounded-full w-max py-1 px-2 border shadow-sm mix-blend-multiply hover:mix-blend-normal ${themeItem.lightBgColor} ${themeItem.lightBgBorderColor} transition`}
+      className={`relative group flex flex-row gap-1 items-center text-sm rounded-full w-max py-1 px-2 border shadow-sm mix-blend-multiply hover:mix-blend-normal ${themeItem.lightBgColor} ${themeItem.lightBgBorderColor} transition`}
     >
       {isEditMode ? (
         <DropDownMenu
@@ -70,27 +84,26 @@ const Tag = (props) => {
           className={`bg-transparent outline-none ${themeItem.placeholder}`}
           autoFocus
           placeholder=". . . ✍🏻"
+          onKeyDown={onInputKeyDown}
         />
       )}
 
       {isEditMode ? (
         <FiCheck onClick={toggleMode} className={iconClass} />
-      ) : null}
-
-      <div className="group-hover:scale-100 w-fit flex flex-row items-center transition origin-left scale-x-0">
-        {!isEditMode ? (
+      ) : (
+        <div
+          className={`group-hover:scale-100 invisible group-hover:visible w-fit absolute inset-y-0 right-0 flex flex-row gap-1 px-1 items-center transition origin-right scale-x-0 ${themeItem.lightBgColor} rounded-r-full`}
+        >
           <FiEdit2
             className={`${iconClass} invisible group-hover:visible w-0 group-hover:w-fit`}
             onClick={toggleMode}
           />
-        ) : null}
-        {!isEditMode ? (
           <FiX
             className={`${iconClass} invisible group-hover:visible w-0 group-hover:w-fit`}
             onClick={handleRemove}
           />
-        ) : null}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
