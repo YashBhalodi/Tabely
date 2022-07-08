@@ -1,13 +1,14 @@
 import { useRecoilState } from "recoil";
-import { boardFamily } from "Atoms";
+import { boardFamily, tagsFamilySelector } from "Atoms";
 
 import { BOARD_MODE } from "Utils/constants";
 import { getUniqId } from "Utils/helpers";
 
 export const useBoard = ({ id }) => {
   const [boardData, setBoardData] = useRecoilState(boardFamily(id));
-
   const { title, mode, tableId, tagIds } = boardData;
+  const [tagsData, __] = useRecoilState(tagsFamilySelector({ ids: tagIds }));
+
   const isEditMode = boardData.mode === BOARD_MODE.EDIT;
 
   const toggleBoardMode = () => {
@@ -40,6 +41,7 @@ export const useBoard = ({ id }) => {
     title,
     tagIds,
     tableId,
+    tagsData,
     isEditMode,
     toggleBoardMode,
     updateBoard,

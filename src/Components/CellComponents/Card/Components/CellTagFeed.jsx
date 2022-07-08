@@ -1,25 +1,20 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useBoard, useCell } from "Hooks";
+
+import { useCell } from "Hooks";
 
 import { Tag } from "Components";
 import { COLOR_THEME } from "Utils/colors";
 
+import CellTagsPicker from "./CellTagsPicker";
+
 const CellTagFeed = (props) => {
   const { cellId } = props;
-  const { boardId } = useParams();
   const { cellData, toggleTagId } = useCell({ id: cellId });
-  const { createTag } = useBoard({ id: boardId });
   const { tagIds, colorTheme } = cellData;
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
 
   const handleRemoveTag = ({ id }) => {
     toggleTagId({ id });
-  };
-
-  const handleCreateTag = () => {
-    const newTagId = createTag();
-    toggleTagId({ id: newTagId });
   };
 
   return (
@@ -30,7 +25,7 @@ const CellTagFeed = (props) => {
         >
           Tags
         </div>
-        <div onClick={handleCreateTag}>Create</div>
+        <CellTagsPicker cellId={cellId} />
       </div>
       <div className="min-h-[24px] w-full rounded-md flex-wrap flex flex-row gap-2">
         {tagIds.map((id) => (

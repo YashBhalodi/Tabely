@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { appStateAtom, boardFamilySelector } from "Atoms";
 import { getUniqId } from "Utils/helpers";
 import _ from "lodash";

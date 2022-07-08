@@ -8,14 +8,14 @@ import { FiX, FiCheck, FiEdit2 } from "react-icons/fi";
 import _ from "lodash";
 
 const Tag = (props) => {
-  const { id, onRemoveClick } = props;
+  const { id, onRemoveClick, readOnly = false, onClick } = props;
   const { data, updateTag } = useTag({ id });
   const { title, colorTheme } = data;
   const [isEditMode, setIsEditMode] = useState(false);
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
 
   useEffect(() => {
-    if (_.isEmpty(title)) {
+    if (_.isEmpty(title) && !readOnly) {
       setIsEditMode(true);
     }
   }, [title]);
@@ -28,7 +28,11 @@ const Tag = (props) => {
   };
 
   const toggleMode = () => {
-    setIsEditMode((prev) => !prev);
+    !readOnly && setIsEditMode((prev) => !prev);
+  };
+
+  const handleTagClick = () => {
+    onClick?.({ id });
   };
 
   const handleRemove = () => {
@@ -47,7 +51,7 @@ const Tag = (props) => {
     <div
       className={`relative group flex flex-row gap-1 items-center text-sm rounded-full w-max py-1 px-2 border shadow-sm mix-blend-multiply hover:mix-blend-normal ${themeItem.lightBgColor} ${themeItem.lightBgBorderColor} transition`}
     >
-      {isEditMode ? (
+      {readOnly && isEditMode ? (
         <DropDownMenu
           TriggerComponent={() => {
             return (
@@ -72,7 +76,12 @@ const Tag = (props) => {
 
       {!isEditMode ? (
         <abbr title={title}>
-          <div className={`max-w-[120px] truncate`} onClick={toggleMode}>
+          <div
+            className={`max-w-[120px] truncate ${
+              readOnly ? "cursor-pointer" : ""
+            }`}
+            onClick={handleTagClick}
+          >
             {title}
           </div>
         </abbr>
@@ -88,7 +97,7 @@ const Tag = (props) => {
         />
       )}
 
-      {isEditMode ? (
+      {readOnly ? null : isEditMode ? (
         <FiCheck onClick={toggleMode} className={iconClass} />
       ) : (
         <div

@@ -1,10 +1,12 @@
 import { useRecoilState } from "recoil";
-import { cellsFamily } from "Atoms";
+import { cellsFamily, tagsFamilySelector } from "Atoms";
 import { CELL_TYPES, initialCellState } from "Utils/constants";
 import _ from "lodash";
 
 export const useCell = ({ id }) => {
   const [cellData, setCell] = useRecoilState(cellsFamily(id));
+  const { tagIds } = cellData;
+  const [tagsData, __] = useRecoilState(tagsFamilySelector({ ids: tagIds }));
 
   const updateFields = (updatedFields) => {
     setCell((prevState) => ({
@@ -41,5 +43,5 @@ export const useCell = ({ id }) => {
     });
   };
 
-  return { cellData, updateFields, clearCell, toggleTagId };
+  return { cellData, tagsData, updateFields, clearCell, toggleTagId };
 };

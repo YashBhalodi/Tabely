@@ -52,6 +52,21 @@ export const tagsFamily = atomFamily({
   effects: [persistAtom],
 });
 
+export const tagsFamilySelector = selectorFamily({
+  key: "tagsFamilySelector",
+  get: (params) => {
+    return ({ get }) => {
+      const { ids = [] } = params;
+      return ids.map((tagId) => {
+        return {
+          id: tagId,
+          ...get(tagsFamily(tagId)),
+        };
+      });
+    };
+  },
+});
+
 export const boardFamilySelector = selectorFamily({
   key: "boardFamilySelector",
   get: (params) => {
