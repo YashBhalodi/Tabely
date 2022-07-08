@@ -6,6 +6,7 @@ import ColorPalette from "./ColorPalette";
 import CellWrapper from "./CellWrapper";
 import CellContextMenu from "./CellContextMenu";
 import TableActionsCellWrapper from "./TableActionsCellWrapper";
+import Tag from "./Tag";
 
 export {
   NavBar,
@@ -13,6 +14,7 @@ export {
   Button,
   UIModal,
   ColorPalette,
+  Tag,
   CellWrapper,
   CellContextMenu,
   TableActionsCellWrapper,

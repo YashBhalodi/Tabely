@@ -6,7 +6,7 @@ import {
   initialAppState,
   initialTagState,
 } from "Utils/constants";
-import { recoilPersist } from "Atoms/customAtomEffects";
+import { recoilPersist, syncCellTags } from "Atoms/customAtomEffects";
 import _ from "lodash";
 
 const { persistAtom } = recoilPersist({

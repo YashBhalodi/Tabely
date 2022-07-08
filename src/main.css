@@ -11,6 +11,10 @@
     @apply min-h-cell;
   }
 
+  abbr {
+    text-decoration: none;
+  }
+
   .prose > pre > code {
     @apply bg-transparent;
     @apply p-0;

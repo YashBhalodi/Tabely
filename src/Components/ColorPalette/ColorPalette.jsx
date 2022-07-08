@@ -5,18 +5,23 @@ import { COLOR_THEME } from "Utils/colors";
 
 import _ from "lodash";
 
+const SIZE_MAP = {
+  sm: "h-4 w-4",
+  md: "h-6 w-6",
+};
+
 const ThemeItem = (props) => {
-  const { id, isActive, onClick } = props;
+  const { id, isActive, onClick, size } = props;
   const { bgColor, outline, hoverOutline } = COLOR_THEME[id];
-  const className = `transition-all duration-75 ease-in-out w-6 h-6 rounded-full cursor-pointer ${bgColor} ${
-    isActive ? outline : ""
-  } ${hoverOutline}`;
+  const className = `transition-all duration-75 ease-in-out rounded-full cursor-pointer ${
+    SIZE_MAP[size]
+  } ${bgColor} ${isActive ? outline : ""} ${hoverOutline}`;
 
   return <div className={className} onClick={() => onClick(id)} />;
 };
 
 const ColorPalette = (props) => {
-  const { activeTheme = "RED", onClickTheme = () => {} } = props;
+  const { activeTheme = "RED", onClickTheme = () => {}, size = "md" } = props;
 
   const handleClick = (id) => {
     onClickTheme(id);
@@ -30,6 +35,7 @@ const ColorPalette = (props) => {
           id={key}
           onClick={handleClick}
           isActive={activeTheme === key}
+          size={size}
         />
       ))}
     </div>
@@ -39,6 +45,7 @@ const ColorPalette = (props) => {
 ColorPalette.propTypes = {
   activeTheme: PropTypes.string.isRequired,
   onClickTheme: PropTypes.func.isRequired,
+  size: PropTypes.oneOf(["sm", "md"]),
 };
 
 export default ColorPalette;
