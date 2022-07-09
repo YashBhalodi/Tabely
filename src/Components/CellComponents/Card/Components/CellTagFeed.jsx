@@ -33,7 +33,7 @@ const CellTagFeed = (props) => {
           themeItem={themeItem}
           omitTags={tagIds}
           onTagSelect={toggleTagId}
-          onOutsideClick={toggleTagPicker}
+          onClickOutside={toggleTagPicker}
         />
       )}
       <div className="min-h-[24px] w-full rounded-md flex-wrap flex flex-row gap-2">

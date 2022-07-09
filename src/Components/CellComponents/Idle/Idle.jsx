@@ -27,7 +27,7 @@ const Idle = ({ cellId }) => {
   };
 
   const handleContextClick = (event) => {
-    contextMenuRef?.current?.launchContextMenu(event);
+    contextMenuRef?.current?.toggleContextView(event);
   };
 
   return (

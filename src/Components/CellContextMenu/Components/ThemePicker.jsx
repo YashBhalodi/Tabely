@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { usePopper } from "react-popper";
 import PropTypes from "prop-types";
 
 import { ColorPalette } from "Components";
 
-import { useCell } from "Hooks";
+import { useCell, useClickOutside } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
 
 const ThemePicker = (props) => {
@@ -48,23 +48,10 @@ const ThemePicker = (props) => {
     }
   );
 
-  useEffect(() => {
-    // listen for clicks and close dropdown on bod
-    document.addEventListener("mousedown", handleDocumentClick);
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
-    };
-  }, []);
-
-  const handleDocumentClick = (event) => {
-    if (
-      referenceRef.current.contains(event.target) ||
-      popperRef.current.contains(event.target)
-    ) {
-      return;
-    }
-    setVisibility(false);
-  };
+  useClickOutside({
+    containerRef: [referenceRef, popperRef],
+    onClickOutside: () => setVisibility(false),
+  });
 
   const handleDropdownClick = (event) => {
     setVisibility(!visible);

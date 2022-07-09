@@ -23,13 +23,16 @@ const Card = ({ cellId }) => {
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
 
   const handleContextMenu = (event) => {
-    contextMenuRef?.current?.launchContextMenu(event);
+    contextMenuRef?.current?.toggleContextView(event);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
   const launchModal = () => {
+    if (contextMenuRef?.current?.isOpen) {
+      contextMenuRef?.current?.toggleContextView(event);
+    }
     setIsModalOpen(true);
   };
 

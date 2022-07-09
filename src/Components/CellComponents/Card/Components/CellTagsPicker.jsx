@@ -1,19 +1,18 @@
 import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { useBoard } from "Hooks";
+import { useBoard, useClickOutside } from "Hooks";
 
 import { Tag } from "Components";
 
 import { FiPlusSquare } from "react-icons/fi";
 import _ from "lodash";
-import { useEffect } from "react";
 
 const BoardTagList = (props) => {
   const {
     onTagSelect,
     themeItem,
     omitTags = [],
-    onOutsideClick = () => {},
+    onClickOutside = () => {},
   } = props;
   const { boardId } = useParams();
   const [searchText, setSearchText] = useState("");
@@ -68,18 +67,10 @@ const BoardTagList = (props) => {
     setSearchText("");
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleDocumentClick);
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
-    };
-  }, []);
-
-  const handleDocumentClick = (e) => {
-    if (!pickerContainerRef.current.contains(e.target)) {
-      onOutsideClick();
-    }
-  };
+  useClickOutside({
+    containerRef: pickerContainerRef,
+    onClickOutside: onClickOutside,
+  });
 
   return (
     <div

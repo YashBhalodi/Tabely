@@ -17,7 +17,7 @@ import {
   TypeSwitcher,
 } from "./Components";
 
-import { useCell, useBoard } from "Hooks";
+import { useCell, useBoard, useClickOutside } from "Hooks";
 import { COLOR_THEME } from "Utils/colors";
 import { CELL_CONFIGS, FEATURES } from "Utils/constants";
 import _ from "lodash";
@@ -75,30 +75,19 @@ const ContextMenu = (props, ref) => {
 
   useImperativeHandle(ref, () => {
     return {
-      launchContextMenu: handleDropdownClick,
+      toggleContextView: handleDropdownClick,
+      isOpen: visible,
     };
   });
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleDocumentClick);
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
-    };
-  }, []);
-
-  function handleDocumentClick(event) {
-    if (
-      containerRef.current?.contains(event.target) ||
-      popperRef.current?.contains(event.target)
-    ) {
-      return;
-    }
-    setVisibility(false);
-  }
+  useClickOutside({
+    containerRef: [containerRef, popperRef],
+    onClickOutside: () => setVisibility(false),
+  });
 
   function handleDropdownClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
+    event?.preventDefault?.();
+    event?.stopPropagation?.();
     setVisibility(!visible);
   }
 

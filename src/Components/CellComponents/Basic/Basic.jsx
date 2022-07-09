@@ -27,7 +27,7 @@ const Basic = ({ cellId }) => {
   const commonClass = `flex w-full h-full rounded-md font-medium text-lg p-4 min-h-cell min-w-cell ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
 
   const handleContextMenu = (event) => {
-    contextMenuRef?.current?.launchContextMenu(event);
+    contextMenuRef?.current?.toggleContextView(event);
   };
 
   return (

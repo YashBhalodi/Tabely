@@ -1,11 +1,11 @@
 import React, {
   useState,
-  useEffect,
   useRef,
   forwardRef,
   useImperativeHandle,
 } from "react";
 import { usePopper } from "react-popper";
+import { useClickOutside } from "Hooks";
 
 import _ from "lodash";
 
@@ -83,23 +83,10 @@ const DropDownMenu = (props, ref) => {
     }
   );
 
-  useEffect(() => {
-    // listen for clicks and close dropdown on body
-    document.addEventListener("mousedown", handleDocumentClick);
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
-    };
-  }, []);
-
-  function handleDocumentClick(event) {
-    if (
-      referenceRef.current.contains(event.target) ||
-      popperRef.current.contains(event.target)
-    ) {
-      return;
-    }
-    setVisibility(false);
-  }
+  useClickOutside({
+    containerRef: [referenceRef, popperRef],
+    onClickOutside: () => setVisibility(false),
+  });
 
   function handleDropdownClick(event) {
     setVisibility(!visible);

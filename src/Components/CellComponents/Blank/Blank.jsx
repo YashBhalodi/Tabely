@@ -27,7 +27,7 @@ const Blank = ({ cellId }) => {
   };
 
   const handleContextMenu = (event) => {
-    contextMenuRef?.current?.launchContextMenu(event);
+    contextMenuRef?.current?.toggleContextView(event);
   };
 
   return (
