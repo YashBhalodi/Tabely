@@ -62,11 +62,3 @@ export const recoilPersist = (config = {}) => {
   };
   return { persistAtom };
 };
-
-export const syncCellTags = ({ onSet, node, trigger, setSelf }) => {
-  onSet((newValue, prevState, isReset) => {
-    const { tagIds: newTags } = newValue;
-    const { tagIds: prevTags } = prevState;
-    // TODO : Sync the update of cell tags id in the tag atom
-  });
-};

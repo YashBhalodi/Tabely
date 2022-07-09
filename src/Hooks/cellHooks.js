@@ -1,10 +1,28 @@
 import { useRecoilState } from "recoil";
-import { cellsFamily, tagsFamilySelector } from "Atoms";
+import { getRecoil, setRecoil } from "recoil-nexus";
+import { cellsFamily, tagsFamilySelector, tagsFamily } from "Atoms";
 import { CELL_TYPES, initialCellState } from "Utils/constants";
 import _ from "lodash";
 
+const syncTagCell = ({ tagId, cellId }) => {
+  const prevTagState = getRecoil(tagsFamily(tagId));
+  const newTagCellIds = _.clone(_.get(prevTagState, "cellIds", []));
+  const cellIdIndex = _.indexOf(newTagCellIds, cellId);
+  if (cellIdIndex === -1) {
+    newTagCellIds.push(cellId);
+  } else {
+    newTagCellIds.splice(cellIdIndex, 1);
+  }
+  const newTagState = {
+    ...prevTagState,
+    cellIds: newTagCellIds,
+  };
+  setRecoil(tagsFamily(tagId), newTagState);
+};
+
 export const useCell = ({ id }) => {
   const [cellData, setCell] = useRecoilState(cellsFamily(id));
+  const cellId = id;
   const { tagIds } = cellData;
   const [tagsData, __] = useRecoilState(tagsFamilySelector({ ids: tagIds }));
 
@@ -40,6 +58,7 @@ export const useCell = ({ id }) => {
         };
       }
     });
+    syncTagCell({ tagId: id, cellId });
   };
 
   return { cellData, tagsData, updateFields, clearCell, toggleTagId };
