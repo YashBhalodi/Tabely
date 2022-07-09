@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { useTag } from "Hooks";
 import { DropDownMenu, ColorPalette } from "Components";
@@ -20,6 +20,7 @@ const Tag = (props) => {
   const { title, colorTheme } = data;
   const [isEditMode, setIsEditMode] = useState(false);
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
+  const dropdownRef = useRef();
 
   useEffect(() => {
     if (_.isEmpty(title) && !readOnly) {
@@ -38,6 +39,7 @@ const Tag = (props) => {
     updateTag({ title: e.target.value });
   };
   const updateTheme = (theme) => {
+    dropdownRef.current?.togglePopOverComponent?.();
     updateTag({ colorTheme: theme });
   };
 
@@ -67,6 +69,7 @@ const Tag = (props) => {
     >
       {!readOnly && isEditMode ? (
         <DropDownMenu
+          ref={dropdownRef}
           TriggerComponent={() => {
             return (
               <div

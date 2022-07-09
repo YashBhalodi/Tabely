@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import { usePopper } from "react-popper";
 
 import _ from "lodash";
@@ -41,7 +47,7 @@ const DropDownContainer = (props) => {
   );
 };
 
-const DropDownMenu = (props) => {
+const DropDownMenu = (props, ref) => {
   const {
     menu = [],
     onItemClick = () => {},
@@ -99,6 +105,12 @@ const DropDownMenu = (props) => {
     setVisibility(!visible);
   }
 
+  useImperativeHandle(ref, () => {
+    return {
+      togglePopOverComponent: handleDropdownClick,
+    };
+  });
+
   return (
     <React.Fragment>
       <div ref={referenceRef} onClick={handleDropdownClick}>
@@ -129,5 +141,6 @@ const DropDownMenu = (props) => {
     </React.Fragment>
   );
 };
-
-export default DropDownMenu;
+DropDownMenu.displayName = "DropDownMenu";
+const ForwardedRefDropDownMenu = forwardRef(DropDownMenu);
+export default ForwardedRefDropDownMenu;
