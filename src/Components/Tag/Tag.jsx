@@ -8,7 +8,14 @@ import { FiX, FiCheck, FiEdit2 } from "react-icons/fi";
 import _ from "lodash";
 
 const Tag = (props) => {
-  const { id, onRemoveClick, readOnly = false, onClick } = props;
+  const {
+    id,
+    onRemoveClick,
+    readOnly = false,
+    onClick,
+    initialData,
+    mode = "",
+  } = props;
   const { data, updateTag } = useTag({ id });
   const { title, colorTheme } = data;
   const [isEditMode, setIsEditMode] = useState(false);
@@ -19,6 +26,13 @@ const Tag = (props) => {
       setIsEditMode(true);
     }
   }, [title]);
+
+  useEffect(() => {
+    if (initialData && !_.isEmpty(initialData)) {
+      updateTag(initialData);
+      setIsEditMode(true);
+    }
+  }, []);
 
   const updateTitle = (e) => {
     updateTag({ title: e.target.value });
@@ -51,7 +65,7 @@ const Tag = (props) => {
     <div
       className={`relative group flex flex-row gap-1 items-center text-sm rounded-full w-max py-1 px-2 border shadow-sm mix-blend-multiply hover:mix-blend-normal ${themeItem.lightBgColor} ${themeItem.lightBgBorderColor} transition`}
     >
-      {readOnly && isEditMode ? (
+      {!readOnly && isEditMode ? (
         <DropDownMenu
           TriggerComponent={() => {
             return (
@@ -107,10 +121,12 @@ const Tag = (props) => {
             className={`${iconClass} invisible group-hover:visible w-0 group-hover:w-fit`}
             onClick={toggleMode}
           />
-          <FiX
-            className={`${iconClass} invisible group-hover:visible w-0 group-hover:w-fit`}
-            onClick={handleRemove}
-          />
+          {mode !== "CREATE" ? (
+            <FiX
+              className={`${iconClass} invisible group-hover:visible w-0 group-hover:w-fit`}
+              onClick={handleRemove}
+            />
+          ) : null}
         </div>
       )}
     </div>

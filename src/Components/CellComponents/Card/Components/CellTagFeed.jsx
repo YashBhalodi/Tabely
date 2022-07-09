@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useCell } from "Hooks";
 
 import { Tag } from "Components";
 import { COLOR_THEME } from "Utils/colors";
 
-import CellTagsPicker from "./CellTagsPicker";
+import { TagPickerTrigger, BoardTagList } from "./CellTagsPicker";
 
 const CellTagFeed = (props) => {
   const { cellId } = props;
   const { cellData, toggleTagId } = useCell({ id: cellId });
-  const { tagIds, colorTheme } = cellData;
+  const [showTagPicker, setShowTagPicker] = useState(false);
+  const { tagIds = [], colorTheme } = cellData;
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
 
-  const handleRemoveTag = ({ id }) => {
-    toggleTagId({ id });
+  const toggleTagPicker = () => {
+    setShowTagPicker((prev) => !prev);
   };
 
   return (
@@ -25,11 +26,19 @@ const CellTagFeed = (props) => {
         >
           Tags
         </div>
-        <CellTagsPicker cellId={cellId} />
+        <TagPickerTrigger themeItem={themeItem} onClick={toggleTagPicker} />
       </div>
+      {showTagPicker && (
+        <BoardTagList
+          themeItem={themeItem}
+          omitTags={tagIds}
+          onTagSelect={toggleTagId}
+          onOutsideClick={toggleTagPicker}
+        />
+      )}
       <div className="min-h-[24px] w-full rounded-md flex-wrap flex flex-row gap-2">
         {tagIds.map((id) => (
-          <Tag key={id} id={id} onRemoveClick={handleRemoveTag} />
+          <Tag key={id} id={id} onRemoveClick={toggleTagId} />
         ))}
       </div>
     </div>

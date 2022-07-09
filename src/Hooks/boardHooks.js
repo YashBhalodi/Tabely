@@ -30,7 +30,7 @@ export const useBoard = ({ id }) => {
     setBoardData((prevState) => {
       return {
         ...prevState,
-        tagIds: [...prevState.tagIds, tagId],
+        tagIds: [tagId, ...prevState.tagIds],
       };
     });
     return tagId;

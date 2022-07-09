@@ -28,10 +28,9 @@ export const useCell = ({ id }) => {
       const index = _.indexOf(cellTags, id);
       const newCellTags = _.clone(cellTags);
       if (index == -1) {
-        newCellTags.push(id);
         return {
           ...prevState,
-          tagIds: newCellTags,
+          tagIds: [id, ...cellTags],
         };
       } else {
         newCellTags.splice(index, 1);
