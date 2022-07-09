@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-import { useCell } from "Hooks";
+import { useParams } from "react-router-dom";
+import { useCell, useBoard } from "Hooks";
 
 import { Tag } from "Components";
 import { COLOR_THEME } from "Utils/colors";
@@ -10,6 +10,8 @@ import { TagPickerTrigger, BoardTagList } from "./CellTagsPicker";
 const CellTagFeed = (props) => {
   const { cellId } = props;
   const { cellData, toggleTagId } = useCell({ id: cellId });
+  const { boardId } = useParams();
+  const { isEditMode } = useBoard({ id: boardId });
   const [showTagPicker, setShowTagPicker] = useState(false);
   const { tagIds = [], colorTheme } = cellData;
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
@@ -38,7 +40,12 @@ const CellTagFeed = (props) => {
       )}
       <div className="min-h-[24px] w-full rounded-md flex-wrap flex flex-row gap-2">
         {tagIds.map((id) => (
-          <Tag key={id} id={id} onRemoveClick={toggleTagId} />
+          <Tag
+            key={id}
+            id={id}
+            onRemoveClick={toggleTagId}
+            readOnly={!isEditMode}
+          />
         ))}
       </div>
     </div>

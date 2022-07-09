@@ -65,7 +65,7 @@ const Tag = (props) => {
 
   return (
     <div
-      className={`relative group flex flex-row gap-1 items-center text-sm rounded-full w-max py-1 px-2 border shadow-sm mix-blend-multiply hover:mix-blend-normal ${themeItem.lightBgColor} ${themeItem.lightBgBorderColor} transition`}
+      className={`relative group flex flex-row gap-1 items-center text-sm rounded-full w-max py-1 px-2 border shadow-sm hover:scale-105 ${themeItem.lightBgColor} ${themeItem.lightBgBorderColor} transition`}
     >
       {!readOnly && isEditMode ? (
         <DropDownMenu
