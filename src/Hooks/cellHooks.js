@@ -24,7 +24,7 @@ export const useCell = ({ id }) => {
 
   const toggleTagId = ({ id }) => {
     setCell((prevState) => {
-      const cellTags = prevState.tagIds;
+      const cellTags = prevState.tagIds || [];
       const index = _.indexOf(cellTags, id);
       const newCellTags = _.clone(cellTags);
       if (index == -1) {

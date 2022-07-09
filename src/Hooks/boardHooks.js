@@ -6,7 +6,7 @@ import { getUniqId } from "Utils/helpers";
 
 export const useBoard = ({ id }) => {
   const [boardData, setBoardData] = useRecoilState(boardFamily(id));
-  const { title, mode, tableId, tagIds } = boardData;
+  const { title, mode, tableId, tagIds = [] } = boardData;
   const [tagsData, __] = useRecoilState(tagsFamilySelector({ ids: tagIds }));
 
   const isEditMode = boardData.mode === BOARD_MODE.EDIT;
@@ -30,7 +30,7 @@ export const useBoard = ({ id }) => {
     setBoardData((prevState) => {
       return {
         ...prevState,
-        tagIds: [tagId, ...prevState.tagIds],
+        tagIds: [tagId, ...(prevState.tagIds || [])],
       };
     });
     return tagId;
