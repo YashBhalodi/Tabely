@@ -118,7 +118,7 @@ const Tag = (props) => {
         <FiCheck onClick={toggleMode} className={iconClass} />
       ) : (
         <div
-          className={`group-hover:scale-100 invisible group-hover:visible w-fit absolute inset-y-0 right-0 flex flex-row gap-1 px-1 items-center transition origin-right scale-x-0 ${themeItem.lightBgColor} rounded-r-full`}
+          className={`group-hover:scale-100 invisible group-hover:visible w-fit absolute inset-y-0 right-0 flex flex-row gap-1 px-1 items-center transition origin-right scale-x-0 ${themeItem.lightBgColor} rounded-full`}
         >
           <FiEdit2
             className={`${iconClass} invisible group-hover:visible w-0 group-hover:w-fit`}
