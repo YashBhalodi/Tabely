@@ -13,10 +13,7 @@ export const useClickOutside = ({ containerRef, onClickOutside }) => {
     e.stopPropagation();
     if (_.isArray(containerRef)) {
       if (
-        !_.some(containerRef, (itemRef) => {
-          const res = itemRef.current.contains(e.target);
-          return res;
-        })
+        !_.some(containerRef, (itemRef) => itemRef.current.contains(e.target))
       ) {
         onClickOutside?.();
       }
