@@ -41,7 +41,7 @@ const DualField = ({ cellId }) => {
           className="focus:outline-offset-2 w-full h-full"
           onContextMenu={handleContextMenu}
           ref={containerRef}
-          tabIndex={0}
+          tabIndex={-1}
         >
           {isEditMode ? (
             <div className={containerClass}>

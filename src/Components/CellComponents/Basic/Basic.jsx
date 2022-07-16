@@ -37,7 +37,7 @@ const Basic = ({ cellId }) => {
           className="focus:outline-offset-2 w-full h-full"
           ref={containerRef}
           onContextMenu={handleContextMenu}
-          tabIndex={0}
+          tabIndex={-1}
         >
           {isEditMode ? (
             <textarea

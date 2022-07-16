@@ -56,7 +56,7 @@ const Card = ({ cellId }) => {
           ref={containerRef}
           onContextMenu={handleContextMenu}
           className={containerClass}
-          tabIndex={0}
+          tabIndex={-1}
           onKeyDownCapture={handleKeyboardEvent}
         >
           {isEditMode ? (

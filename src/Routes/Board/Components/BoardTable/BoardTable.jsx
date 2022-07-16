@@ -18,7 +18,7 @@ const BoardTable = (props) => {
     if (!cellId) return;
 
     const elem = document.getElementById(cellId);
-    const targetElem = elem?.querySelector('[tabIndex="0"]');
+    const targetElem = elem?.querySelector('[tabIndex="-1"]');
     targetElem?.focus();
     targetElem?.scrollIntoView({ behavior: "smooth" });
   };

@@ -34,7 +34,7 @@ const Idle = ({ cellId }) => {
     <td key={cellId} id={cellId}>
       <TableActionsCellWrapper cellId={cellId}>
         <div
-          tabIndex={isEditMode ? 0 : -1}
+          tabIndex={-1}
           className={`group bg-slate-10 hover:border-2 flex flex-col items-center h-full w-full justify-center min-w-cell min-h-cell p-2 transition-all rounded-md shadow-sm border border-1 border-slate-200 ${
             isEditMode
               ? "hover:border-blue-300 hover:bg-slate-50 cursor-pointer"
