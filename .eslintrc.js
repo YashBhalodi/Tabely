@@ -16,7 +16,6 @@ module.exports = {
   rules: {
     "react/prop-types": 0,
     "no-unused-vars": 1,
-    indent: ["error", 2],
     "linebreak-style": 1,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": [
