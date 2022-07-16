@@ -114,7 +114,7 @@ const TopHeader = () => {
         onClick={toggleBoardMode}
         tooltip={isEditMode ? "Switch to View Mode" : "Switch to Edit Mode"}
       >
-        {isEditMode ? <FiLock /> : <FiEdit3 />}
+        <div className="text-xs">{isEditMode ? "View" : "Edit"}</div>
       </Button>
       <TableActionDropDown />
     </div>

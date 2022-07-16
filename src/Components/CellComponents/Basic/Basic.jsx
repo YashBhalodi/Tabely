@@ -34,9 +34,10 @@ const Basic = ({ cellId }) => {
     <td key={cellId} id={cellId}>
       <TableActionsCellWrapper cellId={cellId}>
         <div
-          className="w-full h-full"
+          className="focus:outline-offset-2 w-full h-full"
           ref={containerRef}
           onContextMenu={handleContextMenu}
+          tabIndex={0}
         >
           {isEditMode ? (
             <textarea
@@ -47,6 +48,7 @@ const Basic = ({ cellId }) => {
               className={`${commonClass} ${themeItem.placeholder} outline-none resize-none border-0`}
               placeholder=". . .  ✍🏻"
               autoFocus
+              tabIndex={-1}
             />
           ) : (
             <div

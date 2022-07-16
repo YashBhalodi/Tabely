@@ -41,7 +41,7 @@ const TableLayoutActions = (props) => {
   return (
     <div className="flex flex-row gap-2">
       <div className="flex flex-col justify-center gap-2">
-        <abbr title="Add column left">
+        <abbr title="Add column to left">
           <div
             onClick={() => handleClick("add_left")}
             className={buttonCommonClass}
@@ -69,7 +69,7 @@ const TableLayoutActions = (props) => {
         </abbr>
       </div>
       <div className="flex flex-col justify-center gap-2">
-        <abbr title="Add column right">
+        <abbr title="Add column to right">
           <div
             onClick={() => handleClick("add_right")}
             className={buttonCommonClass}

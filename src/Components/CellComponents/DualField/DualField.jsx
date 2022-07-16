@@ -35,12 +35,13 @@ const DualField = ({ cellId }) => {
   };
 
   return (
-    <td>
+    <td id={cellId} key={cellId}>
       <TableActionsCellWrapper cellId={cellId}>
         <div
-          className="w-full h-full"
+          className="focus:outline-offset-2 w-full h-full"
           onContextMenu={handleContextMenu}
           ref={containerRef}
+          tabIndex={0}
         >
           {isEditMode ? (
             <div className={containerClass}>
@@ -52,6 +53,7 @@ const DualField = ({ cellId }) => {
                 name="title"
                 value={title}
                 onChange={handleInput}
+                tabIndex={-1}
               />
               <input
                 className={`${commonFieldClass} ${commonInputClass} ${commonSubtitleClass}`}
@@ -60,6 +62,7 @@ const DualField = ({ cellId }) => {
                 name="subtitle"
                 value={subtitle}
                 onChange={handleInput}
+                tabIndex={-1}
               />
             </div>
           ) : (

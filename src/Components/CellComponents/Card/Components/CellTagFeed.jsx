@@ -28,7 +28,9 @@ const CellTagFeed = (props) => {
         >
           Tags
         </div>
-        <TagPickerTrigger themeItem={themeItem} onClick={toggleTagPicker} />
+        {isEditMode && (
+          <TagPickerTrigger themeItem={themeItem} onClick={toggleTagPicker} />
+        )}
       </div>
       {showTagPicker && (
         <BoardTagList

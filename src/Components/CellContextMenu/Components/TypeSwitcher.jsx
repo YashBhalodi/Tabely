@@ -22,7 +22,7 @@ const TypeSwitcher = ({ cellId }) => {
     <DropDownMenu
       TriggerComponent={() => {
         return (
-          <abbr title="Switch type">
+          <abbr title="Change cell type">
             <div className={buttonCommonClass}>
               <TbExchange className={`text-lg`} />
             </div>

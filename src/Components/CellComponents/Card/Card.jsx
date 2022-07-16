@@ -46,7 +46,7 @@ const Card = ({ cellId }) => {
     updateFields({ title: e.target.value });
   };
 
-  const containerClass = `relative flex w-full h-full rounded-md font-medium text-lg min-h-cell min-w-cell max-w-cell max-h-cell ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar}`;
+  const containerClass = `relative flex w-full h-full rounded-md font-medium text-lg min-h-cell min-w-cell max-w-cell max-h-cell ${themeItem.bgColor} ${themeItem.hoverBgColor} ${themeItem.textColor} ${themeItem.scrollbar} focus:outline-offset-2`;
   const titleInputClass = `${themeItem.bgColor} w-full h-full rounded-md min-h-cell hover:bg-transparent p-4 ${themeItem.scrollbar}`;
 
   return (
