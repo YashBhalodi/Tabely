@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
 module.exports = {
   env: {
     browser: true,
@@ -9,17 +9,18 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 13,
+    ecmaVersion: "latest",
     sourceType: "module",
   },
   plugins: ["react", "react-hooks"],
   rules: {
     "react/prop-types": 0,
-    "no-unused-vars": 1,
+    "no-unused-vars": 0,
+    "react/display-name": 0,
     "linebreak-style": 1,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": [
-      "warn",
+      "off",
       {
         additionalHooks: "(useRecoilCallback|useRecoilTransaction_UNSTABLE)",
       },

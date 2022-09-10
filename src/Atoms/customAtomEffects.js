@@ -3,6 +3,7 @@ export const recoilPersist = (config = {}) => {
   const persistAtom = ({ onSet, node, trigger, setSelf }) => {
     if (trigger === "get") {
       const state = getState();
+      // eslint-disable-next-line no-prototype-builtins
       if (state.hasOwnProperty(node.key)) {
         setSelf(state[node.key]);
       } else {
