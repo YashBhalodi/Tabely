@@ -7,6 +7,7 @@ import {
   handleEnter,
   handleEscape,
   handleArrowKey,
+  handleMetaHoldArrowKey,
 } from "./keyboardInteractionUtils";
 import _ from "lodash";
 
@@ -17,14 +18,30 @@ const BoardTable = (props) => {
 
   useKey(
     (e) => {
-      const { key } = e;
-      return _.includes(
-        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"],
-        key
+      const { key, metaKey } = e;
+      console.dir(e);
+      return (
+        _.includes(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"], key) &&
+        !metaKey
       );
     },
     (e) => {
       handleArrowKey(e, allRows, getNeighboringCells);
+    },
+    {},
+    []
+  );
+
+  useKey(
+    (e) => {
+      const { key, metaKey } = e;
+      return (
+        _.includes(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"], key) &&
+        metaKey
+      );
+    },
+    (e) => {
+      handleMetaHoldArrowKey(e, allRows, getNeighboringCells);
     },
     {},
     []

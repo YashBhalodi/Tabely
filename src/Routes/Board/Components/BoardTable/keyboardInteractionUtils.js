@@ -80,4 +80,11 @@ const handleEnter = (e) => {
   }
 };
 
-export { handleArrowKey, handleEscape, handleEnter };
+const handleMetaHoldArrowKey = (e) => {
+  console.dir(e);
+  //TODO allow adding/removing of row/column by keyboard action
+  // cmd + arrowKey -> Add row/colum in respective direction
+  // cmd + shift + arrowKey -> remove row/colum from respective direction
+};
+
+export { handleArrowKey, handleEscape, handleEnter, handleMetaHoldArrowKey };
