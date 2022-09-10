@@ -3,56 +3,17 @@ import { useKey } from "react-use";
 import { useParams } from "react-router-dom";
 import { useTable, useBoard } from "Hooks";
 import { CellWrapper } from "Components";
+import {
+  handleEnter,
+  handleEscape,
+  handleArrowKey,
+} from "./keyboardInteractionUtils";
 import _ from "lodash";
 
 const BoardTable = (props) => {
   const { boardId } = useParams();
   const { tableId } = useBoard({ id: boardId });
   const { allRows, getNeighboringCells } = useTable({ id: tableId });
-
-  const getCurrentFocusedCellId = () => {
-    return document.querySelector(":focus")?.closest("td")?.id;
-  };
-
-  const focusCellId = (cellId) => {
-    if (!cellId) return;
-
-    const elem = document.getElementById(cellId);
-    const targetElem = elem?.querySelector('[tabIndex="-1"]');
-    targetElem?.focus();
-    targetElem?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleArrowKey = (e) => {
-    const { key } = e;
-    const currentFocusedCellId = getCurrentFocusedCellId();
-    if (!currentFocusedCellId) {
-      const firstCell = allRows[0][0];
-      focusCellId(firstCell);
-      return;
-    }
-
-    const { top, bottom, right, left } =
-      getNeighboringCells(currentFocusedCellId);
-
-    e.preventDefault(); // default behavior is to scroll active container
-    switch (key) {
-      case "ArrowUp":
-        top && focusCellId(top);
-        break;
-      case "ArrowDown":
-        bottom && focusCellId(bottom);
-        break;
-      case "ArrowLeft":
-        left && focusCellId(left);
-        break;
-      case "ArrowRight":
-        right && focusCellId(right);
-        break;
-      default:
-        break;
-    }
-  };
 
   useKey(
     (e) => {
@@ -62,7 +23,29 @@ const BoardTable = (props) => {
         key
       );
     },
-    handleArrowKey,
+    (e) => {
+      handleArrowKey(e, allRows, getNeighboringCells);
+    },
+    {},
+    []
+  );
+
+  useKey(
+    (e) => {
+      const { key } = e;
+      return _.includes(["Escape"], key);
+    },
+    handleEscape,
+    {},
+    []
+  );
+
+  useKey(
+    (e) => {
+      const { key } = e;
+      return _.includes(["Enter"], key);
+    },
+    handleEnter,
     {},
     []
   );
