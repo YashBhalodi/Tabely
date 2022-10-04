@@ -10,55 +10,50 @@ import {
   useRegisterActions,
 } from "kbar";
 
-const actions = [
-  {
-    id: "blog",
-    name: "Blog",
-    keywords: "writing words",
-    perform: () => (window.location.pathname = "blog"),
-  },
-  {
-    id: "contact",
-    name: "Contact",
-    keywords: "email",
-    perform: () => (window.location.pathname = "contact"),
-  },
-];
+import { getActions } from "./Utils";
 
 const RenderResults = () => {
   const { results } = useMatches();
-  //   const { searchQuery, isVisible } = useKBar((state) => ({
-  //     searchQuery: state.searchQuery,
-  //     isVisible: state.visualState === "showing",
-  //   }));
+  const { isVisible } = useKBar((state) => ({
+    isVisible: state.visualState === "showing",
+  }));
+  useRegisterActions(getActions(), [isVisible]);
 
   return (
     <KBarResults
       items={results}
-      onRender={({ item, active }) =>
-        typeof item === "string" ? (
-          <div>{item}</div>
-        ) : (
-          <div
-            style={{
-              background: active ? "#eee" : "transparent",
-            }}
+      onRender={({ item, active }) => {
+        if (typeof item === "string") {
+          return (
+            <h3 className="font-body px-4 py-2 text-sm text-gray-700 capitalize bg-gray-100">
+              {item}
+            </h3>
+          );
+        }
+        return (
+          <p
+            className={`px-4 py-4 rounded-sm ${
+              active ? `bg-gray-200/40` : "bg-gray-50"
+            }`}
           >
             {item.name}
-          </div>
-        )
-      }
+          </p>
+        );
+      }}
     />
   );
 };
 
 const GlobalSearch = (props) => {
-  useRegisterActions(actions);
+  useRegisterActions(getActions());
   return (
     <KBarPortal>
-      <KBarPositioner>
-        <KBarAnimator>
-          <KBarSearch />
+      <KBarPositioner className="bg-gray-300/70">
+        <KBarAnimator className="scrollbar scrollbar-emerald bg-gray-200">
+          <KBarSearch
+            className="w-[500px] px-4 py-4 bg-gray-50 rounded-sm focus:outline-none"
+            defaultPlaceholder="Search anything..."
+          />
           <RenderResults />
         </KBarAnimator>
       </KBarPositioner>
