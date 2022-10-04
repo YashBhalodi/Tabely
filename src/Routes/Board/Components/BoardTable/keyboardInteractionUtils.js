@@ -87,4 +87,10 @@ const handleMetaHoldArrowKey = (e) => {
   // cmd + shift + arrowKey -> remove row/colum from respective direction
 };
 
-export { handleArrowKey, handleEscape, handleEnter, handleMetaHoldArrowKey };
+export {
+  focusCellId,
+  handleArrowKey,
+  handleEscape,
+  handleEnter,
+  handleMetaHoldArrowKey,
+};

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useKey } from "react-use";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useTable, useBoard } from "Hooks";
 import { CellWrapper } from "Components";
 import {
@@ -8,6 +8,7 @@ import {
   handleEscape,
   handleArrowKey,
   handleMetaHoldArrowKey,
+  focusCellId,
 } from "./keyboardInteractionUtils";
 import _ from "lodash";
 
@@ -16,10 +17,20 @@ const BoardTable = (props) => {
   const { tableId } = useBoard({ id: boardId });
   const { allRows, getNeighboringCells } = useTable({ id: tableId });
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const targetCellId = searchParams.get("cell");
+
+  useEffect(() => {
+    if (targetCellId) {
+      focusCellId(targetCellId);
+      searchParams.delete("cell");
+      setSearchParams(searchParams);
+    }
+  }, [targetCellId]);
+
   useKey(
     (e) => {
       const { key, metaKey } = e;
-      console.dir(e);
       return (
         _.includes(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"], key) &&
         !metaKey
