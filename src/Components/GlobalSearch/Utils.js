@@ -46,5 +46,5 @@ export const getActions = () => {
     });
     parsedAction.push(...boardCellsActions);
   });
-  return parsedAction;
+  return _.filter(parsedAction, (action) => Boolean(action.name));
 };

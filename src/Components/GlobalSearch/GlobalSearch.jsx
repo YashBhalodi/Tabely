@@ -26,7 +26,7 @@ const RenderResults = () => {
         if (typeof item === "string") {
           return (
             <h3 className="font-body px-4 py-2 text-sm text-gray-700 capitalize bg-gray-100">
-              {item}
+              {item || "Unnamed Board"}
             </h3>
           );
         }
@@ -49,9 +49,9 @@ const GlobalSearch = (props) => {
   return (
     <KBarPortal>
       <KBarPositioner className="bg-gray-300/70">
-        <KBarAnimator className="scrollbar scrollbar-emerald bg-gray-200">
+        <KBarAnimator className="scrollbar scrollbar-emerald rounded-xl bg-gray-200">
           <KBarSearch
-            className="w-[500px] px-4 py-4 bg-gray-50 rounded-sm focus:outline-none"
+            className="w-[500px] px-4 py-4 bg-gray-50 focus:outline-none rounded-t-xl"
             defaultPlaceholder="Search anything..."
           />
           <RenderResults />
