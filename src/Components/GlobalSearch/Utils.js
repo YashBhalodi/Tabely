@@ -19,8 +19,7 @@ export const getActions = () => {
       name: b.title,
       keywords: b.title,
       perform: () => {
-        // TODO
-        console.log(b.id);
+        window.location.pathname = `boards/${b.id}`;
       },
       section: "Boards",
     };
@@ -39,8 +38,7 @@ export const getActions = () => {
         name: cellData.title || cellData.subtitle,
         keywords: cellData.title || cellData.subtitle,
         perform: () => {
-          // TODO
-          console.log(cellData.id);
+          window.location.href = `/boards/${b.id}?cell=${cellData.id}`;
         },
         section: b.title,
       };
