@@ -7,6 +7,7 @@ import CellWrapper from "./CellWrapper";
 import CellContextMenu from "./CellContextMenu";
 import TableActionsCellWrapper from "./TableActionsCellWrapper";
 import Tag from "./Tag";
+import GlobalSearch from "./GlobalSearch";
 
 export {
   NavBar,
@@ -18,4 +19,5 @@ export {
   CellWrapper,
   CellContextMenu,
   TableActionsCellWrapper,
+  GlobalSearch,
 };

@@ -6,10 +6,12 @@ import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import RecoilNexus from "recoil-nexus";
 
+import { KBarProvider } from "kbar";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import App from "./App";
+import { GlobalSearch } from "./Components";
 import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -18,7 +20,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <RecoilNexus />
       <BrowserRouter>
         <DndProvider backend={HTML5Backend}>
-          <App />
+          <KBarProvider>
+            <GlobalSearch />
+            <App />
+          </KBarProvider>
         </DndProvider>
       </BrowserRouter>
     </RecoilRoot>
