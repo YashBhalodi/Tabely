@@ -88,7 +88,11 @@ const RenderResults = () => {
       onRender={({ item, active }) => {
         const commonProps = { item, active };
         if (typeof item === "string") {
-          return <Sections {...commonProps} />;
+          return (
+            <h3 className="font-body px-4 py-2 text-sm text-gray-700 bg-gray-100">
+              {item || "Unnamed Board"}
+            </h3>
+          );
         }
         if (item.type === "CELL") {
           return <CellResults {...commonProps} />;
