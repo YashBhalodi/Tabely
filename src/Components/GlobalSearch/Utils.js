@@ -23,7 +23,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         navigate(`/boards`);
       },
       section: "Application actions...",
-      type: "ACTIONS",
+      type: "ACTION",
     },
     {
       id: "CREATE_BOARD",
@@ -33,7 +33,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         navigate(`/boards/${createBoard()}`);
       },
       section: "Application actions...",
-      type: "ACTIONS",
+      type: "ACTION",
     },
   ];
 
@@ -47,7 +47,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         name: b.title,
         keywords: b.title,
         section: "Boards...",
-        type: "ACTIONS",
+        type: "ACTION",
       },
       {
         id: `BOARD_${b.id}_NAVIGATE`,
