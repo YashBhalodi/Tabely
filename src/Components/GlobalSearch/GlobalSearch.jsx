@@ -10,6 +10,8 @@ import {
   useRegisterActions,
 } from "kbar";
 
+import { useApp } from "Hooks";
+
 import { getActions } from "./Utils";
 import { useNavigate } from "react-router-dom";
 
@@ -20,8 +22,12 @@ const RenderResults = () => {
   const { isVisible } = useKBar((state) => ({
     isVisible: state.visualState === "showing",
   }));
+  const { createBoard } = useApp();
   const navigate = useNavigate();
-  useRegisterActions(getActions({ navigate }), [isVisible, navigate]);
+  useRegisterActions(getActions({ navigate, createBoard }), [
+    isVisible,
+    navigate,
+  ]);
 
   return (
     <KBarResults
@@ -29,7 +35,7 @@ const RenderResults = () => {
       onRender={({ item, active }) => {
         if (typeof item === "string") {
           return (
-            <h3 className="font-body px-4 py-2 text-sm text-gray-700 capitalize bg-gray-100">
+            <h3 className="font-body px-4 py-2 text-sm text-gray-700 bg-gray-100">
               {item || "Unnamed Board"}
             </h3>
           );

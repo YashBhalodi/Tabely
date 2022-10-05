@@ -9,10 +9,26 @@ import {
 } from "Atoms";
 import _ from "lodash";
 
-export const getActions = ({ navigate }) => {
+export const getActions = ({ navigate, createBoard }) => {
   const { boardIds = [] } = getRecoil(appStateAtom);
   const boardData = getRecoil(boardFamilySelector({ boardIds }));
   const parsedAction = [];
+
+  const appActions = [
+    {
+      id: "CREATE_BOARD",
+      name: "Create a new board",
+      keywords: ["Create", "board", "new"],
+      perform: () => {
+        navigate(`/boards/${createBoard()}`);
+      },
+      section: "Application actions...",
+    },
+  ];
+
+  parsedAction.push(...appActions);
+
+  // add boards to actions
   _.forEach(boardData, (b) => {
     const actionObject = {
       id: `BOARD_${b.id}`,
@@ -22,12 +38,13 @@ export const getActions = ({ navigate }) => {
         const targetRoute = `/boards/${b.id}`;
         navigate(targetRoute);
       },
-      section: "Boards",
+      section: "Navigate to board...",
       type: "BOARD",
     };
     parsedAction.push(actionObject);
   });
 
+  // add cells of each boards to board sections actions
   _.forEach(boardData, (b) => {
     const boardCellsId = _.flatten(getRecoil(tableFamily(b.tableId)));
     const boardCellsData = _.map(boardCellsId, (cellId) => ({
@@ -51,5 +68,6 @@ export const getActions = ({ navigate }) => {
     });
     parsedAction.push(...boardCellsActions);
   });
+
   return _.filter(parsedAction, (action) => Boolean(action.name));
 };
