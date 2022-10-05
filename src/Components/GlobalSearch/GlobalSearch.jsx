@@ -34,9 +34,7 @@ const RenderResults = () => {
         }
         return (
           <p
-            className={`px-4 py-4 rounded-sm ${
-              active ? `bg-gray-200/40` : "bg-gray-50"
-            }`}
+            className={`px-4 py-4 ${active ? `bg-gray-200/40` : "bg-gray-50"}`}
           >
             {item.name}
           </p>
@@ -50,9 +48,9 @@ const GlobalSearch = (props) => {
   return (
     <KBarPortal>
       <KBarPositioner className="bg-gray-300/70">
-        <KBarAnimator className="scrollbar scrollbar-emerald rounded-xl bg-gray-200">
+        <KBarAnimator className="bg-gray-50 rounded-xl">
           <KBarSearch
-            className="w-[500px] px-4 py-4 bg-gray-50 focus:outline-none rounded-t-xl"
+            className="w-[500px] px-4 py-4 bg-gray-50 focus:outline-none rounded-t-xl border-b-2 border-b-gray-200"
             defaultPlaceholder="Search anything..."
           />
           <RenderResults />

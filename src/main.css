@@ -19,8 +19,13 @@
     @apply bg-transparent;
     @apply p-0;
   }
-}
 
+  div:has(#kbar-listbox) {
+    @apply rounded-b-xl;
+    @apply scrollbar;
+    @apply scrollbar-gray;
+  }
+}
 @layer utilities {
   .scrollbar::-webkit-scrollbar {
     width: 6px;
