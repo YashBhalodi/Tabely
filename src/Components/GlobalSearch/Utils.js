@@ -23,6 +23,7 @@ export const getActions = ({ navigate, createBoard }) => {
         navigate(`/boards/${createBoard()}`);
       },
       section: "Application actions...",
+      type: "ACTIONS",
     },
   ];
 
