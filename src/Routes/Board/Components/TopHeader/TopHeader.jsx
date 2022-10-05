@@ -26,7 +26,7 @@ const BoardTitleEditableField = () => {
   const toggleEditMode = () => {
     isEditMode && setIsEditingTitle((prevState) => !prevState);
   };
-
+  // on submit editing focus on first cell of the board TODO
   return (
     <>
       {(isEditingTitle && isEditMode) || (isEditMode && _.isEmpty(title)) ? (

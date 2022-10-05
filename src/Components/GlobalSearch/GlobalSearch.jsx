@@ -17,6 +17,8 @@ import { useNavigate } from "react-router-dom";
 
 import { COLOR_THEME } from "Utils/colors";
 
+const COMMON_CLASS = `px-4 py-4 flex flex-row items-center justify-between transition-colors`;
+
 const RenderResults = () => {
   const { results } = useMatches();
   const { isVisible } = useKBar((state) => ({
@@ -44,13 +46,13 @@ const RenderResults = () => {
         if (item.type === "CELL") {
           return (
             <div
-              className={`px-4 py-4 flex flex-row items-center justify-between ${
+              className={`${COMMON_CLASS} ${
                 active ? `bg-gray-200/60` : "bg-gray-50"
               }`}
             >
               {item.name}
               <div
-                className={`w-4 h-4 rounded-md opacity-70 ${
+                className={`w-4 h-4 rounded-full opacity-70 ${
                   COLOR_THEME[item.theme].bgColor
                 }`}
               ></div>
@@ -58,11 +60,27 @@ const RenderResults = () => {
           );
         }
 
-        if (item.type === "BOARD" || item.type === "ACTION") {
+        if (item.type === "BOARD") {
           return (
             <div
-              className={`px-4 py-4 flex flex-row items-center justify-between ${
+              className={`${COMMON_CLASS} ${
                 active ? `bg-gray-200/60` : "bg-gray-50"
+              }`}
+            >
+              {item.name}
+            </div>
+          );
+        }
+
+        if (item.type === "ACTION") {
+          return (
+            <div
+              className={`${COMMON_CLASS} ${
+                active ? `bg-gray-200/60` : "bg-gray-50"
+              } ${item.actionType === "DELETE" ? "bg-red-100/50" : ""} ${
+                item.actionType === "DELETE" && active
+                  ? "bg-red-700 text-white"
+                  : ""
               }`}
             >
               {item.name}

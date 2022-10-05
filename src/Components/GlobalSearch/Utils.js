@@ -30,7 +30,10 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
       name: "Create a new board",
       keywords: ["Create", "board", "new"],
       perform: () => {
-        navigate(`/boards/${createBoard()}`);
+        const boardId = createBoard();
+        setTimeout(() => {
+          navigate(`/boards/${boardId}`);
+        }, 10);
       },
       section: "Application actions...",
       type: "ACTION",
