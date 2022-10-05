@@ -9,7 +9,7 @@ import {
 } from "Atoms";
 import _ from "lodash";
 
-export const getActions = () => {
+export const getActions = ({ navigate }) => {
   const { boardIds = [] } = getRecoil(appStateAtom);
   const boardData = getRecoil(boardFamilySelector({ boardIds }));
   const parsedAction = [];
@@ -19,7 +19,7 @@ export const getActions = () => {
       name: b.title,
       keywords: b.title,
       perform: () => {
-        window.location.pathname = `boards/${b.id}`;
+        navigate(`/boards/${b.id}`);
       },
       section: "Boards",
     };
@@ -38,7 +38,7 @@ export const getActions = () => {
         name: cellData.title || cellData.subtitle,
         keywords: cellData.title || cellData.subtitle,
         perform: () => {
-          window.location.href = `/boards/${b.id}?cell=${cellData.id}`;
+          navigate(`/boards/${b.id}?cell=${cellData.id}`);
         },
         section: b.title,
       };

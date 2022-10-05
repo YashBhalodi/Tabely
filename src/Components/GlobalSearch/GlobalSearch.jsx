@@ -11,13 +11,15 @@ import {
 } from "kbar";
 
 import { getActions } from "./Utils";
+import { useNavigate } from "react-router-dom";
 
 const RenderResults = () => {
   const { results } = useMatches();
   const { isVisible } = useKBar((state) => ({
     isVisible: state.visualState === "showing",
   }));
-  useRegisterActions(getActions(), [isVisible]);
+  const navigate = useNavigate();
+  useRegisterActions(getActions({ navigate }), [isVisible, navigate]);
 
   return (
     <KBarResults
@@ -45,7 +47,6 @@ const RenderResults = () => {
 };
 
 const GlobalSearch = (props) => {
-  useRegisterActions(getActions());
   return (
     <KBarPortal>
       <KBarPositioner className="bg-gray-300/70">
