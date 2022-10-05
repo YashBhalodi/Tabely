@@ -75,9 +75,9 @@ const RenderResults = () => {
   const { isVisible } = useKBar((state) => ({
     isVisible: state.visualState === "showing",
   }));
-  const { createBoard } = useApp();
+  const { createBoard, deleteBoard } = useApp();
   const navigate = useNavigate();
-  useRegisterActions(getActions({ navigate, createBoard }), [
+  useRegisterActions(getActions({ navigate, createBoard, deleteBoard }), [
     isVisible,
     navigate,
   ]);

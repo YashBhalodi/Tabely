@@ -9,7 +9,7 @@ import {
 } from "Atoms";
 import _ from "lodash";
 
-export const getActions = ({ navigate, createBoard }) => {
+export const getActions = ({ navigate, createBoard, deleteBoard }) => {
   const { boardIds = [] } = getRecoil(appStateAtom);
   const boardData = getRecoil(boardFamilySelector({ boardIds }));
   const parsedAction = [];
@@ -41,18 +41,27 @@ export const getActions = ({ navigate, createBoard }) => {
 
   // add boards to actions
   _.forEach(boardData, (b) => {
-    const actionObject = {
-      id: `BOARD_${b.id}`,
-      name: b.title,
-      keywords: b.title,
-      perform: () => {
-        const targetRoute = `/boards/${b.id}`;
-        navigate(targetRoute);
+    const actionObjects = [
+      {
+        id: `BOARD_${b.id}`,
+        name: b.title,
+        keywords: b.title,
+        section: "Boards...",
+        type: "ACTIONS",
       },
-      section: "Navigate to board...",
-      type: "BOARD",
-    };
-    parsedAction.push(actionObject);
+      {
+        id: `BOARD_${b.id}_NAVIGATE`,
+        name: `Navigate to ${b.title}`,
+        keywords: b.title,
+        perform: () => {
+          const targetRoute = `/boards/${b.id}`;
+          navigate(targetRoute);
+        },
+        parent: `BOARD_${b.id}`,
+        type: "BOARD",
+      },
+    ];
+    parsedAction.push(...actionObjects);
   });
 
   // add cells of each boards to board sections actions
