@@ -18,7 +18,7 @@ const focusCellsInputElement = (cellId) => {
   const focusedCellElement = document.querySelector(":focus")?.closest("td");
   const focusedCellInputElements =
     focusedCellElement.querySelectorAll("input, textarea");
-  if (focusCellsInputElement) {
+  if (focusedCellInputElements) {
     focusedCellInputElements[0].focus();
   }
 };

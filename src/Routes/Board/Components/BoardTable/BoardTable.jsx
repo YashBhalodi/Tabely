@@ -22,9 +22,11 @@ const BoardTable = (props) => {
 
   useEffect(() => {
     if (targetCellId) {
-      focusCellId(targetCellId);
-      searchParams.delete("cell");
-      setSearchParams(searchParams);
+      setTimeout(() => {
+        focusCellId(targetCellId);
+        searchParams.delete("cell");
+        setSearchParams(searchParams);
+      }, 10);
     }
   }, [targetCellId]);
 

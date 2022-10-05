@@ -19,7 +19,8 @@ export const getActions = ({ navigate }) => {
       name: b.title,
       keywords: b.title,
       perform: () => {
-        navigate(`/boards/${b.id}`);
+        const targetRoute = `/boards/${b.id}`;
+        navigate(targetRoute);
       },
       section: "Boards",
     };
@@ -38,7 +39,8 @@ export const getActions = ({ navigate }) => {
         name: cellData.title || cellData.subtitle,
         keywords: cellData.title || cellData.subtitle,
         perform: () => {
-          navigate(`/boards/${b.id}?cell=${cellData.id}`);
+          const targetRoute = `/boards/${b.id}?cell=${cellData.id}`;
+          navigate(targetRoute);
         },
         section: b.title,
       };
