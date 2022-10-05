@@ -69,7 +69,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
           navigate("/boards");
         },
         parent: `BOARD_${b.id}`,
-        type: "ACTIONS",
+        type: "ACTION",
         actionType: "DELETE",
       },
     ];

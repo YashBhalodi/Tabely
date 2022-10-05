@@ -33,7 +33,6 @@ const RenderResults = () => {
     <KBarResults
       items={results}
       onRender={({ item, active }) => {
-        const commonProps = { item, active };
         if (typeof item === "string") {
           return (
             <h3 className="font-body px-4 py-2 text-sm text-gray-700 bg-gray-100">
@@ -58,6 +57,7 @@ const RenderResults = () => {
             </div>
           );
         }
+
         if (item.type === "BOARD" || item.type === "ACTION") {
           return (
             <div
