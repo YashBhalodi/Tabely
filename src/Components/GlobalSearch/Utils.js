@@ -60,8 +60,22 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         parent: `BOARD_${b.id}`,
         type: "BOARD",
       },
+      {
+        id: `BOARD_DELETE_${b.id}`,
+        name: `Delete ${b.title}`,
+        keywords: b.title,
+        perform: () => {
+          deleteBoard({ id: b.id });
+          navigate("/boards");
+        },
+        parent: `BOARD_${b.id}`,
+        type: "ACTIONS",
+        actionType: "DELETE",
+      },
     ];
-    parsedAction.push(...actionObjects);
+    if (b.title) {
+      parsedAction.push(...actionObjects);
+    }
   });
 
   // add cells of each boards to board sections actions
