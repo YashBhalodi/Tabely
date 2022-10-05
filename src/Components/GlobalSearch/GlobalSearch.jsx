@@ -13,6 +13,8 @@ import {
 import { getActions } from "./Utils";
 import { useNavigate } from "react-router-dom";
 
+import { COLOR_THEME } from "Utils/colors";
+
 const RenderResults = () => {
   const { results } = useMatches();
   const { isVisible } = useKBar((state) => ({
@@ -33,11 +35,20 @@ const RenderResults = () => {
           );
         }
         return (
-          <p
-            className={`px-4 py-4 ${active ? `bg-gray-200/40` : "bg-gray-50"}`}
+          <div
+            className={`px-4 py-4 flex flex-row items-center justify-between ${
+              active ? `bg-gray-200/60` : "bg-gray-50"
+            } ${item.type === "CELL" ? COLOR_THEME[item.theme].bgColor : ""}`}
           >
             {item.name}
-          </p>
+            {item.type === "CELL" ? (
+              <div
+                className={`w-4 h-4 rounded-md opacity-70 ${
+                  COLOR_THEME[item.theme].bgColor
+                }`}
+              ></div>
+            ) : null}
+          </div>
         );
       }}
     />

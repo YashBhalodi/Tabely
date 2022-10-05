@@ -23,6 +23,7 @@ export const getActions = ({ navigate }) => {
         navigate(targetRoute);
       },
       section: "Boards",
+      type: "BOARD",
     };
     parsedAction.push(actionObject);
   });
@@ -43,6 +44,8 @@ export const getActions = ({ navigate }) => {
           navigate(targetRoute);
         },
         section: b.title,
+        theme: cellData.colorTheme,
+        type: "CELL",
       };
       return actionObject;
     });
