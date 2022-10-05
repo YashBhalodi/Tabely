@@ -16,6 +16,16 @@ export const getActions = ({ navigate, createBoard }) => {
 
   const appActions = [
     {
+      id: "VIEW_BOARDS",
+      name: "View all boards",
+      keywords: ["View", "board", "home"],
+      perform: () => {
+        navigate(`/boards`);
+      },
+      section: "Application actions...",
+      type: "ACTIONS",
+    },
+    {
       id: "CREATE_BOARD",
       name: "Create a new board",
       keywords: ["Create", "board", "new"],
