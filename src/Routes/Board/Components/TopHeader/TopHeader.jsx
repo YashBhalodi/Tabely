@@ -95,7 +95,7 @@ const TopHeader = () => {
   return (
     <div className=" bg-blue-50 flex flex-row items-center justify-between w-full h-20 p-4 space-x-4 border-b-2 border-blue-100">
       <div className="flex flex-row items-center justify-start flex-1 space-x-4">
-        <NavLink to={"/boards"}>
+        <NavLink to={"/"}>
           <Button
             variant={"primary-plain"}
             shape={"square"}

@@ -20,7 +20,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
       name: "View all boards",
       keywords: ["View", "board", "home"],
       perform: () => {
-        navigate(`/boards`);
+        navigate(`/`);
       },
       section: "Application actions...",
       type: "ACTION",
@@ -32,7 +32,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
       perform: () => {
         const boardId = createBoard();
         setTimeout(() => {
-          navigate(`/boards/${boardId}`);
+          navigate(`/${boardId}`);
         }, 10);
       },
       section: "Application actions...",
@@ -57,7 +57,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         name: `Navigate to ${b.title}`,
         keywords: b.title,
         perform: () => {
-          const targetRoute = `/boards/${b.id}`;
+          const targetRoute = `/${b.id}`;
           navigate(targetRoute);
         },
         parent: `BOARD_${b.id}`,
@@ -69,7 +69,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         keywords: b.title,
         perform: () => {
           deleteBoard({ id: b.id });
-          navigate("/boards");
+          navigate("/");
         },
         parent: `BOARD_${b.id}`,
         type: "ACTION",
@@ -94,7 +94,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         name: cellData.title || cellData.subtitle,
         keywords: cellData.title || cellData.subtitle,
         perform: () => {
-          const targetRoute = `/boards/${b.id}?cell=${cellData.id}`;
+          const targetRoute = `/${b.id}?cell=${cellData.id}`;
           navigate(targetRoute);
         },
         section: b.title,
