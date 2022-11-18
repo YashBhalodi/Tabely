@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useTable, useBoard } from "Hooks";
 import { Button } from "Components";
-import { BoardTable, TopHeader } from "./Components";
+import { BoardTable, TopHeader, KeyBoardActionHandler } from "./Components";
 
 import _ from "lodash";
 
@@ -31,6 +31,7 @@ const Board = () => {
           {!isTableEmpty ? <BoardTable /> : <BoardTableEmptyState />}
         </div>
       </div>
+      <KeyBoardActionHandler />
     </>
   );
 };

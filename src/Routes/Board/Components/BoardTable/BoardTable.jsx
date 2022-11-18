@@ -1,16 +1,8 @@
 import React, { useEffect } from "react";
-import { useKey } from "react-use";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useTable, useBoard } from "Hooks";
 import { CellWrapper } from "Components";
-import {
-  handleEnter,
-  handleEscape,
-  handleArrowKey,
-  handleMetaHoldArrowKey,
-  focusCellId,
-  isCurrentFocusAnInput,
-} from "./keyboardInteractionUtils";
+import { focusCellId } from "Utils/keyboardInteractionUtils";
 import _ from "lodash";
 
 const BoardTable = (props) => {
@@ -30,56 +22,6 @@ const BoardTable = (props) => {
       }, 10);
     }
   }, [targetCellId]);
-
-  useKey(
-    (e) => {
-      const { key, metaKey } = e;
-      return (
-        _.includes(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"], key) &&
-        !metaKey
-      );
-    },
-    (e) => {
-      handleArrowKey(e, allRows, getNeighboringCells);
-    },
-    {},
-    []
-  );
-
-  useKey(
-    (e) => {
-      const { key, metaKey } = e;
-      return (
-        _.includes(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"], key) &&
-        metaKey
-      );
-    },
-    (e) => {
-      handleMetaHoldArrowKey(e, allRows, getNeighboringCells);
-    },
-    {},
-    []
-  );
-
-  useKey(
-    (e) => {
-      const { key } = e;
-      return _.includes(["Escape"], key);
-    },
-    handleEscape,
-    {},
-    []
-  );
-
-  useKey(
-    (e) => {
-      const { key } = e;
-      return _.includes(["Enter"], key) && !isCurrentFocusAnInput();
-    },
-    handleEnter,
-    {},
-    []
-  );
 
   return (
     <table className="h-fit w-fit border-spacing-3 p-12 border-separate table-auto">
