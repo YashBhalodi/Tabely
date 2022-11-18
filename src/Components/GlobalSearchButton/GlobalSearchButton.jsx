@@ -18,7 +18,7 @@ const GlobalSearchButton = () => {
     >
       <FiSearch />
       <span>Search . . .</span>
-      <span className="bg-blue-100/50 items-center px-1 text-sm font-thin rounded">
+      <span className="bg-blue-100/50 items-center px-1 text-sm font-thin text-blue-800 rounded">
         {isMac ? (
           <>
             <kbd className="flex flex-row items-center">
