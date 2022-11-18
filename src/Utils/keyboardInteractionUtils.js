@@ -90,13 +90,14 @@ const handleMetaHoldArrowKey = (e) => {
 
 const handleMetaShiftHoldKey = (e) => {
   const { key, metaKey, shiftKey } = e;
-  // cmd + shift + r -> delete row
+  // cmd + shift + r -> delete row --> browser refresh key
   // cmd + shift + c -> delete column
   // cmd + delete -> delete cell
 };
 
 const handleMetaHoldKey = (e) => {
-  // cmd + M --> toggle board mode
+  // cmd + M --> toggle board mode ---> window minimize key
+  const { key, metaKey } = e;
 };
 
 export {

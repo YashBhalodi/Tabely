@@ -52,7 +52,7 @@ const KeyBoardActionHandler = (props) => {
   useKey(
     (e) => {
       const { key, metaKey } = e;
-      return _.includes(["M", "m"], key) && metaKey;
+      return _.includes(["M", "m", "Delete"], key) && metaKey;
     },
     (e) => {
       handleMetaHoldKey(e, allRows, getNeighboringCells);
@@ -64,7 +64,7 @@ const KeyBoardActionHandler = (props) => {
   useKey(
     (e) => {
       const { key, metaKey, shiftKey } = e;
-      return _.includes(["Delete", "R", "C"], key) && metaKey && shiftKey;
+      return _.includes(["r", "c"], key) && metaKey && shiftKey;
     },
     (e) => {
       handleMetaShiftHoldKey(e, allRows, getNeighboringCells);

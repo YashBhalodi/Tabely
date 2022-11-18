@@ -93,7 +93,7 @@ const KeyBoardKeyHelpOverlay = (props) => {
         {_.map(keyCombinations, (sectionObj) => {
           const { title, sectionActions } = sectionObj;
           return (
-            <section>
+            <section key={title}>
               {title ? (
                 <h6 className="text-blue-700/60 mb-2 font-medium">{title}</h6>
               ) : null}
@@ -102,11 +102,17 @@ const KeyBoardKeyHelpOverlay = (props) => {
                   const { keys, description } = keyAction;
 
                   return (
-                    <li className="hover:bg-blue-50/50 mix-blend-multiply flex flex-row-reverse items-center gap-2 px-2 py-1 mr-2 text-blue-800 rounded cursor-default">
+                    <li
+                      className="hover:bg-blue-50/50 mix-blend-multiply flex flex-row-reverse items-center gap-2 px-2 py-1 mr-2 text-blue-800 rounded cursor-default"
+                      key={description}
+                    >
                       <div className="flex flex-row gap-1">
-                        {_.map(keys, (Key) => {
+                        {_.map(keys, (Key, index) => {
                           return (
-                            <kbd className="bg-blue-50 mix-blend-multiply flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1 text-base rounded">
+                            <kbd
+                              key={index}
+                              className="bg-blue-50 mix-blend-multiply flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1 text-base rounded"
+                            >
                               {_.isString(Key) ? Key : <Key />}
                             </kbd>
                           );
