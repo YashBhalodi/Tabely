@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 import { COLOR_THEME } from "Utils/colors";
 
-const COMMON_CLASS = `px-4 py-4 flex flex-row items-center justify-between transition-colors cursor-pointer`;
+const COMMON_CLASS = `px-4 py-4 flex flex-1 flex-row items-center justify-between transition-colors cursor-pointer`;
 
 const searchItemActiveCommonClass =
   "bg-gray-200/60 underline underline-offset-2";
@@ -50,11 +50,11 @@ const RenderResults = () => {
         if (item.type === "CELL") {
           return (
             <div
-              className={`${COMMON_CLASS} ${
+              className={`${COMMON_CLASS} gap-2 ${
                 active ? searchItemActiveCommonClass : "bg-gray-50"
               }`}
             >
-              {item.name}
+              <span className="flex flex-1 break-all">{item.name}</span>
               <div
                 className={`w-4 h-4 rounded-full opacity-70 ${
                   COLOR_THEME[item.theme].bgColor
