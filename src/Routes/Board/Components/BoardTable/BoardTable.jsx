@@ -9,6 +9,7 @@ import {
   handleArrowKey,
   handleMetaHoldArrowKey,
   focusCellId,
+  isCurrentFocusAnInput,
 } from "./keyboardInteractionUtils";
 import _ from "lodash";
 
@@ -73,7 +74,7 @@ const BoardTable = (props) => {
   useKey(
     (e) => {
       const { key } = e;
-      return _.includes(["Enter"], key);
+      return _.includes(["Enter"], key) && !isCurrentFocusAnInput();
     },
     handleEnter,
     {},

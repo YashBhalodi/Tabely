@@ -92,4 +92,5 @@ export {
   handleEscape,
   handleEnter,
   handleMetaHoldArrowKey,
+  isCurrentFocusAnInput,
 };

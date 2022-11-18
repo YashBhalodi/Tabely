@@ -64,7 +64,7 @@ export const getActions = ({ navigate, createBoard, deleteBoard }) => {
         type: "BOARD",
       },
       {
-        id: `BOARD_DELETE_${b.id}`,
+        id: `BOARD_${b.id}_DELETE`,
         name: `Delete ${b.title}`,
         keywords: b.title,
         perform: () => {

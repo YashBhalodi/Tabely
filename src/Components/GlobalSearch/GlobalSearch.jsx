@@ -59,7 +59,7 @@ const RenderResults = () => {
                 className={`w-4 h-4 rounded-full opacity-70 ${
                   COLOR_THEME[item.theme].bgColor
                 }`}
-              ></div>
+              />
             </div>
           );
         }
