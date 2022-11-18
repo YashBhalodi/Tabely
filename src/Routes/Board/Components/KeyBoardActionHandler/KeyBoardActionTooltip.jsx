@@ -102,7 +102,7 @@ const keyCombinations = [
 
 const KeyBoardKeyHelpOverlay = (props) => {
   return (
-    <div className="w-[30vw] h-[70vh] mr-5 bg-blue-50 border border-blue-100 rounded-lg shadow-md py-2 flex flex-col gap-4">
+    <div className="w-[30vw] h-[70vh] mr-5 bg-gray-50 border border-gray-200 rounded-lg shadow-md py-2 flex flex-col gap-4">
       <h5 className="text-blue-800/50 self-center text-lg font-medium">
         Keyboard shortcuts
       </h5>
