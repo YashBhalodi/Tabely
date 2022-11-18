@@ -81,9 +81,18 @@ const handleEnter = (e) => {
 };
 
 const handleMetaHoldArrowKey = (e) => {
-  //TODO allow adding/removing of row/column by keyboard action
-  // cmd + arrowKey -> Add row/colum in respective direction
-  // cmd + shift + arrowKey -> remove row/colum from respective direction
+  const { key, metaKey } = e;
+  // cmd + ->  ==> add column to right
+  // cmd + <-  ==> add column to left
+  // cmd + up arrow ==> add row above
+  // cmd + down arrow ==> add row below
+};
+
+const handleMetaShiftHoldKey = (e) => {
+  const { key, metaKey, shiftKey } = e;
+  // cmd + shift + r -> delete row
+  // cmd + shift + c -> delete column
+  // cmd + delete -> delete cell
 };
 
 export {
@@ -93,4 +102,5 @@ export {
   handleEnter,
   handleMetaHoldArrowKey,
   isCurrentFocusAnInput,
+  handleMetaShiftHoldKey,
 };
