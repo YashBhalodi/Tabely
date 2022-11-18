@@ -100,20 +100,20 @@ const KeyBoardKeyHelpOverlay = (props) => {
       <h5 className="text-blue-800/50 self-center text-lg font-medium">
         Keyboard shortcuts
       </h5>
-      <div className="scrollbar scrollbar-gray flex flex-col gap-4 pl-4 overflow-auto">
+      <div className="scrollbar scrollbar-gray flex flex-col gap-6 pl-4 overflow-auto">
         {_.map(keyCombinations, (sectionObj) => {
           const { title, sectionActions } = sectionObj;
           return (
             <section>
               {title ? (
-                <h6 className="text-blue-700/60 mb-3 font-medium">{title}</h6>
+                <h6 className="text-blue-700/60 mb-2 font-medium">{title}</h6>
               ) : null}
               <ul className="flex flex-col gap-2">
                 {_.map(sectionActions, (keyAction) => {
                   const { keys, description } = keyAction;
 
                   return (
-                    <li className="flex flex-row items-center gap-2 text-blue-800">
+                    <li className="hover:bg-blue-50/50 mix-blend-multiply flex flex-row-reverse items-center gap-2 px-2 py-1 mr-2 text-blue-800 rounded cursor-default">
                       <div className="flex flex-row gap-1">
                         {_.map(keys, (Key) => {
                           return (
