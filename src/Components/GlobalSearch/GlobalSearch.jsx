@@ -19,6 +19,9 @@ import { COLOR_THEME } from "Utils/colors";
 
 const COMMON_CLASS = `px-4 py-4 flex flex-row items-center justify-between transition-colors`;
 
+const searchItemActiveCommonClass =
+  "bg-gray-200/60 underline underline-offset-2";
+
 const RenderResults = () => {
   const { results } = useMatches();
   const { isVisible } = useKBar((state) => ({
@@ -36,6 +39,7 @@ const RenderResults = () => {
       items={results}
       onRender={({ item, active }) => {
         if (typeof item === "string") {
+          // section title
           return (
             <h3 className="font-body px-4 py-2 text-sm text-gray-700 bg-gray-100">
               {item || "Unnamed Board"}
@@ -47,7 +51,7 @@ const RenderResults = () => {
           return (
             <div
               className={`${COMMON_CLASS} ${
-                active ? `bg-gray-200/60` : "bg-gray-50"
+                active ? searchItemActiveCommonClass : "bg-gray-50"
               }`}
             >
               {item.name}
@@ -64,7 +68,7 @@ const RenderResults = () => {
           return (
             <div
               className={`${COMMON_CLASS} ${
-                active ? `bg-gray-200/60` : "bg-gray-50"
+                active ? searchItemActiveCommonClass : "bg-gray-50"
               }`}
             >
               {item.name}
@@ -76,7 +80,7 @@ const RenderResults = () => {
           return (
             <div
               className={`${COMMON_CLASS} ${
-                active ? `bg-gray-200/60` : "bg-gray-50"
+                active ? searchItemActiveCommonClass : "bg-gray-50"
               } ${item.actionType === "DELETE" ? "bg-red-100/50" : ""} ${
                 item.actionType === "DELETE" && active
                   ? "bg-red-700 text-white"
