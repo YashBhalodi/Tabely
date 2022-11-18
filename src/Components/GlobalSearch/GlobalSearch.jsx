@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 import { COLOR_THEME } from "Utils/colors";
 
-const COMMON_CLASS = `px-4 py-4 flex flex-row items-center justify-between transition-colors`;
+const COMMON_CLASS = `px-4 py-4 flex flex-row items-center justify-between transition-colors cursor-pointer`;
 
 const searchItemActiveCommonClass =
   "bg-gray-200/60 underline underline-offset-2";
