@@ -95,6 +95,10 @@ const handleMetaShiftHoldKey = (e) => {
   // cmd + delete -> delete cell
 };
 
+const handleMetaHoldKey = (e) => {
+  // cmd + M --> toggle board mode
+};
+
 export {
   focusCellId,
   handleArrowKey,
@@ -103,4 +107,5 @@ export {
   handleMetaHoldArrowKey,
   isCurrentFocusAnInput,
   handleMetaShiftHoldKey,
+  handleMetaHoldKey,
 };
