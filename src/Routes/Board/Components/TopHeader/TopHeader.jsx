@@ -5,7 +5,7 @@ import { FiEdit3, FiLock, FiChevronLeft, FiMoreVertical } from "react-icons/fi";
 
 import { useBoard, useTable } from "Hooks";
 
-import { DropDownMenu, Button } from "Components";
+import { DropDownMenu, Button, GlobalSearchButton } from "Components";
 import _ from "lodash";
 
 const BoardTitleEditableField = () => {
@@ -107,6 +107,7 @@ const TopHeader = () => {
         </NavLink>
         <BoardTitleEditableField />
       </div>
+      <GlobalSearchButton />
       <Button
         variant={"primary-plain"}
         shape={"square"}

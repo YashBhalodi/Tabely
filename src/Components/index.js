@@ -7,6 +7,7 @@ import CellContextMenu from "./CellContextMenu";
 import TableActionsCellWrapper from "./TableActionsCellWrapper";
 import Tag from "./Tag";
 import GlobalSearch from "./GlobalSearch";
+import GlobalSearchButton from "./GlobalSearchButton";
 
 export {
   DropDownMenu,
@@ -18,4 +19,5 @@ export {
   CellContextMenu,
   TableActionsCellWrapper,
   GlobalSearch,
+  GlobalSearchButton,
 };
