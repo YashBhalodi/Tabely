@@ -81,6 +81,23 @@ const keyCombinations = [
       },
     ],
   },
+  {
+    title: "Change cell type",
+    sectionActions: [
+      {
+        keys: [CommandEquivalent, "shift", "1"],
+        description: "default type",
+      },
+      {
+        keys: [CommandEquivalent, "shift", "2"],
+        description: "dual field type",
+      },
+      {
+        keys: [CommandEquivalent, "shift", "3"],
+        description: "card type",
+      },
+    ],
+  },
 ];
 
 const KeyBoardKeyHelpOverlay = (props) => {

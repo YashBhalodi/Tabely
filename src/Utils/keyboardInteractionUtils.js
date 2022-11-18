@@ -93,6 +93,8 @@ const handleMetaShiftHoldKey = (e) => {
   // cmd + shift + r -> delete row --> browser refresh key
   // cmd + shift + c -> delete column
   // cmd + delete -> delete cell
+
+  // cmd + number 1,2,3 -> change cell type
 };
 
 const handleMetaHoldKey = (e) => {
