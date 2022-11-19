@@ -126,10 +126,7 @@ const KeyBoardKeyHelpOverlay = (props) => {
                       <div className="flex flex-row gap-1">
                         {_.map(keys, (Key, index) => {
                           return (
-                            <kbd
-                              key={index}
-                              className="bg-blue-50 mix-blend-multiply flex items-center justify-center min-w-[1.5rem] h-[1.5rem] px-1 text-base rounded"
-                            >
+                            <kbd key={index}>
                               {_.isString(Key) ? Key : <Key />}
                             </kbd>
                           );
