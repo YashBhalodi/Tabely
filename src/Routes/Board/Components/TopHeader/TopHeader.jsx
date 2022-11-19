@@ -6,6 +6,7 @@ import { FiEdit3, FiLock, FiChevronLeft, FiMoreVertical } from "react-icons/fi";
 import { useBoard, useTable } from "Hooks";
 
 import { DropDownMenu, Button, GlobalSearchButton } from "Components";
+import { focusFirstCell } from "Utils/keyboardInteractionUtils";
 import _ from "lodash";
 
 const BoardTitleEditableField = () => {
@@ -26,7 +27,14 @@ const BoardTitleEditableField = () => {
   const toggleEditMode = () => {
     isEditMode && setIsEditingTitle((prevState) => !prevState);
   };
-  // on submit editing focus on first cell of the board TODO
+
+  const handleEnterKeyPress = (e) => {
+    const { key } = e;
+    if (key === "Enter") {
+      focusFirstCell({ boardId });
+    }
+  };
+
   return (
     <>
       {(isEditingTitle && isEditMode) || (isEditMode && _.isEmpty(title)) ? (
@@ -38,6 +46,7 @@ const BoardTitleEditableField = () => {
           placeholder={"Board Title"}
           onBlur={toggleEditMode}
           autoFocus={_.isEmpty(title) || isEditingTitle}
+          onKeyDown={handleEnterKeyPress}
         />
       ) : (
         <div

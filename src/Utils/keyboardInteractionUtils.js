@@ -10,6 +10,8 @@ import {
   deleteTableRow,
   deleteTableColumn,
 } from "Hooks";
+import { getRecoil } from "recoil-nexus";
+import { boardFamily, tableFamily } from "Atoms";
 
 const TARGET_CELL_TYPE = {
   1: CELL_TYPES.BASIC,
@@ -44,6 +46,13 @@ const isCurrentFocusAnInput = () => {
   const elem = document.querySelector(":focus");
   const isInputField = _.includes(["TEXTAREA", "INPUT"], elem?.tagName);
   return isInputField;
+};
+
+const focusFirstCell = ({ boardId }) => {
+  const { tableId } = getRecoil(boardFamily(boardId));
+  const allRows = getRecoil(tableFamily(tableId));
+  const firstCell = allRows[0][0];
+  focusCellId(firstCell);
 };
 
 const handleArrowKey = ({ e, allRows, getNeighboringCells }) => {
@@ -228,6 +237,7 @@ const handleCtrlHoldKey = (e) => {
 };
 
 export {
+  focusFirstCell,
   focusCellId,
   handleArrowKey,
   handleEscape,
