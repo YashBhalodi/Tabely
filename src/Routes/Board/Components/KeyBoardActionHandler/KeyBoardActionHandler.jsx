@@ -10,6 +10,7 @@ import {
   isCurrentFocusAnInput,
   handleMetaShiftHoldKey,
   handleMetaHoldKey,
+  TARGET_CELL_TYPE,
 } from "Utils/keyboardInteractionUtils";
 import _ from "lodash";
 import KeyBoardToolTipButton from "./KeyBoardActionTooltip";
@@ -52,7 +53,10 @@ const KeyBoardActionHandler = (props) => {
   useKey(
     (e) => {
       const { key, metaKey } = e;
-      return _.includes(["M", "m", "Delete"], key) && metaKey;
+      return (
+        _.includes(["M", "m", "Delete", ..._.keys(TARGET_CELL_TYPE)], key) &&
+        metaKey
+      );
     },
     (e) => {
       handleMetaHoldKey(e, allRows, getNeighboringCells);

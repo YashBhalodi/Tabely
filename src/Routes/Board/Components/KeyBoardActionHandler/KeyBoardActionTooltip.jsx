@@ -87,7 +87,7 @@ const keyCombinations = [
     sectionActions: [
       {
         keys: [CommandEquivalent, "shift", "1"],
-        description: "default type",
+        description: "basic type",
       },
       {
         keys: [CommandEquivalent, "shift", "2"],

@@ -1,4 +1,12 @@
 import _ from "lodash";
+import { switchCellType } from "Hooks";
+import { CELL_TYPES } from "./constants";
+
+const TARGET_CELL_TYPE = {
+  1: CELL_TYPES.BASIC,
+  2: CELL_TYPES.DUAL_FIELD,
+  3: CELL_TYPES.CARD,
+};
 
 const getCurrentFocusedCellId = () => {
   return document.querySelector(":focus")?.closest("td")?.id;
@@ -90,16 +98,31 @@ const handleMetaHoldArrowKey = (e) => {
 
 const handleMetaShiftHoldKey = (e) => {
   const { key, metaKey, shiftKey } = e;
+
   // cmd + shift + r -> delete row --> browser refresh key
   // cmd + shift + c -> delete column
   // cmd + delete -> delete cell
-
-  // cmd + number 1,2,3 -> change cell type
 };
 
 const handleMetaHoldKey = (e) => {
   // cmd + M --> toggle board mode ---> window minimize key
   const { key, metaKey } = e;
+  if (isCurrentFocusAnInput()) {
+    return;
+  }
+
+  const currentFocusedCellId = getCurrentFocusedCellId();
+  if (!currentFocusedCellId) {
+    return;
+  }
+
+  // cmd + number 1,2,3,... -> change cell type
+  if (_.includes(_.keys(TARGET_CELL_TYPE), key)) {
+    switchCellType({ id: currentFocusedCellId, type: TARGET_CELL_TYPE[key] });
+    setTimeout(() => {
+      focusCellId(currentFocusedCellId);
+    }, 10);
+  }
 };
 
 export {
@@ -111,4 +134,5 @@ export {
   isCurrentFocusAnInput,
   handleMetaShiftHoldKey,
   handleMetaHoldKey,
+  TARGET_CELL_TYPE,
 };
