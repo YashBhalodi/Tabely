@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { CELL_TYPES } from "./constants";
+import { CELL_TYPES, initialCellState } from "./constants";
 import { COLOR_SHORTCUT_MAP } from "./colors";
 import {
   updateCellState,
@@ -131,6 +131,7 @@ const handleMetaShiftHoldKey = ({ e }) => {
   // cmd + shift + r -> delete row --> browser refresh key
   // cmd + shift + c -> delete column
   // cmd + delete -> delete cell
+  console.log(key);
 };
 
 const handleMetaHoldKey = ({ e, boardId }) => {
@@ -148,13 +149,23 @@ const handleMetaHoldKey = ({ e, boardId }) => {
     return;
   }
 
+  // cmd + Delete --> clear current focused cell
+  if (key === "Delete") {
+    updateCellState({
+      id: currentFocusedCellId,
+      ...initialCellState,
+      type: CELL_TYPES.BLANK,
+    });
+  }
+
   // cmd + number 1,2,3,... -> change cell type
   if (_.includes(_.keys(TARGET_CELL_TYPE), key)) {
     updateCellState({ id: currentFocusedCellId, type: TARGET_CELL_TYPE[key] });
-    setTimeout(() => {
-      focusCellId(currentFocusedCellId);
-    }, 10);
   }
+
+  setTimeout(() => {
+    focusCellId(currentFocusedCellId);
+  }, 10);
 };
 
 const handleCtrlHoldKey = (e) => {
