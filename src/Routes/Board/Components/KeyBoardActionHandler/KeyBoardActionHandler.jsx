@@ -34,7 +34,7 @@ const KeyBoardActionHandler = (props) => {
       handleArrowKey(e, allRows, getNeighboringCells);
     },
     {},
-    []
+    [allRows]
   );
 
   useKey(
@@ -49,7 +49,7 @@ const KeyBoardActionHandler = (props) => {
       handleMetaHoldArrowKey(e, allRows, getNeighboringCells);
     },
     {},
-    []
+    [allRows]
   );
 
   useKey(
@@ -84,7 +84,7 @@ const KeyBoardActionHandler = (props) => {
       handleMetaShiftHoldKey(e, allRows, getNeighboringCells);
     },
     {},
-    []
+    [allRows]
   );
 
   useKey(
