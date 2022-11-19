@@ -2,6 +2,7 @@ import { useRecoilState, useResetRecoilState } from "recoil";
 import { tableFamily, cellsSelector } from "Atoms";
 import { getUniqId } from "Utils/helpers";
 import _ from "lodash";
+import { setRecoil } from "recoil-nexus";
 
 const getColumnBasedLayout = (allRows) => {
   const result = [];
@@ -76,6 +77,51 @@ const getCellRelocatedLayout = ({
   }
 };
 
+export const addTableRows = ({ tableId, cellId, direction }) => {
+  setRecoil(tableFamily(tableId), (prevAllRows) => {
+    if (_.isEmpty(prevAllRows)) {
+      return [[getUniqId()]];
+    }
+
+    const newAllRows = _.cloneDeep(prevAllRows);
+
+    const newRow = [];
+    for (let i = 0; i < newAllRows[0].length; i++) {
+      newRow.push(getUniqId());
+    }
+
+    let splicedInIndex = newAllRows.length;
+    if (cellId) {
+      const { row } = getCellIdPosition({ layout: prevAllRows, cellId });
+      splicedInIndex = direction === "below" ? row + 1 : row;
+    }
+
+    newAllRows.splice(splicedInIndex, 0, newRow);
+    return newAllRows;
+  });
+};
+
+export const addTableColumns = ({ tableId, cellId, direction }) => {
+  setRecoil(tableFamily(tableId), (prevAllRows) => {
+    if (_.isEmpty(prevAllRows)) {
+      return [[getUniqId()]];
+    }
+
+    const newAllRows = _.cloneDeep(prevAllRows);
+
+    let splicedInIndex = newAllRows[0].length;
+    if (cellId) {
+      const { column } = getCellIdPosition({ layout: prevAllRows, cellId });
+      splicedInIndex = direction === "left" ? column : column + 1;
+    }
+    newAllRows.forEach((row) => {
+      row.splice(splicedInIndex, 0, getUniqId());
+    });
+
+    return newAllRows;
+  });
+};
+
 export const useTable = ({ id }) => {
   const [allRows, setTableRows] = useRecoilState(tableFamily(id));
   const resetTableState = useResetRecoilState(tableFamily(id));
@@ -106,50 +152,13 @@ export const useTable = ({ id }) => {
   // Add a new row "above"/"below" the selected cell row if provided,
   // otherwise add row to the end of the table
   const addRow = ({ cellId, position }) => {
-    setTableRows((prevAllRows) => {
-      if (_.isEmpty(prevAllRows)) {
-        return [[getUniqId()]];
-      }
-
-      const newAllRows = _.cloneDeep(prevAllRows);
-
-      const newRow = [];
-      for (let i = 0; i < newAllRows[0].length; i++) {
-        newRow.push(getUniqId());
-      }
-
-      let splicedInIndex = newAllRows.length;
-      if (cellId) {
-        const { row } = getCellIdPosition({ layout: prevAllRows, cellId });
-        splicedInIndex = position === "below" ? row + 1 : row;
-      }
-
-      newAllRows.splice(splicedInIndex, 0, newRow);
-      return newAllRows;
-    });
+    addTableRows({ tableId: id, cellId, direction: position });
   };
 
   // Add a new column "left"/"right" the selected cell column if provided,
   // otherwise add column to the end of the table
   const addColumn = ({ cellId, position }) => {
-    setTableRows((prevAllRows) => {
-      if (_.isEmpty(prevAllRows)) {
-        return [[getUniqId()]];
-      }
-
-      const newAllRows = _.cloneDeep(prevAllRows);
-
-      let splicedInIndex = newAllRows[0].length;
-      if (cellId) {
-        const { column } = getCellIdPosition({ layout: prevAllRows, cellId });
-        splicedInIndex = position === "left" ? column : column + 1;
-      }
-      newAllRows.forEach((row) => {
-        row.splice(splicedInIndex, 0, getUniqId());
-      });
-
-      return newAllRows;
-    });
+    addTableColumns({ tableId: id, cellId, direction: position });
   };
 
   // Delete last colum of the table
