@@ -3,6 +3,18 @@ import { boardFamily, tagsFamilySelector } from "Atoms";
 
 import { BOARD_MODE } from "Utils/constants";
 import { getUniqId } from "Utils/helpers";
+import { setRecoil } from "recoil-nexus";
+
+export const toggleBoardMode = ({ id }) => {
+  setRecoil(boardFamily(id), (prevState) => {
+    const { mode } = prevState;
+    const isEditMode = mode === BOARD_MODE.EDIT;
+    return {
+      ...prevState,
+      mode: isEditMode ? BOARD_MODE.VIEW : BOARD_MODE.EDIT,
+    };
+  });
+};
 
 export const useBoard = ({ id }) => {
   const [boardData, setBoardData] = useRecoilState(boardFamily(id));

@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { CELL_TYPES } from "./constants";
 import { COLOR_SHORTCUT_MAP } from "./colors";
-import { updateCellState } from "Hooks";
+import { updateCellState, toggleBoardMode } from "Hooks";
 
 const TARGET_CELL_TYPE = {
   1: CELL_TYPES.BASIC,
@@ -105,13 +105,16 @@ const handleMetaShiftHoldKey = (e) => {
   // cmd + delete -> delete cell
 };
 
-const handleMetaHoldKey = (e) => {
-  // cmd + M --> toggle board mode ---> window minimize key
+const handleMetaHoldKey = (e, boardId) => {
   const { key, metaKey } = e;
+  e.preventDefault();
+  if (_.includes(["m", "M"], key) && boardId) {
+    toggleBoardMode({ id: boardId });
+  }
+
   if (isCurrentFocusAnInput()) {
     return;
   }
-
   const currentFocusedCellId = getCurrentFocusedCellId();
   if (!currentFocusedCellId) {
     return;
@@ -119,7 +122,6 @@ const handleMetaHoldKey = (e) => {
 
   // cmd + number 1,2,3,... -> change cell type
   if (_.includes(_.keys(TARGET_CELL_TYPE), key)) {
-    e.preventDefault();
     updateCellState({ id: currentFocusedCellId, type: TARGET_CELL_TYPE[key] });
     setTimeout(() => {
       focusCellId(currentFocusedCellId);

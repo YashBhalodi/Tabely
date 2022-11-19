@@ -60,7 +60,7 @@ const KeyBoardActionHandler = (props) => {
         metaKey
       );
     },
-    handleMetaHoldKey,
+    (e) => handleMetaHoldKey(e, boardId),
     {},
     []
   );

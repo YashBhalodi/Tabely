@@ -1,6 +1,6 @@
 import { useTable } from "./tableHooks";
 import { useCell, updateCellState } from "./cellHooks";
-import { useBoard } from "./boardHooks";
+import { useBoard, toggleBoardMode } from "./boardHooks";
 import { useApp } from "./appStateHooks";
 import { useTag } from "./tagHooks";
 import { useClickOutside } from "./domHelpers";
@@ -13,4 +13,5 @@ export {
   useTag,
   useClickOutside,
   updateCellState,
+  toggleBoardMode,
 };
