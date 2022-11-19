@@ -38,6 +38,19 @@
     @apply scrollbar;
     @apply scrollbar-gray;
   }
+
+  .spinner {
+    vertical-align: -0.125em;
+    border: 0.25em dashed;
+    @apply border-blue-600;
+    @apply border-r-transparent;
+    @apply animate-spin;
+    @apply inline-block;
+    @apply w-8;
+    @apply h-8;
+    @apply border-4;
+    @apply rounded-full;
+  }
 }
 @layer utilities {
   .scrollbar::-webkit-scrollbar {

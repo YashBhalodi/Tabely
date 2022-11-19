@@ -6,7 +6,19 @@ const Board = React.lazy(() => import("./Routes/Board"));
 const NotFoundPage = React.lazy(() => import("./Routes/404"));
 
 const SuspenseWrapper = ({ children }) => {
-  return <Suspense fallback={<div>Loading</div>}>{children}</Suspense>;
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center w-screen h-screen">
+          <div className="spinner" role="status">
+            <span />
+          </div>
+        </div>
+      }
+    >
+      {children}
+    </Suspense>
+  );
 };
 
 const App = () => {
