@@ -27,7 +27,7 @@ const CreateBoardButton = (props) => {
         <FiPlus className="group-hover:text-blue-700 text-2xl text-blue-200" />
       </div>
       <div className="group-hover:text-blue-700 group-hover:scale-105 group-hover:translate-y-1 mt-2 text-sm font-medium text-center text-blue-800 transition-all">
-        Blank Board
+        Create a new board
       </div>
     </div>
   );
@@ -51,13 +51,8 @@ const BoardFeed = () => {
       <div className="bg-slate-100 scrollbar flex-1 w-full h-full overflow-auto">
         <div className="flex flex-col items-start justify-start w-3/4 h-full m-auto">
           <section className={sectionContainerClass}>
-            <h1 className={sectionTitleClass}>Create a new board</h1>
             <div className="scrollbar-hide flex flex-row items-center self-start justify-start w-full space-x-4 overflow-auto">
               <CreateBoardButton onClick={navigateToBoard} />
-              <div className="opacity-10 hover:opacity-30 pl-8 transition-opacity">
-                <div>Coming up...</div>
-                <div>Start from a template</div>
-              </div>
             </div>
           </section>
           {_.isEmpty(boardsData) ? (
