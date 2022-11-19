@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import _ from "lodash";
 import { TbKeyboard } from "react-icons/tb";
 import { usePopper } from "react-popper";
+import { useClickOutside } from "Hooks";
 import {
   FiArrowUp,
   FiArrowDown,
@@ -167,22 +168,11 @@ const KeyBoardToolTipButton = (props) => {
     }
   );
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleDocumentClick);
-    return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
-    };
-  }, []);
+  useClickOutside({
+    containerRef: [referenceRef, popperRef],
+    onClickOutside: () => togglePopover(false),
+  });
 
-  function handleDocumentClick(event) {
-    if (
-      referenceRef.current.contains(event.target) ||
-      popperRef.current.contains(event.target)
-    ) {
-      return;
-    }
-    togglePopover(false);
-  }
   const togglePopover = (value) => {
     if (!_.isUndefined(value)) {
       setIsPopperVisible(value);
