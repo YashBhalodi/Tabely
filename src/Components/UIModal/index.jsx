@@ -3,7 +3,7 @@ const Comp = lazy(() => import("./UIModal"));
 
 const Wrapped = (props) => {
   return (
-    <Suspense fallback={<div>Loading</div>}>
+    <Suspense>
       <Comp {...props} />
     </Suspense>
   );
