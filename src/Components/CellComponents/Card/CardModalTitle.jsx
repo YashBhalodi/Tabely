@@ -31,7 +31,6 @@ const TitleComponent = (props) => {
       value={title}
       rows={2}
       onChange={handleTextChange}
-      autoFocus={true}
       className={`${commonTitleClass} ${commonTextAreaClass} px-2 py-1`}
       placeholder=". . .  ✍🏻"
     />

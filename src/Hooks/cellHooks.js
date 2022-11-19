@@ -26,6 +26,7 @@ export const updateCellState = ({ id, ...rest }) => {
     ...rest,
   }));
 };
+
 export const useCell = ({ id }) => {
   const [cellData, setCell] = useRecoilState(cellsFamily(id));
   const cellId = id;
@@ -40,7 +41,8 @@ export const useCell = ({ id }) => {
   };
 
   const clearCell = () => {
-    setCell({
+    updateCellState({
+      id: cellId,
       ...initialCellState,
       type: CELL_TYPES.BLANK,
     });
