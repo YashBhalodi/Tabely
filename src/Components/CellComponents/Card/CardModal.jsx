@@ -9,6 +9,7 @@ import { FiMinimize2 } from "react-icons/fi";
 import TitleComponent from "./CardModalTitle";
 import ContentComponent from "./CardModalContent";
 import SidePanelComponent from "./CardModalSidePanel";
+import { useKey } from "react-use";
 
 const CardContentModal = (props) => {
   const { isModalOpen, closeModal, cellId } = props;
@@ -16,6 +17,8 @@ const CardContentModal = (props) => {
   const { colorTheme } = cellData;
 
   const themeItem = COLOR_THEME[colorTheme] || COLOR_THEME.STONE;
+
+  useKey("Esc", closeModal, {}, []);
 
   return (
     <UIModal isOpen={isModalOpen} onRequestClose={closeModal}>

@@ -35,7 +35,7 @@ const ContentComponent = (props) => {
   const commonProseClass = `prose prose-lg prose-code:bg-slate-200 prose-code:p-1 prose-code:rounded prose-pre:bg-slate-100 prose-pre:border prose-pre:text-stone-900`;
 
   return (
-    <div className="flex-[6_6_0%]">
+    <div className="flex-[6_6_0%] flex flex-col">
       {!isEditMode ? (
         <div
           className={`h-full p-4 rounded-md ${themeItem.scrollbar} ${themeItem.lightBgColor} ${themeItem.darkTextColor} mix-blend-multiply overflow-y-auto max-w-none ${commonProseClass}`}
@@ -72,6 +72,9 @@ const ContentComponent = (props) => {
           </div>
         </div>
       )}
+      <div className="bottom-2 absolute text-xs font-light">
+        * supports markdown syntax
+      </div>
     </div>
   );
 };
