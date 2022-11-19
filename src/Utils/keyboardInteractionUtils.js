@@ -6,6 +6,9 @@ import {
   toggleBoardMode,
   addTableColumns,
   addTableRows,
+  getCellIdPosition,
+  deleteTableRow,
+  deleteTableColumn,
 } from "Hooks";
 
 const TARGET_CELL_TYPE = {
@@ -125,13 +128,47 @@ const handleMetaHoldArrowKey = ({ e, tableId }) => {
   }, 10);
 };
 
-const handleMetaShiftHoldKey = ({ e }) => {
+const handleMetaShiftHoldKey = ({
+  e,
+  allRows,
+  tableId,
+  getNeighboringCells,
+}) => {
   const { key, metaKey, shiftKey } = e;
+  if (isCurrentFocusAnInput()) {
+    return;
+  }
+  const currentFocusedCellId = getCurrentFocusedCellId();
+  if (!currentFocusedCellId) {
+    return;
+  }
 
-  // cmd + shift + r -> delete row --> browser refresh key
-  // cmd + shift + c -> delete column
-  // cmd + delete -> delete cell
-  console.log(key);
+  // cmd + shift + h -> delete row
+  // cmd + shift + v -> delete column
+  e.preventDefault();
+  const { row, column } = getCellIdPosition({
+    layout: allRows,
+    cellId: currentFocusedCellId,
+  });
+  const { top, bottom, right, left } =
+    getNeighboringCells(currentFocusedCellId);
+
+  let nextCellToFocus;
+  switch (key) {
+    case "h":
+    case "H":
+      deleteTableRow({ tableId, row });
+      nextCellToFocus = top || bottom;
+      break;
+    case "v":
+    case "V":
+      deleteTableColumn({ tableId, column });
+      nextCellToFocus = left || right;
+      break;
+  }
+  setTimeout(() => {
+    focusCellId(nextCellToFocus);
+  }, 10);
 };
 
 const handleMetaHoldKey = ({ e, boardId }) => {
@@ -151,7 +188,6 @@ const handleMetaHoldKey = ({ e, boardId }) => {
 
   // cmd + Delete --> clear current focused cell
   if (key === "Delete") {
-    console.log({ initialCellState });
     updateCellState({
       id: currentFocusedCellId,
       ...initialCellState(),

@@ -78,10 +78,10 @@ const KeyBoardActionHandler = (props) => {
   useKey(
     (e) => {
       const { key, metaKey, shiftKey } = e;
-      return _.includes(["r", "c"], key) && metaKey && shiftKey;
+      return _.includes(["h", "v"], key) && metaKey && shiftKey;
     },
     (e) => {
-      handleMetaShiftHoldKey({ e, allRows, getNeighboringCells });
+      handleMetaShiftHoldKey({ e, allRows, tableId, getNeighboringCells });
     },
     {},
     [allRows]

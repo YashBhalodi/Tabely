@@ -75,11 +75,11 @@ const keyCombinations = [
     title: "Delete from board",
     sectionActions: [
       {
-        keys: [CommandEquivalent, "shift", "r"],
+        keys: [CommandEquivalent, "shift", "h"],
         description: "delete current row",
       },
       {
-        keys: [CommandEquivalent, "shift", "c"],
+        keys: [CommandEquivalent, "shift", "v"],
         description: "delete current column",
       },
       {

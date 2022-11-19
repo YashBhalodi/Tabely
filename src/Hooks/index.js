@@ -1,4 +1,11 @@
-import { useTable, addTableColumns, addTableRows } from "./tableHooks";
+import {
+  useTable,
+  addTableColumns,
+  addTableRows,
+  getCellIdPosition,
+  deleteTableRow,
+  deleteTableColumn,
+} from "./tableHooks";
 import { useCell, updateCellState } from "./cellHooks";
 import { useBoard, toggleBoardMode } from "./boardHooks";
 import { useApp } from "./appStateHooks";
@@ -16,4 +23,7 @@ export {
   toggleBoardMode,
   addTableColumns,
   addTableRows,
+  getCellIdPosition,
+  deleteTableRow,
+  deleteTableColumn,
 };

@@ -2,7 +2,8 @@ import { useRecoilState, useResetRecoilState } from "recoil";
 import { tableFamily, cellsSelector } from "Atoms";
 import { getUniqId } from "Utils/helpers";
 import _ from "lodash";
-import { setRecoil } from "recoil-nexus";
+import { getRecoil, resetRecoil, setRecoil } from "recoil-nexus";
+import { cellsFamily } from "Atoms";
 
 const getColumnBasedLayout = (allRows) => {
   const result = [];
@@ -24,7 +25,7 @@ const getRowBasedLayout = (allColumns) => {
   return result;
 };
 
-const getCellIdPosition = ({ layout, cellId }) => {
+export const getCellIdPosition = ({ layout, cellId }) => {
   const rowArray = _.find(layout, (row) => _.includes(row, cellId));
   const column = _.indexOf(rowArray, cellId);
   const row = _.indexOf(layout, rowArray);
@@ -122,6 +123,51 @@ export const addTableColumns = ({ tableId, cellId, direction }) => {
   });
 };
 
+export const deleteTableRow = ({ tableId, row }) => {
+  // clear row cells
+  const allRows = getRecoil(tableFamily(tableId));
+  const cellsToClear = allRows[row];
+
+  _.forEach(cellsToClear, (cellId) => {
+    resetRecoil(cellsFamily(cellId));
+  });
+
+  // clear row
+  setRecoil(tableFamily(tableId), (prevAllRows) => {
+    const newAllRows = _.cloneDeep(prevAllRows);
+    newAllRows.splice(row, 1);
+
+    // if the new table is empty, set correct empty table state
+    if (_.isEmpty(_.flatten(newAllRows))) {
+      return [[]];
+    }
+
+    return newAllRows;
+  });
+};
+
+export const deleteTableColumn = ({ tableId, column }) => {
+  const allRows = getRecoil(tableFamily(tableId));
+  //clear column cells
+  const cellsToClear = _.map(allRows, (row) => row[column]);
+  _.forEach(cellsToClear, (cellId) => {
+    resetRecoil(cellsFamily(cellId));
+  });
+
+  // clear column
+  setRecoil(tableFamily(tableId), (prevAllRows) => {
+    const newAllRows = _.cloneDeep(prevAllRows);
+    newAllRows.forEach((row) => row.splice(column, 1));
+
+    // if the new table is empty, set correct empty table state
+    if (_.isEmpty(_.flatten(newAllRows))) {
+      return [[]];
+    }
+
+    return newAllRows;
+  });
+};
+
 export const useTable = ({ id }) => {
   const [allRows, setTableRows] = useRecoilState(tableFamily(id));
   const resetTableState = useResetRecoilState(tableFamily(id));
@@ -161,37 +207,12 @@ export const useTable = ({ id }) => {
     addTableColumns({ tableId: id, cellId, direction: position });
   };
 
-  // Delete last colum of the table
   const deleteColumn = ({ column }) => {
-    const cellsIds = _.map(allRows, (row) => row[column]);
-    clearCells(cellsIds);
-    setTableRows((prevAllRows) => {
-      const newAllRows = _.cloneDeep(prevAllRows);
-      newAllRows.forEach((row) => row.splice(column, 1));
-
-      // if the new table is empty, set correct empty table state
-      if (_.isEmpty(_.flatten(newAllRows))) {
-        return [[]];
-      }
-
-      return newAllRows;
-    });
+    deleteTableColumn({ tableId: id, column });
   };
 
   const deleteRow = ({ row }) => {
-    const cellIds = allRows[row];
-    clearCells(cellIds);
-    setTableRows((prevAllRows) => {
-      const newAllRows = _.cloneDeep(prevAllRows);
-      newAllRows.splice(row, 1);
-
-      // if the new table is empty, set correct empty table state
-      if (_.isEmpty(_.flatten(newAllRows))) {
-        return [[]];
-      }
-
-      return newAllRows;
-    });
+    deleteTableRow({ tableId: id, row });
   };
 
   // clear data of range of cells
