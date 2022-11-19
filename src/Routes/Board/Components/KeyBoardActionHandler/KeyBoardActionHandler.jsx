@@ -31,7 +31,7 @@ const KeyBoardActionHandler = (props) => {
       );
     },
     (e) => {
-      handleArrowKey(e, allRows, getNeighboringCells);
+      handleArrowKey({ e, allRows, getNeighboringCells });
     },
     {},
     [allRows]
@@ -46,7 +46,7 @@ const KeyBoardActionHandler = (props) => {
       );
     },
     (e) => {
-      handleMetaHoldArrowKey(e, allRows, getNeighboringCells);
+      handleMetaHoldArrowKey({ e, allRows, getNeighboringCells });
     },
     {},
     [allRows]
@@ -60,7 +60,7 @@ const KeyBoardActionHandler = (props) => {
         metaKey
       );
     },
-    (e) => handleMetaHoldKey(e, boardId),
+    (e) => handleMetaHoldKey({ e, boardId }),
     {},
     []
   );
@@ -81,7 +81,7 @@ const KeyBoardActionHandler = (props) => {
       return _.includes(["r", "c"], key) && metaKey && shiftKey;
     },
     (e) => {
-      handleMetaShiftHoldKey(e, allRows, getNeighboringCells);
+      handleMetaShiftHoldKey({ e, allRows, getNeighboringCells });
     },
     {},
     [allRows]

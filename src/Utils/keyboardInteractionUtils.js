@@ -28,7 +28,7 @@ const focusCellsInputElement = (cellId) => {
   const focusedCellInputElements =
     focusedCellElement.querySelectorAll("input, textarea");
   if (focusedCellInputElements) {
-    focusedCellInputElements[0].focus();
+    focusedCellInputElements[0]?.focus();
   }
 };
 
@@ -38,7 +38,7 @@ const isCurrentFocusAnInput = () => {
   return isInputField;
 };
 
-const handleArrowKey = (e, allRows, getNeighboringCells) => {
+const handleArrowKey = ({ e, allRows, getNeighboringCells }) => {
   const { key } = e;
   if (isCurrentFocusAnInput()) {
     return;
@@ -89,7 +89,7 @@ const handleEnter = (e) => {
   }
 };
 
-const handleMetaHoldArrowKey = (e) => {
+const handleMetaHoldArrowKey = ({ e }) => {
   const { key, metaKey } = e;
   // cmd + ->  ==> add column to right
   // cmd + <-  ==> add column to left
@@ -97,7 +97,7 @@ const handleMetaHoldArrowKey = (e) => {
   // cmd + down arrow ==> add row below
 };
 
-const handleMetaShiftHoldKey = (e) => {
+const handleMetaShiftHoldKey = ({ e }) => {
   const { key, metaKey, shiftKey } = e;
 
   // cmd + shift + r -> delete row --> browser refresh key
@@ -105,7 +105,7 @@ const handleMetaShiftHoldKey = (e) => {
   // cmd + delete -> delete cell
 };
 
-const handleMetaHoldKey = (e, boardId) => {
+const handleMetaHoldKey = ({ e, boardId }) => {
   const { key, metaKey } = e;
   e.preventDefault();
   if (_.includes(["m", "M"], key) && boardId) {
