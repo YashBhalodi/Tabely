@@ -1,7 +1,12 @@
 import _ from "lodash";
 import { CELL_TYPES } from "./constants";
 import { COLOR_SHORTCUT_MAP } from "./colors";
-import { updateCellState, toggleBoardMode } from "Hooks";
+import {
+  updateCellState,
+  toggleBoardMode,
+  addTableColumns,
+  addTableRows,
+} from "Hooks";
 
 const TARGET_CELL_TYPE = {
   1: CELL_TYPES.BASIC,
@@ -89,12 +94,35 @@ const handleEnter = (e) => {
   }
 };
 
-const handleMetaHoldArrowKey = ({ e }) => {
+const handleMetaHoldArrowKey = ({ e, tableId }) => {
   const { key, metaKey } = e;
-  // cmd + ->  ==> add column to right
-  // cmd + <-  ==> add column to left
-  // cmd + up arrow ==> add row above
-  // cmd + down arrow ==> add row below
+
+  if (isCurrentFocusAnInput()) {
+    return;
+  }
+
+  const cellId = getCurrentFocusedCellId();
+  if (!cellId) return;
+  e.preventDefault();
+  switch (key) {
+    case "ArrowUp":
+      addTableRows({ tableId, cellId, direction: "above" });
+      break;
+    case "ArrowDown":
+      addTableRows({ tableId, cellId, direction: "below" });
+      break;
+    case "ArrowLeft":
+      addTableColumns({ tableId, cellId, direction: "left" });
+      break;
+    case "ArrowRight":
+      addTableColumns({ tableId, cellId, direction: "right" });
+      break;
+    default:
+      break;
+  }
+  setTimeout(() => {
+    focusCellId(cellId);
+  }, 10);
 };
 
 const handleMetaShiftHoldKey = ({ e }) => {

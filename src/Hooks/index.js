@@ -1,4 +1,4 @@
-import { useTable } from "./tableHooks";
+import { useTable, addTableColumns, addTableRows } from "./tableHooks";
 import { useCell, updateCellState } from "./cellHooks";
 import { useBoard, toggleBoardMode } from "./boardHooks";
 import { useApp } from "./appStateHooks";
@@ -14,4 +14,6 @@ export {
   useClickOutside,
   updateCellState,
   toggleBoardMode,
+  addTableColumns,
+  addTableRows,
 };

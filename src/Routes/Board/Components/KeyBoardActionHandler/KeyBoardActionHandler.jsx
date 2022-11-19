@@ -46,7 +46,7 @@ const KeyBoardActionHandler = (props) => {
       );
     },
     (e) => {
-      handleMetaHoldArrowKey({ e, allRows, getNeighboringCells });
+      handleMetaHoldArrowKey({ e, tableId });
     },
     {},
     [allRows]
