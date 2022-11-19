@@ -43,7 +43,7 @@ export const useCell = ({ id }) => {
   const clearCell = () => {
     updateCellState({
       id: cellId,
-      ...initialCellState,
+      ...initialCellState(),
       type: CELL_TYPES.BLANK,
     });
   };

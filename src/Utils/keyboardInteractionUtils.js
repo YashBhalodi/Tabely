@@ -151,9 +151,10 @@ const handleMetaHoldKey = ({ e, boardId }) => {
 
   // cmd + Delete --> clear current focused cell
   if (key === "Delete") {
+    console.log({ initialCellState });
     updateCellState({
       id: currentFocusedCellId,
-      ...initialCellState,
+      ...initialCellState(),
       type: CELL_TYPES.BLANK,
     });
   }
