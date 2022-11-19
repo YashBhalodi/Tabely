@@ -1,5 +1,5 @@
 import { useTable } from "./tableHooks";
-import { useCell, switchCellType } from "./cellHooks";
+import { useCell, updateCellState } from "./cellHooks";
 import { useBoard } from "./boardHooks";
 import { useApp } from "./appStateHooks";
 import { useTag } from "./tagHooks";
@@ -12,5 +12,5 @@ export {
   useApp,
   useTag,
   useClickOutside,
-  switchCellType,
+  updateCellState,
 };

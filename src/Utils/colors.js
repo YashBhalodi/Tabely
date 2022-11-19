@@ -4,9 +4,34 @@ export const COMMON = {
   placeholder: "placeholder:font-regular",
   focusOutline: "focus:outline focus:outline-offset-2",
 };
+
+export const COLOR_SHORTCUT_MAP = {
+  RED: "s",
+  STONE: "d",
+  BLUE: "b",
+  PINK: "p",
+  PURPLE: "u",
+  INDIGO: "i",
+  CYAN: "c",
+  TEAL: "t",
+  GREEN: "g",
+  LIME: "l",
+  YELLOW: "y",
+  AMBER: "a",
+  ORANGE: "o",
+  EMERALD: "e",
+  SKY: "k",
+  VIOLET: "v",
+  FUCHSIA: "f",
+  ROSE: "r",
+  ZINC: "z",
+  GRAY: "w",
+};
+
 export const COLOR_THEME = {
   RED: {
-    label: "Red",
+    label: "Scarlet",
+    shortCutKey: COLOR_SHORTCUT_MAP.RED,
     bgColor: "bg-red-600",
     lightBgColor: "bg-red-50",
     lightBgBorderColor: "border-red-300",
@@ -21,7 +46,8 @@ export const COLOR_THEME = {
     scrollbar: `scrollbar scrollbar-red`,
   },
   STONE: {
-    label: "Stone",
+    label: "Dark",
+    shortCutKey: COLOR_SHORTCUT_MAP.STONE,
     bgColor: "bg-stone-800",
     lightBgColor: "bg-stone-50",
     lightBgBorderColor: "border-stone-300",
@@ -37,6 +63,7 @@ export const COLOR_THEME = {
   },
   BLUE: {
     label: "Blue",
+    shortCutKey: COLOR_SHORTCUT_MAP.BLUE,
     bgColor: "bg-blue-700",
     lightBgColor: "bg-blue-50",
     lightBgBorderColor: "border-blue-300",
@@ -52,6 +79,7 @@ export const COLOR_THEME = {
   },
   PINK: {
     label: "Pink",
+    shortCutKey: COLOR_SHORTCUT_MAP.PINK,
     bgColor: "bg-pink-600",
     lightBgColor: "bg-pink-50",
     lightBgBorderColor: "border-pink-300",
@@ -67,6 +95,7 @@ export const COLOR_THEME = {
   },
   PURPLE: {
     label: "Purple",
+    shortCutKey: COLOR_SHORTCUT_MAP.PURPLE,
     bgColor: "bg-purple-600",
     lightBgColor: "bg-purple-50",
     lightBgBorderColor: "border-purple-300",
@@ -82,6 +111,7 @@ export const COLOR_THEME = {
   },
   INDIGO: {
     label: "Indigo",
+    shortCutKey: COLOR_SHORTCUT_MAP.INDIGO,
     bgColor: "bg-indigo-600",
     lightBgColor: "bg-indigo-50",
     lightBgBorderColor: "border-indigo-300",
@@ -97,6 +127,7 @@ export const COLOR_THEME = {
   },
   CYAN: {
     label: "Cyan",
+    shortCutKey: COLOR_SHORTCUT_MAP.CYAN,
     bgColor: "bg-cyan-600",
     lightBgColor: "bg-cyan-50",
     lightBgBorderColor: "border-cyan-300",
@@ -112,6 +143,7 @@ export const COLOR_THEME = {
   },
   TEAL: {
     label: "Teal",
+    shortCutKey: COLOR_SHORTCUT_MAP.TEAL,
     bgColor: "bg-teal-600",
     lightBgColor: "bg-teal-50",
     lightBgBorderColor: "border-teal-300",
@@ -127,6 +159,7 @@ export const COLOR_THEME = {
   },
   GREEN: {
     label: "Green",
+    shortCutKey: COLOR_SHORTCUT_MAP.GREEN,
     bgColor: "bg-green-600",
     lightBgColor: "bg-green-50",
     lightBgBorderColor: "border-green-300",
@@ -142,6 +175,7 @@ export const COLOR_THEME = {
   },
   LIME: {
     label: "Lime",
+    shortCutKey: COLOR_SHORTCUT_MAP.LIME,
     bgColor: "bg-lime-600",
     lightBgColor: "bg-lime-50",
     lightBgBorderColor: "border-lime-300",
@@ -157,6 +191,7 @@ export const COLOR_THEME = {
   },
   YELLOW: {
     label: "Yellow",
+    shortCutKey: COLOR_SHORTCUT_MAP.YELLOW,
     bgColor: "bg-yellow-600",
     lightBgColor: "bg-yellow-50",
     lightBgBorderColor: "border-yellow-300",
@@ -172,6 +207,7 @@ export const COLOR_THEME = {
   },
   AMBER: {
     label: "Amber",
+    shortCutKey: COLOR_SHORTCUT_MAP.AMBER,
     bgColor: "bg-amber-600",
     lightBgColor: "bg-amber-50",
     lightBgBorderColor: "border-amber-300",
@@ -187,6 +223,7 @@ export const COLOR_THEME = {
   },
   ORANGE: {
     label: "Orange",
+    shortCutKey: COLOR_SHORTCUT_MAP.ORANGE,
     bgColor: "bg-orange-600",
     lightBgColor: "bg-orange-50",
     lightBgBorderColor: "border-orange-300",
@@ -202,6 +239,7 @@ export const COLOR_THEME = {
   },
   EMERALD: {
     label: "Emerald",
+    shortCutKey: COLOR_SHORTCUT_MAP.EMERALD,
     bgColor: "bg-emerald-600",
     lightBgColor: "bg-emerald-50",
     lightBgBorderColor: "border-emerald-300",
@@ -217,6 +255,7 @@ export const COLOR_THEME = {
   },
   SKY: {
     label: "Sky",
+    shortCutKey: COLOR_SHORTCUT_MAP.SKY,
     bgColor: "bg-sky-600",
     lightBgColor: "bg-sky-50",
     lightBgBorderColor: "border-sky-300",
@@ -232,6 +271,7 @@ export const COLOR_THEME = {
   },
   VIOLET: {
     label: "Violet",
+    shortCutKey: COLOR_SHORTCUT_MAP.VIOLET,
     bgColor: "bg-violet-600",
     lightBgColor: "bg-violet-50",
     lightBgBorderColor: "border-violet-300",
@@ -247,6 +287,7 @@ export const COLOR_THEME = {
   },
   FUCHSIA: {
     label: "Fuchsia",
+    shortCutKey: COLOR_SHORTCUT_MAP.FUCHSIA,
     bgColor: "bg-fuchsia-600",
     lightBgColor: "bg-fuchsia-50",
     lightBgBorderColor: "border-fuchsia-300",
@@ -262,6 +303,7 @@ export const COLOR_THEME = {
   },
   ROSE: {
     label: "Rose",
+    shortCutKey: COLOR_SHORTCUT_MAP.ROSE,
     bgColor: "bg-rose-200",
     lightBgColor: "bg-rose-50",
     lightBgBorderColor: "border-rose-300",
@@ -277,6 +319,7 @@ export const COLOR_THEME = {
   },
   ZINC: {
     label: "Zinc",
+    shortCutKey: COLOR_SHORTCUT_MAP.ZINC,
     bgColor: "bg-zinc-400",
     lightBgColor: "bg-zinc-50",
     lightBgBorderColor: "border-zinc-300",
@@ -292,6 +335,7 @@ export const COLOR_THEME = {
   },
   GRAY: {
     label: "Gray",
+    shortCutKey: COLOR_SHORTCUT_MAP.GRAY,
     bgColor: "bg-gray-200",
     lightBgColor: "bg-gray-50",
     lightBgBorderColor: "border-gray-300",

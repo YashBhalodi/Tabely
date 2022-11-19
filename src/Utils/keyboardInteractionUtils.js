@@ -1,6 +1,7 @@
 import _ from "lodash";
-import { switchCellType } from "Hooks";
 import { CELL_TYPES } from "./constants";
+import { COLOR_SHORTCUT_MAP } from "./colors";
+import { updateCellState } from "Hooks";
 
 const TARGET_CELL_TYPE = {
   1: CELL_TYPES.BASIC,
@@ -118,10 +119,33 @@ const handleMetaHoldKey = (e) => {
 
   // cmd + number 1,2,3,... -> change cell type
   if (_.includes(_.keys(TARGET_CELL_TYPE), key)) {
-    switchCellType({ id: currentFocusedCellId, type: TARGET_CELL_TYPE[key] });
+    e.preventDefault();
+    updateCellState({ id: currentFocusedCellId, type: TARGET_CELL_TYPE[key] });
     setTimeout(() => {
       focusCellId(currentFocusedCellId);
     }, 10);
+  }
+};
+
+const handleCtrlHoldKey = (e) => {
+  const { key, ctrlKey } = e;
+  if (isCurrentFocusAnInput()) {
+    return;
+  }
+
+  const currentFocusedCellId = getCurrentFocusedCellId();
+  if (!currentFocusedCellId) {
+    return;
+  }
+
+  if (_.includes(_.values(COLOR_SHORTCUT_MAP), key)) {
+    updateCellState({
+      id: currentFocusedCellId,
+      colorTheme: _.findKey(
+        COLOR_SHORTCUT_MAP,
+        (shortcutKey) => shortcutKey == key
+      ),
+    });
   }
 };
 
@@ -134,5 +158,6 @@ export {
   isCurrentFocusAnInput,
   handleMetaShiftHoldKey,
   handleMetaHoldKey,
+  handleCtrlHoldKey,
   TARGET_CELL_TYPE,
 };

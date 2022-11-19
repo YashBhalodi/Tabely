@@ -10,9 +10,15 @@ import {
   FiArrowRight,
   FiCommand,
 } from "react-icons/fi";
+import { ImOpt } from "react-icons/im";
+import { MdKeyboardArrowUp } from "react-icons/md";
+import { COLOR_THEME } from "Utils/colors";
 
 const isMac = navigator.appVersion.indexOf("Mac") != -1;
-const CommandEquivalent = isMac ? FiCommand : "ctrl";
+const CommandEquivalent = isMac ? FiCommand : "ctrl"; // todo verify this
+const OptEquivalent = isMac ? ImOpt : "alt";
+const ControlEquivalent = isMac ? MdKeyboardArrowUp : "ctrl";
+
 const keyCombinations = [
   {
     title: "Navigating in the board",
@@ -99,6 +105,17 @@ const keyCombinations = [
       },
     ],
   },
+  {
+    title: "Change cell theme",
+    sectionActions: _.map(COLOR_THEME, (item, key) => {
+      const { label, shortCutKey } = item;
+      return {
+        keys: [ControlEquivalent, shortCutKey],
+        description: label,
+        color: key,
+      };
+    }),
+  },
 ];
 
 const KeyBoardKeyHelpOverlay = (props) => {
@@ -117,11 +134,11 @@ const KeyBoardKeyHelpOverlay = (props) => {
               ) : null}
               <ul className="flex flex-col gap-2">
                 {_.map(sectionActions, (keyAction) => {
-                  const { keys, description } = keyAction;
+                  const { keys, description, color } = keyAction;
 
                   return (
                     <li
-                      className="hover:bg-blue-50/50 mix-blend-multiply flex flex-row-reverse items-center gap-2 px-2 py-1 mr-2 text-blue-800 rounded cursor-default"
+                      className="hover:bg-blue-50/50 mix-blend-multiply flex flex-row-reverse items-center justify-between gap-2 px-2 py-1 mr-2 text-blue-800 rounded cursor-default"
                       key={description}
                     >
                       <div className="flex flex-row gap-1">
@@ -133,7 +150,14 @@ const KeyBoardKeyHelpOverlay = (props) => {
                           );
                         })}
                       </div>
-                      <div className="flex flex-1">{description}</div>
+                      <div className="flex flex-row-reverse items-center gap-2">
+                        <div className="flex flex-1">{description}</div>
+                        {color ? (
+                          <div
+                            className={`w-4 h-4 rounded-full ${COLOR_THEME[color].bgColor}`}
+                          />
+                        ) : null}
+                      </div>
                     </li>
                   );
                 })}

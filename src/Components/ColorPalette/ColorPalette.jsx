@@ -29,15 +29,17 @@ const ColorPalette = (props) => {
 
   return (
     <div className="h-fit w-fit z-40 grid items-start justify-center grid-flow-col grid-rows-3 gap-3 p-2">
-      {_.map(COLOR_THEME, (item, key) => (
-        <ThemeItem
-          key={key}
-          id={key}
-          onClick={handleClick}
-          isActive={activeTheme === key}
-          size={size}
-        />
-      ))}
+      {_.map(COLOR_THEME, (item, key) => {
+        return (
+          <ThemeItem
+            key={key}
+            id={key}
+            onClick={handleClick}
+            isActive={activeTheme === key}
+            size={size}
+          />
+        );
+      })}
     </div>
   );
 };

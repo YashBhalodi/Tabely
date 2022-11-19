@@ -20,10 +20,12 @@ const syncTagCell = ({ tagId, cellId }) => {
   setRecoil(tagsFamily(tagId), newTagState);
 };
 
-export const switchCellType = ({ id, type }) => {
-  setRecoil(cellsFamily(id), (prevState) => ({ ...prevState, type }));
+export const updateCellState = ({ id, ...rest }) => {
+  setRecoil(cellsFamily(id), (prevState) => ({
+    ...prevState,
+    ...rest,
+  }));
 };
-
 export const useCell = ({ id }) => {
   const [cellData, setCell] = useRecoilState(cellsFamily(id));
   const cellId = id;

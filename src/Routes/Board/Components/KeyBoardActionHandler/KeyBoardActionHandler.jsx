@@ -10,10 +10,12 @@ import {
   isCurrentFocusAnInput,
   handleMetaShiftHoldKey,
   handleMetaHoldKey,
+  handleCtrlHoldKey,
   TARGET_CELL_TYPE,
 } from "Utils/keyboardInteractionUtils";
 import _ from "lodash";
 import KeyBoardToolTipButton from "./KeyBoardActionTooltip";
+import { COLOR_SHORTCUT_MAP } from "Utils/colors";
 
 const KeyBoardActionHandler = (props) => {
   const { boardId } = useParams();
@@ -58,9 +60,17 @@ const KeyBoardActionHandler = (props) => {
         metaKey
       );
     },
+    handleMetaHoldKey,
+    {},
+    []
+  );
+
+  useKey(
     (e) => {
-      handleMetaHoldKey(e, allRows, getNeighboringCells);
+      const { key, ctrlKey } = e;
+      return _.includes(_.values(COLOR_SHORTCUT_MAP), key) && ctrlKey;
     },
+    handleCtrlHoldKey,
     {},
     []
   );
